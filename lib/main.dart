@@ -3,6 +3,7 @@ import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'animated_wave.dart';
+import 'extensions.dart';
 import 'socials_row/socials_row.dart';
 
 void main() {
@@ -94,10 +95,10 @@ class _MyHomePageState extends State<MyHomePage>
                   duration: const Duration(milliseconds: 600),
                   child: SelectableText(
                     'Jens Becker',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline3
-                        .copyWith(color: Colors.black.withOpacity(0.7)),
+                    style: Theme.of(context).textTheme.headline3.copyWith(
+                        color: context.isInDarkMode
+                            ? Colors.white.withOpacity(0.7)
+                            : Colors.black.withOpacity(0.7)),
                   ),
                 ),
                 const SizedBox(height: 10),

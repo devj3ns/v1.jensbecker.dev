@@ -2,19 +2,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../extensions.dart';
 import 'social_icons_data.dart';
 
 class SocialIconButton extends StatefulWidget {
   const SocialIconButton({
     @required this.model,
     this.size,
-    this.color = Colors.black87,
     this.onTap,
   });
 
   final ContentViewModel model;
   final double size;
-  final Color color;
   final VoidCallback onTap;
 
   @override
@@ -61,7 +60,7 @@ class _SocialIconButtonState extends State<SocialIconButton> {
           child: Icon(
             widget.model.icon,
             size: widget.size,
-            color: widget.color,
+            color: context.isInDarkMode ? Colors.white70 : Colors.black87,
           ),
         ),
       ),
