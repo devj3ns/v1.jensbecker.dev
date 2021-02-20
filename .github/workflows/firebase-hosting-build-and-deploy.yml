@@ -1,4 +1,4 @@
-name: Build and deploy app to Firebase Hosting on new commit
+name: Build and deploy to Firebase Hosting on new commit
 
 on:
   push:
