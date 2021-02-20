@@ -1,4 +1,4 @@
-name: Build and deploys to Firebase Hosting on every commit
+name: Build and deploy app to Firebase Hosting on new commit
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,10 +17,14 @@ jobs:
       - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter build web
+  deploy:
+    name: Deploy
+    steps:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WORKOUTTRACKER_76B7F }}'
-          projectId: workouttracker-76b7f
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JENSBECKER_DEV }}'
+          channelId: live
+          projectId: jensbecker-dev
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
