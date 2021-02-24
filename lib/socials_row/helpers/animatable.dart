@@ -9,7 +9,7 @@ abstract class AnimatableWidget extends StatelessWidget {
   final Animation<double> animation;
 
   Animation<double> get baseAnimation =>
-      animation ?? AlwaysStoppedAnimation(1.0);
+      animation ?? const AlwaysStoppedAnimation(1.0);
 }
 
 abstract class AnimatableStatefulWidget extends StatefulWidget {
@@ -27,5 +27,5 @@ abstract class AnimatableStatefulWidget extends StatefulWidget {
 abstract class AnimatableState<T extends AnimatableStatefulWidget>
     extends State<T> with SingleTickerProviderStateMixin {
   Animation<double> get baseAnimation =>
-      widget.animation ?? AlwaysStoppedAnimation(0.0);
+      widget.animation ?? const AlwaysStoppedAnimation(0.0);
 }
