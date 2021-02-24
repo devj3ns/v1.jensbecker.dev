@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 
-extension DarkMode on BuildContext {
+extension ContextExtensions on BuildContext {
+  // Theme
   bool get isDarkMode =>
       Theme.of(this).brightness == Brightness.dark ? true : false;
 
   bool get isLightMode => !isDarkMode;
+
+  // Responsive
+  double get screenWidth => MediaQuery.of(this).size.width;
+
+  double get screenWHeight => MediaQuery.of(this).size.height;
+
+  bool get isMobile => screenWidth < 768;
+
+  bool get isTablet => screenWidth < 1024;
+
+  bool get isDesktop => screenWidth >= 1024;
+}
+
+extension WidgetExtensions on Widget {
+  Widget get moveUpOnHover {
+    return TranslateOnHover(
+      child: this,
+    );
+  }
 }
 
 class TranslateOnHover extends StatefulWidget {
@@ -39,13 +59,5 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
     setState(() {
       _hovering = hover;
     });
-  }
-}
-
-extension X on Widget {
-  Widget get moveUpOnHover {
-    return TranslateOnHover(
-      child: this,
-    );
   }
 }

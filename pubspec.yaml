@@ -13,10 +13,7 @@ dependencies:
   url_strategy: ^0.1.1
   font_awesome_flutter: ^8.11.0
   url_launcher: ^5.7.10
-  flutter_fadein: ^1.1.1
-  simple_animations: ^2.5.1
   google_fonts: ^1.1.2
-  transparent_image: ^1.0.0
   fluro: ^1.7.8
   scroll_to_index: ^1.0.6
 

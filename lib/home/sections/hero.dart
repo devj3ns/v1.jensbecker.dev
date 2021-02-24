@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../socials_row/socials_row.dart';
 import '../home.dart';
 import '../navbar/navbar.dart';
+import '../../extensions.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection(this.scrollToSection);
@@ -11,6 +12,8 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pictureSize = context.isMobile ? 200.0 : 300.0;
+
     return Container(
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(
@@ -27,9 +30,9 @@ class HeroSection extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 300,
-                height: 300,
+              SizedBox(
+                width: pictureSize,
+                height: pictureSize,
                 child: const CircleAvatar(
                   backgroundImage: NetworkImage(
                     'assets/icon.jpg',

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:portfolio/home/navbar/navbar.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
+import '../extensions.dart';
 import 'footer/footer.dart';
 import 'sections/sections.dart';
 
@@ -43,10 +45,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Scrollbar(
-        isAlwaysShown: true,
+        isAlwaysShown: context.isDesktop,
         controller: controller,
         child: ListView(
           controller: controller,
+          physics: const ClampingScrollPhysics(),
           children: [
             AutoScrollTag(
               key: ValueKey(Section.head.index),

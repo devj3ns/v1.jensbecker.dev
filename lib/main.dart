@@ -4,7 +4,7 @@ import 'package:portfolio/routing.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
-  //setPathUrlStrategy();
+  setPathUrlStrategy();
   runApp(MyApp());
 }
 
