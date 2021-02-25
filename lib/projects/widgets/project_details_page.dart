@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/routing.dart';
 
+import '../../extensions.dart';
 import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
@@ -9,53 +13,75 @@ class ProjectDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final project = projects.firstWhere((project) => project.id == id);
+    final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
+    final verticalPadding = context.isMobile ? 25.0 : 75.0;
 
     return Scaffold(
       body: Center(
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SelectableText(
-                  project.name,
-                  style: const TextStyle(fontSize: 20),
+        child: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  tooltip: 'Zurück',
+                  onPressed: () => AppRouter.router.pop<void>(context),
+                  icon: const FaIcon(
+                    FontAwesomeIcons.chevronLeft,
+                    size: 20,
+                  ),
                 ),
-                const SizedBox(height: 10),
-                Wrap(
-                  runSpacing: 4,
-                  spacing: 4,
-                  children: project.tags
-                      .map(
-                        (tag) => Chip(
-                          label: SelectableText(tag),
-                        ),
-                      )
-                      .toList(),
+                const SizedBox(width: 5),
+                Flexible(
+                  child: SelectableText(
+                    project.name,
+                    style: const TextStyle(fontSize: 25),
+                  ),
                 ),
-                const SizedBox(height: 10),
-                Wrap(
-                  runSpacing: 4,
-                  spacing: 4,
-                  children: project.tools
-                      .map(
-                        (tag) => Chip(
-                          label: SelectableText(tag),
-                        ),
-                      )
-                      .toList(),
-                ),
-                const SizedBox(height: 10),
-                SelectableText(
-                  project.description,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 10),
               ],
             ),
-          ),
+            const SizedBox(height: 15),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                project.imageUrl,
+                fit: BoxFit.fill,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Wrap(
+              runSpacing: 4,
+              spacing: 4,
+              children: project.tags
+                  .map(
+                    (tag) => Chip(
+                      label: SelectableText(tag),
+                    ),
+                  )
+                  .toList(),
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              runSpacing: 4,
+              spacing: 4,
+              children: project.tools
+                  .map(
+                    (tag) => Chip(
+                      label: SelectableText(tag),
+                    ),
+                  )
+                  .toList(),
+            ),
+            const SizedBox(height: 30),
+            SelectableText(
+              project.description,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
         ),
       ),
     );

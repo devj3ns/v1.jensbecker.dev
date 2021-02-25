@@ -8,6 +8,7 @@ class Project {
     @required this.tools,
     @required this.descriptionShort,
     @required this.description,
+    @required this.imageUrl,
   });
   final String id;
   final String name;
@@ -15,4 +16,5 @@ class Project {
   final List<String> tags;
   final String descriptionShort;
   final String description;
+  final String imageUrl;
 }

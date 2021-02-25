@@ -19,6 +19,12 @@ extension ContextExtensions on BuildContext {
   bool get isDesktop => screenWidth >= 1024;
 }
 
+extension StringExtensions on String {
+  bool get isBlank => this == null || trim().isEmpty;
+
+  bool get isNotBlank => this != null && trim().isNotEmpty;
+}
+
 extension WidgetExtensions on Widget {
   Widget get moveUpOnHover {
     return TranslateOnHover(

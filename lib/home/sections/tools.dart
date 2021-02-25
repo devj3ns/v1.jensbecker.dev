@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../extensions.dart';
 import '../../tools/tools.dart';
-import 'section.dart';
+import '../section.dart';
 
 class ToolsSection extends StatelessWidget {
   @override

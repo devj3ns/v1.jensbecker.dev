@@ -11,9 +11,9 @@ class Footer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            const SelectableText(
-              '© Jens Becker',
-              style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+            SelectableText(
+              '© Jens Becker ${DateTime.now().year}',
+              style: const TextStyle(fontSize: 20, color: Colors.blueGrey),
             ),
           ],
         ),

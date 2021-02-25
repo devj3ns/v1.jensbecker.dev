@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../extensions.dart';
-import 'section.dart';
+import '../section.dart';
 
 class ContactSection extends StatelessWidget {
   @override

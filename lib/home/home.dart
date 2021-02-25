@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:portfolio/home/navbar/navbar.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../extensions.dart';

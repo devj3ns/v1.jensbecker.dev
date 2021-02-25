@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../animating_icon_button.dart';
+import '../../extensions.dart';
 import '../../socials_row/socials_row.dart';
 import '../home.dart';
 import '../navbar/navbar.dart';
-import '../../extensions.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection(this.scrollToSection);
@@ -46,12 +47,14 @@ class HeroSection extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: IconButton(
-              onPressed: () => scrollToSection(Section.projects),
-              icon: FaIcon(
-                FontAwesomeIcons.chevronDown,
-                color: Colors.white.withOpacity(0.7),
-                size: 40,
+            child: AnimateTranslate(
+              child: IconButton(
+                onPressed: () => scrollToSection(Section.projects),
+                icon: FaIcon(
+                  FontAwesomeIcons.chevronDown,
+                  color: Colors.white.withOpacity(0.7),
+                  size: 40,
+                ),
               ),
             ),
           )
