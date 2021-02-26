@@ -28,7 +28,7 @@ class NavBar extends StatelessWidget {
               'Jens Becker',
               style: TextStyle(color: Colors.white, fontSize: 35),
             ),
-          ).moveUpOnHover,
+          ),
           if (context.isMobile) ...[
             const Expanded(child: SizedBox()),
             IconButton(
@@ -48,6 +48,14 @@ class NavBar extends StatelessWidget {
                     onTap: () => scrollToSection(Section.projects),
                     child: Text(
                       'Projekte',
+                      style: textStyle,
+                    ),
+                  ).moveUpOnHover,
+                  SizedBox(width: spacerWith),
+                  InkWell(
+                    onTap: () => scrollToSection(Section.about),
+                    child: Text(
+                      'Über mich',
                       style: textStyle,
                     ),
                   ).moveUpOnHover,

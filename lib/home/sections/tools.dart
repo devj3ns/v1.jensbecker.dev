@@ -9,6 +9,8 @@ class ToolsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Section(
       title: 'Programmiersprachen & Tools',
+      subtitle:
+          'Mit diesen Tools habe ich die letzten Jahre Erfahrung gesammelt.',
       child: Wrap(
         spacing: 4.0,
         runSpacing: 4.0,

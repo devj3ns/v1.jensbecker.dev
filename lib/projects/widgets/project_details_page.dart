@@ -15,6 +15,8 @@ class ProjectDetailPage extends StatelessWidget {
     final project = projects.firstWhere((project) => project.id == id);
     final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
     final verticalPadding = context.isMobile ? 25.0 : 75.0;
+    final horizontalImagePadding =
+        context.isMobile ? 0.0 : horizontalPadding / 2;
 
     return Scaffold(
       body: Center(
@@ -45,41 +47,49 @@ class ProjectDetailPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(
-                project.imageUrl,
-                fit: BoxFit.fill,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: horizontalImagePadding),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.network(
+                  project.mockupUrl,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             const SizedBox(height: 15),
-            Wrap(
-              runSpacing: 4,
-              spacing: 4,
-              children: project.tags
-                  .map(
-                    (tag) => Chip(
-                      label: SelectableText(tag),
-                    ),
-                  )
-                  .toList(),
+            Center(
+              child: Wrap(
+                runSpacing: 4,
+                spacing: 4,
+                children: project.tags
+                    .map(
+                      (tag) => Chip(
+                        label: SelectableText(tag),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
             const SizedBox(height: 10),
-            Wrap(
-              runSpacing: 4,
-              spacing: 4,
-              children: project.tools
-                  .map(
-                    (tag) => Chip(
-                      label: SelectableText(tag),
-                    ),
-                  )
-                  .toList(),
+            Center(
+              child: Wrap(
+                runSpacing: 4,
+                spacing: 4,
+                children: project.tools
+                    .map(
+                      (tag) => Chip(
+                        label: SelectableText(tag),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
             const SizedBox(height: 30),
             SelectableText(
               project.description,
               style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
             ),
           ],
         ),

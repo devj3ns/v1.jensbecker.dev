@@ -21,6 +21,7 @@ class AppRouter {
 
   void setupRoutes() {
     router.notFoundHandler = _notFoundHandler;
+    // ignore: avoid_function_literals_in_foreach_calls
     routes.forEach(
       (AppRoute route) =>
           router.define(route.route, handler: route.handler as Handler),
@@ -44,7 +45,7 @@ class AppRoutes {
   );
 
   static final projectDetailRoute = AppRoute(
-    '/project/:id',
+    '/projekt/:id',
     Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       final projectId = params['id'][0];

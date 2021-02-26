@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../animating_icon_button.dart';
+import '../../animate.dart';
 import '../../extensions.dart';
 import '../../socials_row/socials_row.dart';
 import '../home.dart';
@@ -31,14 +31,19 @@ class HeroSection extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: pictureSize,
-                height: pictureSize,
-                child: const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'assets/icon.jpg',
+              AnimateScale(
+                child: InkWell(
+                  onTap: () => scrollToSection(Section.about),
+                  child: SizedBox(
+                    width: pictureSize,
+                    height: pictureSize,
+                    child: const CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'assets/icon.jpg',
+                      ),
+                      backgroundColor: Colors.transparent,
+                    ),
                   ),
-                  backgroundColor: Colors.transparent,
                 ),
               ),
               const SizedBox(height: 20),

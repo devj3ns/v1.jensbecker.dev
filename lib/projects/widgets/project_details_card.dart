@@ -18,13 +18,30 @@ class ProjectDetailsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SelectableText(
-              project.name,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Row(
+              children: [
+                if (project.iconUrl.isNotBlank) ...[
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.network(
+                      project.iconUrl,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                ],
+                Flexible(
+                  child: SelectableText(
+                    project.name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Chips(project: project),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             SelectableText(
               project.descriptionShort,
               style: const TextStyle(fontSize: 16),
@@ -59,8 +76,10 @@ class Chips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Wrap(
+          alignment: WrapAlignment.center,
           runSpacing: 4,
           spacing: 4,
           children: project.tags
@@ -71,8 +90,9 @@ class Chips extends StatelessWidget {
               )
               .toList(),
         ),
-        const SizedBox(height: 10),
+        /*const SizedBox(height: 10),
         Wrap(
+          alignment: WrapAlignment.center,
           runSpacing: 4,
           spacing: 4,
           children: project.tools
@@ -82,7 +102,7 @@ class Chips extends StatelessWidget {
                 ),
               )
               .toList(),
-        ),
+        ),*/
       ],
     );
   }

@@ -8,10 +8,13 @@ class ProjectsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Section(
       title: 'Meine letzten Projekte',
-      applyHorizontalPadding: false,
+      subtitle:
+          'Eine Auswahl an Projekten an denen ich zuletzt gearbeitet habe.',
+      applyHorizontalMargin: false,
+      doubleTopMargin: true,
       child: Center(
         child: SizedBox(
-          height: 600,
+          height: 575,
           child: GridView.count(
             childAspectRatio: 3 / 4,
             crossAxisCount: 2,

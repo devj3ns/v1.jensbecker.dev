@@ -1,6 +1,8 @@
 import '../models/project.dart';
 
-String _getImagePath(String imageName) => '/assets/projects/$imageName';
+String _getMockupPath(String imageName) =>
+    '/assets/projects/mockups/$imageName';
+String _getIconPath(String imageName) => '/assets/projects/icons/$imageName';
 
 List<Project> projects = [
   Project(
@@ -8,7 +10,8 @@ List<Project> projects = [
     name: 'Nestwärme KiTa App',
     tags: ['nestwärme e.V', 'KiTa', 'Elterninformation'],
     tools: ['Flutter', 'Dart', 'Firebase'],
-    imageUrl: _getImagePath('nestwaerme_kita_app.png'),
+    iconUrl: _getIconPath('nestwaerme_kita.png'),
+    mockupUrl: _getMockupPath('nestwaerme_kita.png'),
     descriptionShort:
         'Eine App für die Nestwärme KiTa um die Eltern unkompliziert und in Echtzeit informieren zu können. ',
     description:
@@ -27,7 +30,8 @@ List<Project> projects = [
     name: 'Nestwärme Blickwechsel Buchungsassistent',
     tags: ['nestwärme e.V', 'Blickwechsel', 'Coachings'],
     tools: ['Django', 'Python', 'MySQL'],
-    imageUrl: _getImagePath('nestwaerme_blickwechsel.png'),
+    iconUrl: _getIconPath('nestwaerme_blickwechsel.png'),
+    mockupUrl: _getMockupPath('nestwaerme_blickwechsel.png'),
     descriptionShort:
         'Eine Buchungsassistent-Website für das Blickwechsel Projekt von nestwärme um ein Coaching online buchen zu können.',
     description:
@@ -40,9 +44,10 @@ List<Project> projects = [
   Project(
     id: 'muskelwerkstatt-mehr-performance-onlinebereich',
     name: 'Muskelwerkstatt Mehr Performance Onlinebereich',
-    tags: ['Muskelwerkstatt', 'Onlinebereich', 'Memberlogin'],
+    tags: ['Muskelwerkstatt', 'Onlinebereich'],
     tools: ['Django', 'Python', 'MySQL'],
-    imageUrl: _getImagePath('nestwaerme_blickwechsel.png'),
+    iconUrl: _getIconPath('muskelwerkstatt.png'),
+    mockupUrl: _getMockupPath('muskelwerkstatt.png'),
     descriptionShort:
         'Ein Onlinebereich für die Trainierenden die Muskelwerkstatt Trier.',
     description:
@@ -59,10 +64,11 @@ List<Project> projects = [
   ),
   Project(
     id: 'fleischerei-martin-click-und-collect',
-    name: 'Fleicherei Martin Click & Collect Seite',
+    name: 'Fleicherei Martin Click & Collect Bestellseite',
     tags: ['Fleischerei Martin', 'Click & Collect'],
     tools: ['Django', 'Python', 'MySQL'],
-    imageUrl: _getImagePath('nestwaerme_blickwechsel.png'),
+    iconUrl: _getIconPath('fleischerei_martin.png'),
+    mockupUrl: _getMockupPath('fleischerei_martin.png'),
     descriptionShort:
         'Eine Click & Collect Bestellseite für die Fleicherei Martin.',
     description:
@@ -75,7 +81,8 @@ List<Project> projects = [
     name: 'Martin Ternes Mandantenportal',
     tags: ['Martin Ternes', 'Mandantenportal'],
     tools: ['Django', 'Python', 'MySQL'],
-    imageUrl: _getImagePath('nestwaerme_blickwechsel.png'),
+    iconUrl: _getIconPath('martin_ternes.png'),
+    mockupUrl: _getMockupPath('martin_ternes.png'),
     descriptionShort:
         'Eine Mandantenportal zum Transfer von Belegen und andere Dokumenten für das Buchaltungsbüro von Martin Ternes.',
     description:
@@ -87,11 +94,12 @@ List<Project> projects = [
     name: 'Trading Newsbots',
     tags: ['Norman Stolze', 'Trading', 'Newsbots'],
     tools: ['Python', 'Twitter API'],
-    imageUrl: _getImagePath('nestwaerme_blickwechsel.png'),
+    iconUrl: _getIconPath('trading.png'),
+    mockupUrl: _getMockupPath('trading.png'),
     descriptionShort:
-        'Eine Mandantenportal zum Transfer von Belegen und andere Dokumenten für das Buchaltungsbüro von Martin Ternes.',
+        'Newsbots die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsuchen.',
     description:
-        'Für den Erfolgreichen News Trader und Trader-Coach Norman Stolze habe ich mehrere Newsbots programmiert, welche das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsucht um sie uns in Echtzeit auf den Bildschirm zu bringen.\n\n'
+        'Für den Erfolgreichen News Trader und Trader-Coach Norman Stolze habe ich mehrere Newsbots programmiert, die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsucht um sie uns in Echtzeit auf den Bildschirm zu bringen.\n\n'
         'Die Zusammenarbeit mit Norman Stolze besteht seit 2020.',
   ),
 ];
