@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../extensions.dart';
+import '../../shared/extensions.dart';
 import '../model/social_icon.dart';
 
 class SocialIconButton extends StatelessWidget {
@@ -35,6 +35,6 @@ class SocialIconButton extends StatelessWidget {
         size: size,
         color: Colors.white,
       ),
-    ).moveUpOnHover;
+    ).floatOnHover();
   }
 }

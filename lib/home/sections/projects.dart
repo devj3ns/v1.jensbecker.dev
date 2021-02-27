@@ -9,22 +9,14 @@ class ProjectsSection extends StatelessWidget {
     return Section(
       title: 'Meine letzten Projekte',
       subtitle:
-          'Eine Auswahl an Projekten an denen ich zuletzt gearbeitet habe.',
-      applyHorizontalMargin: false,
+          'Eine Auswahl an Projekten, an denen ich zuletzt gearbeitet habe.',
+      applyHorizontalMargin: true,
       doubleTopMargin: true,
-      child: Center(
-        child: SizedBox(
-          height: 575,
-          child: GridView.count(
-            childAspectRatio: 3 / 4,
-            crossAxisCount: 2,
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            children:
-                projects.map((project) => ProjectDetailsCard(project)).toList(),
-          ),
-        ),
+      child: Wrap(
+        spacing: 12,
+        runSpacing: 12,
+        children:
+            projects.map((project) => ProjectDetailsCard(project)).toList(),
       ),
     );
   }

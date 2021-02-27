@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../shared/shared_widgets.dart';
 import '../models/tool.dart';
 
 class ToolIcon extends StatelessWidget {
@@ -17,11 +18,12 @@ class ToolIcon extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: Card(
-        child: InkWell(
-          onTap: openLink,
-          child: Image.network(tool.iconUrl),
-        ),
+      child: RoundedBox(
+        borderRadius: 10.0,
+        withShadow: true,
+        margin: const EdgeInsets.all(4.0),
+        onPressed: openLink,
+        child: Image.network(tool.iconUrl),
       ),
     );
   }

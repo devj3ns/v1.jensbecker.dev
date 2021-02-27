@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../extensions.dart';
+import '../../shared/extensions.dart';
 import '../../tools/tools.dart';
 import '../section.dart';
 
@@ -14,7 +14,7 @@ class ToolsSection extends StatelessWidget {
       child: Wrap(
         spacing: 4.0,
         runSpacing: 4.0,
-        children: tools.map((tool) => ToolIcon(tool).moveUpOnHover).toList(),
+        children: tools.map((tool) => ToolIcon(tool)).toList(),
       ),
     );
   }

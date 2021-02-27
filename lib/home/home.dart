@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../extensions.dart';
+import '../shared/extensions.dart';
 import 'footer/footer.dart';
 import 'sections/sections.dart';
 
@@ -42,46 +42,48 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final sections = [
+      AutoScrollTag(
+        key: ValueKey(Section.head.index),
+        index: Section.head.index,
+        controller: controller,
+        child: HeroSection(scrollToSection),
+      ),
+      AutoScrollTag(
+        key: ValueKey(Section.projects.index),
+        index: Section.projects.index,
+        controller: controller,
+        child: ProjectsSection(),
+      ),
+      AutoScrollTag(
+        key: ValueKey(Section.about.index),
+        index: Section.about.index,
+        controller: controller,
+        child: AboutSection(),
+      ),
+      AutoScrollTag(
+        key: ValueKey(Section.tools.index),
+        index: Section.tools.index,
+        controller: controller,
+        child: ToolsSection(),
+      ),
+      AutoScrollTag(
+        key: ValueKey(Section.contact.index),
+        index: Section.contact.index,
+        controller: controller,
+        child: ContactSection(),
+      ),
+      Footer(),
+    ];
+
     return Scaffold(
       body: Scrollbar(
         isAlwaysShown: context.isDesktop,
         controller: controller,
-        child: ListView(
+        child: ListView.builder(
           controller: controller,
-          physics: const ClampingScrollPhysics(),
-          children: [
-            AutoScrollTag(
-              key: ValueKey(Section.head.index),
-              index: Section.head.index,
-              controller: controller,
-              child: HeroSection(scrollToSection),
-            ),
-            AutoScrollTag(
-              key: ValueKey(Section.projects.index),
-              index: Section.projects.index,
-              controller: controller,
-              child: ProjectsSection(),
-            ),
-            AutoScrollTag(
-              key: ValueKey(Section.about.index),
-              index: Section.about.index,
-              controller: controller,
-              child: AboutSection(),
-            ),
-            AutoScrollTag(
-              key: ValueKey(Section.tools.index),
-              index: Section.tools.index,
-              controller: controller,
-              child: ToolsSection(),
-            ),
-            AutoScrollTag(
-              key: ValueKey(Section.contact.index),
-              index: Section.contact.index,
-              controller: controller,
-              child: ContactSection(),
-            ),
-            Footer(),
-          ],
+          itemCount: sections.length,
+          itemBuilder: (context, index) => sections.elementAt(index),
         ),
       ),
     );

@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../extensions.dart';
+import '../../shared/extensions.dart';
 import '../home.dart';
+import 'mobile_navbar_popup.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar(this.scrollToSection);
@@ -32,11 +33,18 @@ class NavBar extends StatelessWidget {
           if (context.isMobile) ...[
             const Expanded(child: SizedBox()),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MobileNavBarPopup(scrollToSection),
+                  ),
+                );
+              },
               icon: const FaIcon(
                 FontAwesomeIcons.bars,
                 color: Colors.white,
-                size: 20,
+                size: 30,
               ),
             )
           ] else ...[
@@ -50,7 +58,7 @@ class NavBar extends StatelessWidget {
                       'Projekte',
                       style: textStyle,
                     ),
-                  ).moveUpOnHover,
+                  ).floatOnHover(),
                   SizedBox(width: spacerWith),
                   InkWell(
                     onTap: () => scrollToSection(Section.about),
@@ -58,7 +66,7 @@ class NavBar extends StatelessWidget {
                       'Über mich',
                       style: textStyle,
                     ),
-                  ).moveUpOnHover,
+                  ).floatOnHover(),
                   SizedBox(width: spacerWith),
                   InkWell(
                     onTap: () => scrollToSection(Section.tools),
@@ -66,7 +74,7 @@ class NavBar extends StatelessWidget {
                       'Tools',
                       style: textStyle,
                     ),
-                  ).moveUpOnHover,
+                  ).floatOnHover(),
                   SizedBox(width: spacerWith),
                   InkWell(
                     onTap: () => scrollToSection(Section.contact),
@@ -74,7 +82,7 @@ class NavBar extends StatelessWidget {
                       'Kontakt',
                       style: textStyle,
                     ),
-                  ).moveUpOnHover,
+                  ).floatOnHover(),
                 ],
               ),
             ),

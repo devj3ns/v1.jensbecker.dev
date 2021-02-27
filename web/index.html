@@ -19,6 +19,21 @@
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
 </head>
 <body>
-<script src="main.dart.js?version=8" type="application/javascript"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDG_F8-1vXipA8rXqpkIy9Rphpyv6e-NM8",
+    authDomain: "jensbecker-dev.firebaseapp.com",
+    projectId: "jensbecker-dev",
+    storageBucket: "jensbecker-dev.appspot.com",
+    messagingSenderId: "414781891477",
+    appId: "1:414781891477:web:c6302a6dadf56de0af0c9c"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="main.dart.js?version=11" type="application/javascript"></script>
 </body>
 </html>

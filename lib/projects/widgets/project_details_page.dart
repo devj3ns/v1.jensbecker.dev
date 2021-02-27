@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/routing.dart';
 
-import '../../extensions.dart';
+import '../../shared/extensions.dart';
 import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
@@ -54,6 +54,18 @@ class ProjectDetailPage extends StatelessWidget {
                 child: Image.network(
                   project.mockupUrl,
                   fit: BoxFit.fill,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes
+                            : null,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

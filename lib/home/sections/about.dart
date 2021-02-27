@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/extensions.dart';
 
+import '../../shared/extensions.dart';
 import '../section.dart';
-import '../../extensions.dart';
 
 class AboutSection extends StatelessWidget {
   @override
@@ -41,9 +40,20 @@ class _Image extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: imageSize,
       height: imageSize,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.15),
+            spreadRadius: 15,
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
       child: const CircleAvatar(
         backgroundImage: NetworkImage(
           'assets/icon.jpg',
@@ -72,9 +82,9 @@ class _Text extends StatelessWidget {
       width: width,
       child: SelectableText(
         'Hey 👋\n'
-        'mein Name ist Jens Becker, ich bin $age Jahre alt und Selbständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
+        'mein Name ist Jens Becker, ich bin $age Jahre alt und Selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
         'Im Jahr 2020 habe ich mich selbstständig gemacht und seit dem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Websites für Kunden/Firmen.\n\n'
-        'Aber auch bevor ich selbständig war habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
+        'Aber auch bevor ich selbstständig war, habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
         style: const TextStyle(fontSize: 18),
       ),
     );

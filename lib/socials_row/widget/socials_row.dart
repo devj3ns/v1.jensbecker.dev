@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/socials_row/data/social_icons.dart';
+import 'package:portfolio/socials_row/model/social_icon.dart';
 
 import '../helpers/animatable.dart';
 import '../helpers/divide_animation.dart';
 import 'social_icon_button.dart';
 
-class SocialsRowWidget extends StatefulWidget {
+class AnimatedSocialsRow extends StatefulWidget {
   @override
-  _SocialsRowWidgetState createState() => _SocialsRowWidgetState();
+  _AnimatedSocialsRowState createState() => _AnimatedSocialsRowState();
 }
 
-class _SocialsRowWidgetState extends State<SocialsRowWidget>
+class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
     with SingleTickerProviderStateMixin {
   AnimationController _baseAnimation;
   Animation<double> _socialsAnimation;
@@ -30,12 +32,38 @@ class _SocialsRowWidgetState extends State<SocialsRowWidget>
 
   @override
   Widget build(BuildContext context) {
-    return SocialsRow(animation: _socialsAnimation);
+    return _SocialsRow(animation: _socialsAnimation);
   }
 }
 
-class SocialsRow extends AnimatableStatefulWidget {
-  const SocialsRow({
+class SocialsRowContactForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // socialIcons without the E-Mail icon
+    var icons = socialIcons.toList()
+      ..removeWhere((SocialIcon socialIcon) =>
+          socialIcon.icon == FontAwesomeIcons.envelope);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: icons
+          .map(
+            (model) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: SocialIconButton(
+                size: 32.0,
+                model: model,
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+}
+
+class _SocialsRow extends AnimatableStatefulWidget {
+  const _SocialsRow({
     Key key,
     @required Animation<double> animation,
   }) : super(
@@ -47,7 +75,7 @@ class SocialsRow extends AnimatableStatefulWidget {
   _SocialsRowState createState() => _SocialsRowState();
 }
 
-class _SocialsRowState extends AnimatableState<SocialsRow> {
+class _SocialsRowState extends AnimatableState<_SocialsRow> {
   final _socialIconsAnimations = <Animation<double>>[];
 
   @override
