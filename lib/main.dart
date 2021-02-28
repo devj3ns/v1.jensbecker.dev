@@ -39,12 +39,16 @@ class _MyAppState extends State<MyApp> {
         textTheme: GoogleFonts.montserratTextTheme(
           Theme.of(context).textTheme,
         ),
+        primarySwatch: Colors.indigo,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.indigo,
+        ),
       ),
       onGenerateRoute: AppRouter.router.generator,
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return ScrollConfiguration(
-          behavior: MyBehavior(),
+          behavior: MyScrollBehavior(),
           child: child,
         );
       },
@@ -52,7 +56,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class MyBehavior extends ScrollBehavior {
+class MyScrollBehavior extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
       BuildContext context, Widget child, AxisDirection axisDirection) {

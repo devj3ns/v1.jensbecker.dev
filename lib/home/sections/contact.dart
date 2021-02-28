@@ -65,7 +65,7 @@ class _Column1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Colors.blueAccent,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Padding(
