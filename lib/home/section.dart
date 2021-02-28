@@ -21,11 +21,14 @@ class Section extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final horizontalMargin = applyHorizontalMargin
-        ? context.isMobile
-            ? 15.0
-            : context.screenWidth / 7.5
+        ? context.responsiveNumber(
+            onMobile: 15,
+            onTablet: 50,
+            onDesktop: context.screenWidth / 8,
+          )
         : 0.0;
-    var marginTop = context.isMobile ? 20.0 : 60.0;
+    var marginTop =
+        context.responsiveNumber(onMobile: 20, onTablet: 40, onDesktop: 60);
     var marginBottom = marginTop;
 
     marginTop = doubleTopMargin ? marginTop * 2 : marginTop;

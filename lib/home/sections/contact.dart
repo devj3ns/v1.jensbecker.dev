@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/socials_row/socials_row.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../shared/extensions.dart';
 import '../../shared/mailer.dart';
 import '../../shared/shared_widgets.dart';
+import '../../socials_row/socials_row.dart';
 import '../section.dart';
 
 class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final horizontalMargin = context.screenWidth > 1500 ? 80.0 : 0.0;
+
     return Section(
       title: 'Kontakt',
       subtitle: 'Ich freue mich von Ihnen zu hören!',
       doubleBottomMargin: true,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.isMobile ? 0 : 100),
+        padding: EdgeInsets.symmetric(horizontal: horizontalMargin),
         child: RoundedBox(
           withShadow: true,
           child: context.isMobile
@@ -25,11 +27,11 @@ class ContactSection extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Column1(),
+                      child: _Column1(),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(25.0),
-                      child: Column2(),
+                      child: _Column2(),
                     ),
                   ],
                 )
@@ -38,14 +40,15 @@ class ContactSection extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column1()),
+                          padding: const EdgeInsets.all(8.0),
+                          child: _Column1(),
+                        ),
                       ),
                       Expanded(
-                        flex: 2,
+                        flex: context.screenWidth < 1000 ? 1 : 2,
                         child: Padding(
                           padding: const EdgeInsets.all(25.0),
-                          child: Column2(),
+                          child: _Column2(),
                         ),
                       ),
                     ],
@@ -57,7 +60,7 @@ class ContactSection extends StatelessWidget {
   }
 }
 
-class Column1 extends StatelessWidget {
+class _Column1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -85,6 +88,7 @@ class Column1 extends StatelessWidget {
                 fontSize: 16,
                 color: Colors.white.withOpacity(0.85),
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             TextButton.icon(
@@ -129,7 +133,7 @@ class Column1 extends StatelessWidget {
   }
 }
 
-class Column2 extends HookWidget {
+class _Column2 extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -253,7 +257,7 @@ class Column2 extends HookWidget {
                       alignLabelWithHint: true,
                     ),
                     validator: (value) =>
-                        value.isBlank ? 'Gib bitte deine Nachricht ein.' : null,
+                        value.isBlank ? 'Bitte gib deine Nachricht ein.' : null,
                   ),
                 ),
                 const SizedBox(height: 15),

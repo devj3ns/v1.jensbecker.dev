@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/extensions.dart';
+
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,9 +12,10 @@ class Footer extends StatelessWidget {
       color: Colors.grey.withOpacity(0.1),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          mainAxisSize: MainAxisSize.max,
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: context.responsiveNumber(
+              onMobile: 5, onTablet: 30, onDesktop: 80),
           children: [
             TextButton(
               child: Padding(

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'shared_widgets.dart';
 
+double _mobileBreakpoint = 0;
+double _tabletBreakpoint = 750;
+double _desktopBreakpoint = 1220;
+
 extension ContextExtensions on BuildContext {
   // Theme
   bool get isDarkMode =>
@@ -10,15 +14,45 @@ extension ContextExtensions on BuildContext {
   bool get isLightMode => !isDarkMode;
 
   // Responsive
-  double get screenWidth => MediaQuery.of(this).size.width;
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
 
-  double get screenHeight => MediaQuery.of(this).size.height;
+  Size get screenSize => mediaQuery.size;
 
-  bool get isMobile => screenWidth < 768;
+  double get screenWidth => screenSize.width;
 
-  bool get isTablet => screenWidth < 1024;
+  double get screenHeight => screenSize.height;
 
-  bool get isDesktop => screenWidth >= 1024;
+  bool get isMobile =>
+      screenWidth >= _mobileBreakpoint && screenWidth < _tabletBreakpoint;
+
+  bool get isTablet =>
+      screenWidth >= _tabletBreakpoint && screenWidth < _desktopBreakpoint;
+
+  bool get isDesktop => screenWidth >= _desktopBreakpoint;
+
+  double responsiveNumber({
+    @required double onMobile,
+    @required double onTablet,
+    @required double onDesktop,
+  }) {
+    return isMobile
+        ? onMobile
+        : isTablet
+            ? onTablet
+            : onDesktop;
+  }
+
+  EdgeInsets responsiveEdgeInsets({
+    @required EdgeInsets onMobile,
+    @required EdgeInsets onTablet,
+    @required EdgeInsets onDesktop,
+  }) {
+    return isMobile
+        ? onMobile
+        : isTablet
+            ? onTablet
+            : onDesktop;
+  }
 }
 
 extension StringExtensions on String {

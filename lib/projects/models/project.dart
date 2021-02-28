@@ -10,6 +10,8 @@ class Project {
     @required this.description,
     @required this.iconUrl,
     @required this.mockupUrl,
+    this.appStoreUrl,
+    this.playStoreUrl,
   });
   final String id;
   final String name;
@@ -19,4 +21,6 @@ class Project {
   final String description;
   final String iconUrl;
   final String mockupUrl;
+  final String appStoreUrl;
+  final String playStoreUrl;
 }

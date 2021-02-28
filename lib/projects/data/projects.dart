@@ -24,6 +24,10 @@ List<Project> projects = [
         '• Kalender: Auf der Kalender Seite können Sie alle anstehenden Termine (fūr die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
         '• Kind abmelden: Auf der Seite "Mein Kind" können Sie ihr Kind für den heutigen Tag (bis 8 Uhr) oder den nächsten Tag (ab 16 Uhr) abmelden. Rufen Sie uns außerhalb dieser Uhrzeiten bitte an, um ihr Kind abzumelden.\n\n'
         'Die App ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.',
+    appStoreUrl:
+        'https://apps.apple.com/de/app/nestw%C3%A4rme-kita/id1550933241#?platform=iphone',
+    playStoreUrl:
+        'https://play.google.com/store/apps/details?id=de.jensbecker.nestwaerme_kita_app',
   ),
   Project(
     id: 'nestwaerme-blickwechsel-buchungsassistent',

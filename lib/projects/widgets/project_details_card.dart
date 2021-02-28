@@ -11,9 +11,14 @@ class ProjectDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        context.responsiveNumber(onMobile: null, onTablet: 325, onDesktop: 250);
+    final width =
+        context.responsiveNumber(onMobile: null, onTablet: 300, onDesktop: 450);
+
     return SizedBox(
-      height: 250,
-      width: 450,
+      height: height,
+      width: width,
       child: RoundedBox(
         withShadow: true,
         child: Padding(
@@ -44,31 +49,28 @@ class ProjectDetailsCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 10),
               Chips(project: project),
-              const SizedBox(height: 5),
+              const SizedBox(height: 10),
               SelectableText(
                 project.descriptionShort,
                 style: const TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextButton(
-                    child: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text('MEHR ERFAHREN'),
+              const SizedBox(height: 5),
+              Center(
+                child: TextButton(
+                  child: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text('MEHR ERFAHREN'),
+                  ),
+                  onPressed: () => AppRouter.router.navigateTo(
+                    context,
+                    AppRoutes.getDetailRoute(
+                      AppRoutes.projectDetailRoute.route,
+                      project.id,
                     ),
-                    onPressed: () => AppRouter.router.navigateTo(
-                      context,
-                      AppRoutes.getDetailRoute(
-                        AppRoutes.projectDetailRoute.route,
-                        project.id,
-                      ),
-                    ),
-                  ).floatOnHover(),
-                ],
+                  ),
+                ).floatOnHover(),
               ),
             ],
           ),
@@ -93,9 +95,7 @@ class Chips extends StatelessWidget {
           spacing: 4,
           children: project.tags
               .map(
-                (tag) => Chip(
-                  label: SelectableText(tag),
-                ),
+                (tag) => TextChip(text: tag),
               )
               .toList(),
         ),
@@ -106,8 +106,8 @@ class Chips extends StatelessWidget {
           spacing: 4,
           children: project.tools
               .map(
-                (tag) => Chip(
-                  label: SelectableText(tag),
+                (tag) => TextChip(
+                  text: SelectableText(tag),
                 ),
               )
               .toList(),

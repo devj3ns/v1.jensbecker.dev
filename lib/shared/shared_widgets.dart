@@ -231,3 +231,24 @@ class _AnimateScaleState extends State<AnimateScale>
     super.dispose();
   }
 }
+
+/// A more performant alternative to Chip() when just the label property is used
+class TextChip extends StatelessWidget {
+  const TextChip({@required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: SelectableText(
+        text,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}

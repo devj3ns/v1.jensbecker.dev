@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/routing.dart';
 import 'package:url_strategy/url_strategy.dart';
+
+import 'routing.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

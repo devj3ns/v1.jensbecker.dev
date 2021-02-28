@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/extensions.dart';
 import '../../tools/tools.dart';
 import '../section.dart';
 

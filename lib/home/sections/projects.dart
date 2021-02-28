@@ -10,7 +10,6 @@ class ProjectsSection extends StatelessWidget {
       title: 'Meine letzten Projekte',
       subtitle:
           'Eine Auswahl an Projekten, an denen ich zuletzt gearbeitet habe.',
-      applyHorizontalMargin: true,
       doubleTopMargin: true,
       child: Wrap(
         spacing: 12,

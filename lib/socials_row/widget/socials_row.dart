@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/socials_row/data/social_icons.dart';
-import 'package:portfolio/socials_row/model/social_icon.dart';
 
+import '../data/social_icons.dart';
 import '../helpers/animatable.dart';
 import '../helpers/divide_animation.dart';
+import '../model/social_icon.dart';
 import 'social_icon_button.dart';
 
 class AnimatedSocialsRow extends StatefulWidget {

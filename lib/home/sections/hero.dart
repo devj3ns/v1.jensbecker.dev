@@ -39,7 +39,7 @@ class HeroSection extends StatelessWidget {
                     height: pictureSize,
                     child: const CircleAvatar(
                       backgroundImage: NetworkImage(
-                        'assets/icon.jpg',
+                        'assets/jensbecker_small.jpg',
                       ),
                       backgroundColor: Colors.transparent,
                     ),

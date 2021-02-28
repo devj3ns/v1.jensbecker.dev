@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/routing.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../routing.dart';
 import '../../shared/extensions.dart';
+import '../../shared/shared_widgets.dart';
 import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
@@ -76,9 +78,7 @@ class ProjectDetailPage extends StatelessWidget {
                 spacing: 4,
                 children: project.tags
                     .map(
-                      (tag) => Chip(
-                        label: SelectableText(tag),
-                      ),
+                      (tag) => TextChip(text: tag),
                     )
                     .toList(),
               ),
@@ -90,9 +90,7 @@ class ProjectDetailPage extends StatelessWidget {
                 spacing: 4,
                 children: project.tools
                     .map(
-                      (tag) => Chip(
-                        label: SelectableText(tag),
-                      ),
+                      (tag) => TextChip(text: tag),
                     )
                     .toList(),
               ),
@@ -103,6 +101,33 @@ class ProjectDetailPage extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
               textAlign: TextAlign.justify,
             ),
+            if (project.playStoreUrl.isNotBlank ||
+                project.appStoreUrl.isNotBlank) ...[
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (project.playStoreUrl.isNotBlank)
+                    SizedBox(
+                      height: context.isMobile ? 40 : 50,
+                      child: InkWell(
+                        child: Image.network('/assets/play_store_badge.png'),
+                        onTap: () => launch(project.playStoreUrl),
+                      ),
+                    ),
+                  if (project.appStoreUrl.isNotBlank) ...[
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      height: context.isMobile ? 40 : 50,
+                      child: InkWell(
+                        child: Image.network('/assets/app_store_badge.png'),
+                        onTap: () => launch(project.appStoreUrl),
+                      ),
+                    ),
+                  ]
+                ],
+              )
+            ]
           ],
         ),
       ),
