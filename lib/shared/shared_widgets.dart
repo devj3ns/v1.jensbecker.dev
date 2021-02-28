@@ -58,12 +58,14 @@ class RoundedBox extends StatelessWidget {
     this.withShadow = false,
     this.onPressed,
     this.margin = const EdgeInsets.all(0.0),
+    this.padding = const EdgeInsets.all(0.0),
   });
   final Widget child;
   final double borderRadius;
   final bool withShadow;
   final VoidCallback onPressed;
   final EdgeInsets margin;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +89,8 @@ class RoundedBox extends StatelessWidget {
                   ]
                 : [],
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(borderRadius),
+          child: Padding(
+            padding: padding,
             child: child,
           ),
         ),

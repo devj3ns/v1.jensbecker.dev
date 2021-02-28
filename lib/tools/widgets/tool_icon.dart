@@ -22,6 +22,7 @@ class ToolIcon extends StatelessWidget {
         borderRadius: 10.0,
         withShadow: true,
         margin: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(15.0),
         onPressed: openLink,
         child: Image.network(tool.iconUrl),
       ),
