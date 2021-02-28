@@ -9,28 +9,21 @@ class AboutSection extends StatelessWidget {
     return Section(
       title: 'Über mich',
       subtitle: '',
-      child: context.isMobile
-          ? Column(
-              children: [
-                _Image(),
-                const SizedBox(height: 30),
-                const _Text(
-                  width: double.infinity,
-                ),
-              ],
-            )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _Image(),
-                const SizedBox(width: 30),
-                _Text(
-                  width: context.isTablet
-                      ? context.screenWidth / 2.5
-                      : context.screenWidth / 3,
-                ),
-              ],
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runSpacing: 20,
+        spacing: 20,
+        children: [
+          context.isMobile ? Center(child: _Image()) : _Image(),
+          _Text(
+            width: context.responsiveNumber(
+              onMobile: double.infinity,
+              onTablet: context.screenWidth / 2.5,
+              onDesktop: context.screenWidth / 3,
             ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -56,7 +49,7 @@ class _Image extends StatelessWidget {
       ),
       child: const CircleAvatar(
         backgroundImage: NetworkImage(
-          'assets/icon.jpg',
+          'assets/jensbecker_small.jpg',
         ),
         backgroundColor: Colors.transparent,
       ),
@@ -82,8 +75,8 @@ class _Text extends StatelessWidget {
       width: width,
       child: SelectableText(
         'Hey 👋\n'
-        'mein Name ist Jens Becker, ich bin $age Jahre alt und Selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
-        'Im Jahr 2020 habe ich mich selbstständig gemacht und seit dem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Websites für Kunden/Firmen.\n\n'
+        'mein Name ist Jens Becker, ich bin $age Jahre alt und selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
+        'Im Jahr 2020 habe ich mich selbstständig gemacht und seitdem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Webseiten für Kunden/Firmen.\n\n'
         'Aber auch bevor ich selbstständig war, habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
         style: const TextStyle(fontSize: 18),
       ),

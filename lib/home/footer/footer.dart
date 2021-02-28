@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../routing.dart';
 import '../../shared/extensions.dart';
 
 class Footer extends StatelessWidget {
@@ -15,7 +16,10 @@ class Footer extends StatelessWidget {
         child: Wrap(
           alignment: WrapAlignment.center,
           spacing: context.responsiveNumber(
-              onMobile: 5, onTablet: 30, onDesktop: 80),
+            onMobile: 5,
+            onTablet: 30,
+            onDesktop: 80,
+          ),
           children: [
             TextButton(
               child: Padding(
@@ -25,9 +29,7 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () {
-                // todo
-              },
+              onPressed: () {},
             ),
             TextButton(
               child: Padding(
@@ -37,9 +39,8 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () {
-                // todo
-              },
+              onPressed: () => AppRouter.router
+                  .navigateTo(context, AppRoutes.imprintRoute.route),
             ),
             TextButton(
               child: Padding(
@@ -49,9 +50,8 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () {
-                // todo
-              },
+              onPressed: () => AppRouter.router
+                  .navigateTo(context, AppRoutes.privacyRoute.route),
             ),
             TextButton(
               child: Padding(
@@ -61,9 +61,8 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () {
-                // todo
-              },
+              onPressed: () => AppRouter.router
+                  .navigateTo(context, AppRoutes.licenceRoute.route),
             ),
           ],
         ),

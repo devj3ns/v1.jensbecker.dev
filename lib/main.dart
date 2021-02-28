@@ -26,7 +26,6 @@ class _MyAppState extends State<MyApp> {
 
     AppRouter(
       routes: AppRoutes.routes,
-      notFoundHandler: AppRoutes.routeNotFoundHandler,
     )..setupRoutes();
   }
 
