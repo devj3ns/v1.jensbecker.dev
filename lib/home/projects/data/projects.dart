@@ -21,7 +21,7 @@ List<Project> projects = [
         '• KiTa Feed: Hier werden Nachrichten angezeigt, die für alle Eltern relevant sind. Eine Nachricht kann auch ein Dokument wie zum Beispiel den Essensplan enthalten.\n'
         '• Gruppen Feed: Hier werden Nachrichten von den Erziehern der Gruppe ihres Kindes angezeigt. Diese Nachrichten können nur Eltern von Kindern in derselben Gruppe sehen.\n'
         '• Privat Feed: Hier können Erzieher Nachrichten direkt an Sie schreiben.\n'
-        '• Kalender: Auf der Kalender Seite können Sie alle anstehenden Termine (fūr die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
+        '• Kalender: Auf der Kalender Seite können Sie alle anstehenden Termine (für die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
         '• Kind abmelden: Auf der Seite "Mein Kind" können Sie ihr Kind für den heutigen Tag (bis 8 Uhr) oder den nächsten Tag (ab 16 Uhr) abmelden. Rufen Sie uns außerhalb dieser Uhrzeiten bitte an, um ihr Kind abzumelden.\n\n'
         'Die App ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.',
     appStoreUrl:

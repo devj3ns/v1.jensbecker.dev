@@ -34,6 +34,12 @@ class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
   Widget build(BuildContext context) {
     return _SocialsRow(animation: _socialsAnimation);
   }
+
+  @override
+  void dispose() {
+    _baseAnimation.dispose();
+    super.dispose();
+  }
 }
 
 class SocialsRowContactForm extends StatelessWidget {

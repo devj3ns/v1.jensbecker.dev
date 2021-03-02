@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../projects/projects.dart';
+import '../projects/projects.dart';
 import '../section.dart';
 
 class ProjectsSection extends StatelessWidget {

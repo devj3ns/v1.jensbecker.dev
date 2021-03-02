@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 
-import '../../routing.dart';
+import '../../locations.dart';
 import '../../shared/extensions.dart';
 
 class Footer extends StatelessWidget {
@@ -39,8 +40,7 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => AppRouter.router
-                  .navigateTo(context, AppRoutes.imprintRoute.route),
+              onPressed: () => context.beamTo(ImprintLocation()),
             ),
             TextButton(
               child: Padding(
@@ -50,8 +50,7 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => AppRouter.router
-                  .navigateTo(context, AppRoutes.privacyRoute.route),
+              onPressed: () => context.beamTo(PrivacyLocation()),
             ),
             TextButton(
               child: Padding(
@@ -61,8 +60,7 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => AppRouter.router
-                  .navigateTo(context, AppRoutes.licenceRoute.route),
+              onPressed: () => context.beamTo(LicenceLocation()),
             ),
           ],
         ),

@@ -6,8 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../shared/extensions.dart';
 import '../../shared/mailer.dart';
 import '../../shared/shared_widgets.dart';
-import '../../socials_row/socials_row.dart';
 import '../section.dart';
+import '../socials_row/socials_row.dart';
 
 class ContactSection extends StatelessWidget {
   @override

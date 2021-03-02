@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 
-import '../../routing.dart';
-import '../../shared/extensions.dart';
-import '../../shared/shared_widgets.dart';
+import '../../../locations.dart';
+import '../../../shared/extensions.dart';
+import '../../../shared/shared_widgets.dart';
 import '../models/project.dart';
 
 class ProjectDetailsCard extends StatelessWidget {
@@ -63,11 +64,9 @@ class ProjectDetailsCard extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     child: Text('MEHR ERFAHREN'),
                   ),
-                  onPressed: () => AppRouter.router.navigateTo(
-                    context,
-                    AppRoutes.getDetailRoute(
-                      AppRoutes.projectDetailRoute.route,
-                      project.id,
+                  onPressed: () => context.beamTo(
+                    ProjectLocation(
+                      pathParameters: {'projectId': project.id},
                     ),
                   ),
                 ).floatOnHover(),

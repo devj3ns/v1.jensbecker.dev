@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/extensions.dart';
 import '../../shared/shared_widgets.dart';
-import '../../socials_row/socials_row.dart';
 import '../home.dart';
 import '../navbar/navbar.dart';
+import '../socials_row/socials_row.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection(this.scrollToSection);

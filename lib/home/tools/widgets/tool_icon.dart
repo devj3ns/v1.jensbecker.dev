@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../shared/shared_widgets.dart';
+import '../../../shared/shared_widgets.dart';
 import '../models/tool.dart';
 
 class ToolIcon extends StatelessWidget {

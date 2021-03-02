@@ -1,20 +1,22 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../routing.dart';
-import '../../shared/extensions.dart';
-import '../../shared/shared_widgets.dart';
+import '../../../shared/extensions.dart';
+import '../../../shared/shared_widgets.dart';
+import '../../projects/models/project.dart';
 import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
-  const ProjectDetailPage({@required this.id});
+  ProjectDetailPage({@required this.id})
+      : project = projects.firstWhere((project) => project.id == id);
   final String id;
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
-    final project = projects.firstWhere((project) => project.id == id);
     final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
     final verticalPadding = context.isMobile ? 25.0 : 75.0;
     final horizontalImagePadding =
@@ -33,7 +35,7 @@ class ProjectDetailPage extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Zurück',
-                  onPressed: () => AppRouter.router.pop<void>(context),
+                  onPressed: context.beamBack,
                   icon: const FaIcon(
                     FontAwesomeIcons.chevronLeft,
                     size: 20,
