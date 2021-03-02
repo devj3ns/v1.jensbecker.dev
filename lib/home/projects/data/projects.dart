@@ -8,14 +8,14 @@ List<Project> projects = [
   Project(
     id: 'nestwaerme-kita-app',
     name: 'Nestwärme KiTa App',
-    tags: ['nestwärme e.V', 'KiTa', 'Elterninformation'],
+    tags: ['nestwärme e.V.', 'KiTa', 'Elterninformation'],
     tools: ['Flutter', 'Dart', 'Firebase'],
     iconUrl: _getIconPath('nestwaerme_kita.png'),
     mockupUrl: _getMockupPath('nestwaerme_kita.png'),
     descriptionShort:
-        'Eine App für die Nestwärme KiTa um die Eltern unkompliziert und in Echtzeit informieren zu können. ',
+        'Eine App für die Nestwärme KiTa um die Eltern unkompliziert und in Echtzeit informieren zu können.',
     description:
-        'Der Verein nestwärme hat in Trier eine inklusive Kindergrippe und sucht nach einem Weg, die Eltern unkompliziert und in Echtzeit digital zu informieren.\n'
+        'Der Verein nestwärme e.V. hat in Trier eine inklusive Kindergrippe und sucht nach einem Weg, die Eltern unkompliziert und in Echtzeit digital zu informieren.\n'
         'So ist die Nestwärme KiTa App entstanden.\n\n'
         'Die App bietet die folgenden Funktionen:\n\n'
         '• KiTa Feed: Hier werden Nachrichten angezeigt, die für alle Eltern relevant sind. Eine Nachricht kann auch ein Dokument wie zum Beispiel den Essensplan enthalten.\n'
@@ -32,12 +32,12 @@ List<Project> projects = [
   Project(
     id: 'nestwaerme-blickwechsel-buchungsassistent',
     name: 'Nestwärme Blickwechsel Buchungsassistent',
-    tags: ['nestwärme e.V', 'Blickwechsel', 'Coachings'],
+    tags: ['nestwärme e.V.', 'Blickwechsel', 'Coachings'],
     tools: ['Django', 'Python', 'MySQL'],
     iconUrl: _getIconPath('nestwaerme_blickwechsel.png'),
     mockupUrl: _getMockupPath('nestwaerme_blickwechsel.png'),
     descriptionShort:
-        'Eine Buchungsassistent-Website für das Blickwechsel Projekt von nestwärme um ein Coaching online buchen zu können.',
+        'Eine Buchungsassistent-Website für das Projekt Blickwechsel von nestwärme e.V. um ein Coaching online buchen zu können.',
     description:
         'Nestwärme bietet mit ihrem „Blickwechsel“ Projekt, emotionale Unterstützung und Hilfe zur Selbsthilfe an – diskret und behutsam. Siehe https://mein-blickwechsel.de\n\n'
         'Es gibt mehrere Coaches, die bestimmte Themenschwerpunkte haben. Damit einfach und unkompliziert Termine gebucht werden können habe ich einen Buchungsassistent erstellt, bei welchem man Schritt für Schritt zur Terminbuchung geleitet wird.'
@@ -90,7 +90,8 @@ List<Project> projects = [
     descriptionShort:
         'Eine Mandantenportal zum Transfer von Belegen und andere Dokumenten für das Buchhaltungsbüro von Martin Ternes.',
     description:
-        'Martin Ternes ist ein Buchhalter mit Sitz in Luxemburg. Für seine Mandanten brauchte er ein Portal, über das diese ihm Ihre Belege und andere Dokumente auf elektronische Weise zukommen lassen können.\n\n'
+        'Martin Ternes ist ein Buchhalter mit Sitz in Luxemburg. Für seine Mandanten brauchte er ein Portal, über das diese ihm Ihre Belege und andere Dokumente auf elektronische Weise zukommen lassen können. '
+        'So gibt es für seine Mandanten einen zentralen Ort für Dokumente die sie selber oder er Ihnen hochgeladen hat.\n\n'
         'Das Projekt ist Ende 2020 in Zusammenarbeit mit Nils Lauterbach entstanden.',
   ),
   Project(
@@ -103,7 +104,9 @@ List<Project> projects = [
     descriptionShort:
         'Newsbots die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsuchen.',
     description:
-        'Für den erfolgreichen News Trader und Trader-Coach Norman Stolze habe ich mehrere Newsbots programmiert, die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsucht, um sie uns in Echtzeit auf den Bildschirm zu bringen.\n\n'
+        'Für den erfolgreichen News-Trader und Trader-Coach Norman Stolze habe ich mehrere Newsbots programmiert, die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsuchen. '
+        'Die enorme Menge aller Daten wird dann gefiltert und analysiert um dann nur die relevanten Nachrichten ihm und seinen Tradern gebündelt in einem Telegram Channel anzuzeigen.\n'
+        'Durch die Bots haben die Trader in Echtzeit alle börsenrelevanten Nachrichten auf ihrem Bildschirm und können darauf reagieren.\n\n'
         'Die Zusammenarbeit mit Norman Stolze besteht seit 2020.',
   ),
 ];
