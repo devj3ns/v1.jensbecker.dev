@@ -5,10 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'locations.dart';
 
 class MyApp extends StatelessWidget {
+  final title = 'Jens Becker - Digital Creator';
+
   @override
   Widget build(BuildContext context) {
-    final title = 'Jens Becker - Digital Creator';
-
     return MaterialApp.router(
       title: title,
       theme: ThemeData(

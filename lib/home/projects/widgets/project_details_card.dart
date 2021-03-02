@@ -20,59 +20,56 @@ class ProjectDetailsCard extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: RoundedBox(
-        withShadow: true,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: [
-                  if (project.iconUrl.isNotBlank) ...[
-                    SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: Image.network(
-                        project.iconUrl,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                  ],
-                  Flexible(
-                    child: SelectableText(
-                      project.name,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+      child: RoundedClickBox(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: [
+                if (project.iconUrl.isNotBlank) ...[
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.network(
+                      project.iconUrl,
                     ),
                   ),
+                  const SizedBox(width: 10),
                 ],
-              ),
-              const SizedBox(height: 10),
-              Chips(project: project),
-              const SizedBox(height: 10),
-              SelectableText(
-                project.descriptionShort,
-                style: const TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 5),
-              Center(
-                child: TextButton(
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text('MEHR ERFAHREN'),
+                Flexible(
+                  child: SelectableText(
+                    project.name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () => context.beamTo(
-                    ProjectLocation(
-                      pathParameters: {'projectId': project.id},
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Chips(project: project),
+            const SizedBox(height: 10),
+            SelectableText(
+              project.descriptionShort,
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 5),
+            Center(
+              child: TextButton(
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text('MEHR ERFAHREN'),
+                ),
+                onPressed: () => context.beamTo(
+                  ProjectLocation(
+                    pathParameters: {'projectId': project.id},
                   ),
-                ).floatOnHover(),
-              ),
-            ],
-          ),
+                ),
+              ).floatOnHover(),
+            ),
+          ],
         ),
       ),
     );

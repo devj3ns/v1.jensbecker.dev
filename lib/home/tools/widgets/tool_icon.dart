@@ -18,9 +18,8 @@ class ToolIcon extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: RoundedBox(
+      child: RoundedClickBox(
         borderRadius: 10.0,
-        withShadow: true,
         margin: const EdgeInsets.all(4.0),
         padding: const EdgeInsets.all(15.0),
         onPressed: openLink,

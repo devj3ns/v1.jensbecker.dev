@@ -55,9 +55,9 @@ class HeroSection extends StatelessWidget {
             child: AnimateTranslate(
               child: IconButton(
                 onPressed: () => scrollToSection(Section.projects),
-                icon: FaIcon(
+                icon: const FaIcon(
                   FontAwesomeIcons.chevronDown,
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white60,
                   size: 40,
                 ),
               ),

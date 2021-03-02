@@ -8,28 +8,15 @@ class SocialIconButton extends StatelessWidget {
   const SocialIconButton({
     @required this.model,
     this.size,
-    this.onTap,
   });
 
   final SocialIcon model;
   final double size;
-  final VoidCallback onTap;
-
-  void _onTap() {
-    if (onTap != null) {
-      onTap();
-      return;
-    }
-
-    if (model.url != null) {
-      launch(model.url);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: _onTap,
+      onPressed: () => launch(model.url),
       icon: Icon(
         model.icon,
         size: size,

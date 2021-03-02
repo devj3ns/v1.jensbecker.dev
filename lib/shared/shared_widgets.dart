@@ -51,19 +51,19 @@ class Button extends StatelessWidget {
   }
 }
 
-class RoundedBox extends StatelessWidget {
-  const RoundedBox({
+class RoundedClickBox extends StatelessWidget {
+  const RoundedClickBox({
     @required this.child,
+    @required this.onPressed,
     this.borderRadius = 15,
     this.withShadow = false,
-    this.onPressed,
-    this.margin = const EdgeInsets.all(0.0),
-    this.padding = const EdgeInsets.all(0.0),
+    this.margin = const EdgeInsets.only(),
+    this.padding = const EdgeInsets.only(),
   });
   final Widget child;
+  final VoidCallback onPressed;
   final double borderRadius;
   final bool withShadow;
-  final VoidCallback onPressed;
   final EdgeInsets margin;
   final EdgeInsets padding;
 
@@ -81,7 +81,7 @@ class RoundedBox extends StatelessWidget {
             boxShadow: withShadow
                 ? [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.15),
+                      color: Colors.grey[200],
                       spreadRadius: 15,
                       blurRadius: 15,
                       offset: const Offset(0, 5),
@@ -95,6 +95,33 @@ class RoundedBox extends StatelessWidget {
           ),
         ),
       ).floatOnHover(enable: onPressed != null),
+    );
+  }
+}
+
+class ShadowBox extends StatelessWidget {
+  const ShadowBox({
+    @required this.child,
+    this.borderRadius = 15,
+  });
+  final Widget child;
+  final double borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderRadius),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey[300],
+            spreadRadius: 15,
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: child,
     );
   }
 }

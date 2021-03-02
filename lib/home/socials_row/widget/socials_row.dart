@@ -43,13 +43,13 @@ class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
 }
 
 class SocialsRowContactForm extends StatelessWidget {
+  // socialIcons without the E-Mail icon
+  final icons = socialIcons.toList()
+    ..removeWhere((SocialIcon socialIcon) =>
+        socialIcon.icon == FontAwesomeIcons.envelope);
+
   @override
   Widget build(BuildContext context) {
-    // socialIcons without the E-Mail icon
-    var icons = socialIcons.toList()
-      ..removeWhere((SocialIcon socialIcon) =>
-          socialIcon.icon == FontAwesomeIcons.envelope);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,

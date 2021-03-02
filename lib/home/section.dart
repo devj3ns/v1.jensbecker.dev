@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import '../shared/extensions.dart';
 
 class Section extends StatelessWidget {
-  Section({
+  const Section({
     @required this.title,
+    @required this.child,
     this.subtitle,
     this.applyHorizontalMargin = true,
     this.doubleTopMargin = false,
     this.doubleBottomMargin = false,
-    @required this.child,
   });
   final String title;
+  final Widget child;
   final String subtitle;
   final bool applyHorizontalMargin;
   final bool doubleTopMargin;
   final bool doubleBottomMargin;
-  final Widget child;
 
   @override
   Widget build(BuildContext context) {

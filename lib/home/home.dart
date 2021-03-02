@@ -6,7 +6,7 @@ import '../shared/extensions.dart';
 import 'footer/footer.dart';
 import 'sections/sections.dart';
 
-enum Section { head, projects, about, tools, contact }
+enum Section { projects, about, tools, contact }
 
 class HomePage extends StatefulWidget {
   @override
@@ -43,12 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final sections = [
-      AutoScrollTag(
-        key: ValueKey(Section.head.index),
-        index: Section.head.index,
-        controller: controller,
-        child: HeroSection(scrollToSection),
-      ),
+      HeroSection(scrollToSection),
       AutoScrollTag(
         key: ValueKey(Section.projects.index),
         index: Section.projects.index,

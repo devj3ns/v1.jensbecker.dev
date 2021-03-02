@@ -18,43 +18,41 @@ class ContactSection extends StatelessWidget {
       title: 'Kontakt',
       subtitle: 'Ich freue mich von Ihnen zu hören!',
       doubleBottomMargin: true,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalMargin),
-        child: RoundedBox(
-          withShadow: true,
-          child: context.isMobile
-              ? Column(
+      child: RoundedClickBox(
+        margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
+        withShadow: true,
+        child: context.isMobile
+            ? Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _Column1(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: _Column2(),
+                  ),
+                ],
+              )
+            : IntrinsicHeight(
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: _Column1(),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: _Column1(),
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(25.0),
-                      child: _Column2(),
+                    Expanded(
+                      flex: context.screenWidth < 1000 ? 1 : 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: _Column2(),
+                      ),
                     ),
                   ],
-                )
-              : IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: _Column1(),
-                        ),
-                      ),
-                      Expanded(
-                        flex: context.screenWidth < 1000 ? 1 : 2,
-                        child: Padding(
-                          padding: const EdgeInsets.all(25.0),
-                          child: _Column2(),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
-        ),
+              ),
       ),
     );
   }
@@ -66,7 +64,7 @@ class _Column1 extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -82,11 +80,11 @@ class _Column1 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            SelectableText(
+            const SelectableText(
               'Füllen Sie das Kontaktformular aus, und ich werde mich zeitnah bei Ihnen melden.',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.white.withOpacity(0.85),
+                color: Colors.white70,
               ),
               textAlign: TextAlign.center,
             ),

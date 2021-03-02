@@ -7,11 +7,10 @@ import '../../shared/extensions.dart';
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final textStyle =
-        TextStyle(fontSize: 17, color: Colors.blueGrey.withOpacity(0.6));
+    final textStyle = TextStyle(fontSize: 17, color: Colors.blueGrey[200]);
 
     return ColoredBox(
-      color: Colors.grey.withOpacity(0.1),
+      color: Colors.grey[100],
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Wrap(

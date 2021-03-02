@@ -73,12 +73,9 @@ class _NavBar extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        InkWell(
-          onTap: () => scrollToSection(Section.head),
-          child: const Text(
-            'Jens Becker',
-            style: TextStyle(color: Colors.white, fontSize: 35),
-          ),
+        const Text(
+          'Jens Becker',
+          style: TextStyle(color: Colors.white, fontSize: 35),
         ),
         const Expanded(child: SizedBox()),
         InkWell(
