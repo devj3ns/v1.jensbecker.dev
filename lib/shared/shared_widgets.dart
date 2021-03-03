@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'extensions.dart';
@@ -320,6 +321,23 @@ class TextChip extends StatelessWidget {
       child: SelectableText(
         text,
         style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+class WinkingHandEmoji extends StatelessWidget {
+  const WinkingHandEmoji({this.size = 22});
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: SvgPicture.network(
+        'assets/emoji_u1f44b.svg',
+        semanticsLabel: 'Winking hand emoji',
       ),
     );
   }

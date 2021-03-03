@@ -67,13 +67,23 @@ class _Text extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: SelectableText(
-        // using the 👋 emoji decreases performance drastically :(, see: https://github.com/flutter/flutter/issues/76248
-        'Hey \n'
-        'mein Name ist Jens Becker, ich bin $jensAge Jahre alt und selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
-        'Im Jahr 2020 habe ich mich selbstständig gemacht und seitdem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Webseiten für Kunden/Firmen.\n\n'
-        'Aber auch bevor ich selbstständig war, habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
-        style: const TextStyle(fontSize: 18),
+      child: Column(
+        children: [
+          // just using the 👋 emoji in the text decreases performance drastically
+          // see: https://github.com/flutter/flutter/issues/76248
+          Row(
+            children: [
+              const SelectableText('Hey', style: TextStyle(fontSize: 18)),
+              const WinkingHandEmoji(),
+            ],
+          ),
+          SelectableText(
+            'mein Name ist Jens Becker, ich bin $jensAge Jahre alt und selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
+            'Im Jahr 2020 habe ich mich selbstständig gemacht und seitdem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Webseiten für Kunden/Firmen.\n\n'
+            'Aber auch bevor ich selbstständig war, habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
+            style: const TextStyle(fontSize: 18),
+          ),
+        ],
       ),
     );
   }

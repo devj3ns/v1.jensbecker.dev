@@ -53,6 +53,18 @@ extension ContextExtensions on BuildContext {
             ? onTablet
             : onDesktop;
   }
+
+  Widget responsiveWidget({
+    @required Widget onMobile,
+    @required Widget onTablet,
+    @required Widget onDesktop,
+  }) {
+    return isMobile
+        ? onMobile
+        : isTablet
+            ? onTablet
+            : onDesktop;
+  }
 }
 
 extension StringExtensions on String {

@@ -20,7 +20,7 @@ class ToolIcon extends StatelessWidget {
       height: size,
       child: RoundedClickBox(
         borderRadius: 10.0,
-        margin: const EdgeInsets.all(4.0),
+        margin: const EdgeInsets.all(6.0),
         padding: const EdgeInsets.all(15.0),
         onPressed: openLink,
         child: Image.network(tool.iconUrl),
