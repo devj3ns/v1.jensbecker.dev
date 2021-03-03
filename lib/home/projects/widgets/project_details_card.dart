@@ -20,7 +20,7 @@ class ProjectDetailsCard extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: RoundedClickBox(
+      child: RoundedBox(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,

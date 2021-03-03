@@ -94,7 +94,50 @@ class RoundedClickBox extends StatelessWidget {
             child: child,
           ),
         ),
-      ).floatOnHover(enable: onPressed != null),
+      ).floatOnHover(),
+    );
+  }
+}
+
+class RoundedBox extends StatelessWidget {
+  const RoundedBox({
+    @required this.child,
+    this.borderRadius = 15,
+    this.withShadow = false,
+    this.margin = const EdgeInsets.only(),
+    this.padding = const EdgeInsets.only(),
+  });
+  final Widget child;
+
+  final double borderRadius;
+  final bool withShadow;
+  final EdgeInsets margin;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: margin,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: withShadow
+              ? [
+                  BoxShadow(
+                    color: Colors.grey[200],
+                    spreadRadius: 15,
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
+                  ),
+                ]
+              : [],
+        ),
+        child: Padding(
+          padding: padding,
+          child: child,
+        ),
+      ),
     );
   }
 }

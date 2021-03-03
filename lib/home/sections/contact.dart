@@ -18,7 +18,7 @@ class ContactSection extends StatelessWidget {
       title: 'Kontakt',
       subtitle: 'Ich freue mich von Ihnen zu hören!',
       doubleBottomMargin: true,
-      child: RoundedClickBox(
+      child: RoundedBox(
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
         withShadow: true,
         child: context.isMobile
