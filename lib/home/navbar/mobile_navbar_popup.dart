@@ -84,6 +84,7 @@ class _SectionButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextButton(
+        onPressed: popAndScroll,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
@@ -91,7 +92,6 @@ class _SectionButton extends StatelessWidget {
             style: const TextStyle(color: Colors.black87, fontSize: 23),
           ),
         ),
-        onPressed: popAndScroll,
       ),
     );
   }

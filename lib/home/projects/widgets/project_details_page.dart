@@ -113,8 +113,8 @@ class ProjectDetailPage extends StatelessWidget {
                     SizedBox(
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
-                        child: Image.network('/assets/play_store_badge.png'),
                         onTap: () => launch(project.playStoreUrl),
+                        child: Image.network('/assets/play_store_badge.png'),
                       ),
                     ),
                   if (project.appStoreUrl.isNotBlank) ...[
@@ -122,8 +122,8 @@ class ProjectDetailPage extends StatelessWidget {
                     SizedBox(
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
-                        child: Image.network('/assets/app_store_badge.png'),
                         onTap: () => launch(project.appStoreUrl),
+                        child: Image.network('/assets/app_store_badge.png'),
                       ),
                     ),
                   ]

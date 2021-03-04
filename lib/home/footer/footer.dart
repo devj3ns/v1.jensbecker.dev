@@ -22,6 +22,7 @@ class Footer extends StatelessWidget {
           ),
           children: [
             TextButton(
+              onPressed: () {},
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -29,9 +30,9 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () {},
             ),
             TextButton(
+              onPressed: () => context.beamTo(ImprintLocation()),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -39,9 +40,9 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => context.beamTo(ImprintLocation()),
             ),
             TextButton(
+              onPressed: () => context.beamTo(PrivacyLocation()),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -49,9 +50,9 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => context.beamTo(PrivacyLocation()),
             ),
             TextButton(
+              onPressed: () => context.beamTo(LicenceLocation()),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -59,7 +60,6 @@ class Footer extends StatelessWidget {
                   style: textStyle,
                 ),
               ),
-              onPressed: () => context.beamTo(LicenceLocation()),
             ),
           ],
         ),

@@ -58,14 +58,14 @@ class ProjectDetailsCard extends StatelessWidget {
             const SizedBox(height: 5),
             Center(
               child: TextButton(
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text('MEHR ERFAHREN'),
-                ),
                 onPressed: () => context.beamTo(
                   ProjectLocation(
                     pathParameters: {'projectId': project.id},
                   ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text('MEHR ERFAHREN'),
                 ),
               ).floatOnHover(),
             ),

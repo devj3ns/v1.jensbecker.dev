@@ -74,6 +74,7 @@ class _Text extends StatelessWidget {
           Row(
             children: [
               const SelectableText('Hey', style: TextStyle(fontSize: 18)),
+              // unfortunately the svg does not work when viewing on a phone (because of the html renderer)
               const WinkingHandEmoji(),
             ],
           ),

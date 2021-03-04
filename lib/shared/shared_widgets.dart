@@ -192,8 +192,8 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
       onExit: (e) => _mouseEnter(false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        child: widget.child,
         transform: _hovering ? hoverTransform : nonHoverTransform,
+        child: widget.child,
       ),
     );
   }
