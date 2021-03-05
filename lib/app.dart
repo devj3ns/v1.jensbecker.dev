@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerDelegate: BeamerRouterDelegate(
         beamLocations: beamLocations,
+        notFoundRedirect: HomeLocation(),
       ),
       routeInformationParser: BeamerRouteInformationParser(),
       builder: (context, child) {

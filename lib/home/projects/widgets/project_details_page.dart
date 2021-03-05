@@ -2,6 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/locations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../shared/extensions.dart';
@@ -35,7 +36,11 @@ class ProjectDetailPage extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Zurück',
-                  onPressed: context.beamBack,
+                  onPressed: () {
+                    Beamer.of(context).canBeamBack
+                        ? context.beamBack()
+                        : context.beamTo(HomeLocation());
+                  },
                   icon: const FaIcon(
                     FontAwesomeIcons.chevronLeft,
                     size: 20,
@@ -76,6 +81,7 @@ class ProjectDetailPage extends StatelessWidget {
             const SizedBox(height: 15),
             Center(
               child: Wrap(
+                alignment: WrapAlignment.center,
                 runSpacing: 4,
                 spacing: 4,
                 children: project.tags
@@ -88,6 +94,7 @@ class ProjectDetailPage extends StatelessWidget {
             const SizedBox(height: 10),
             Center(
               child: Wrap(
+                alignment: WrapAlignment.center,
                 runSpacing: 4,
                 spacing: 4,
                 children: project.tools

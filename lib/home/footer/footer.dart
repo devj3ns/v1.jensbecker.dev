@@ -9,6 +9,10 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = TextStyle(fontSize: 17, color: Colors.blueGrey[200]);
 
+    // HINT: With HTML renderer the navigation to the pages does not work
+    // (Page freezes and crashes)!
+    // The beamer package owner has no idea why this happens
+
     return ColoredBox(
       color: Colors.grey[100],
       child: Padding(

@@ -15,6 +15,8 @@ final beamLocations = <BeamLocation>[
 ];
 
 class HomeLocation extends BeamLocation {
+  HomeLocation() : super(pathBlueprint: '/');
+
   @override
   List<String> get pathBlueprints => ['/'];
 
@@ -31,14 +33,12 @@ class ProjectLocation extends BeamLocation {
   ProjectLocation({
     Map<String, String> pathParameters,
   }) : super(
-          pathBlueprint: '/projects/:projectId',
+          pathBlueprint: '/projects/:projectId/',
           pathParameters: pathParameters,
         );
 
   @override
-  List<String> get pathBlueprints => [
-        '/projects/:projectId',
-      ];
+  List<String> get pathBlueprints => ['/projects/:projectId/'];
 
   @override
   List<BeamPage> pagesBuilder(BuildContext context) => [
@@ -53,10 +53,10 @@ class ProjectLocation extends BeamLocation {
 }
 
 class ImprintLocation extends BeamLocation {
-  ImprintLocation() : super(pathBlueprint: '/impressum');
+  ImprintLocation() : super(pathBlueprint: '/impressum/');
 
   @override
-  List<String> get pathBlueprints => ['/impressum'];
+  List<String> get pathBlueprints => ['/impressum/'];
 
   @override
   List<BeamPage> pagesBuilder(BuildContext context) => [
@@ -69,10 +69,10 @@ class ImprintLocation extends BeamLocation {
 }
 
 class PrivacyLocation extends BeamLocation {
-  PrivacyLocation() : super(pathBlueprint: '/datenschutz');
+  PrivacyLocation() : super(pathBlueprint: '/datenschutz/');
 
   @override
-  List<String> get pathBlueprints => ['/datenschutz'];
+  List<String> get pathBlueprints => ['/datenschutz/'];
 
   @override
   List<BeamPage> pagesBuilder(BuildContext context) => [
@@ -85,10 +85,10 @@ class PrivacyLocation extends BeamLocation {
 }
 
 class LicenceLocation extends BeamLocation {
-  LicenceLocation() : super(pathBlueprint: '/lizenzen');
+  LicenceLocation() : super(pathBlueprint: '/lizenzen/');
 
   @override
-  List<String> get pathBlueprints => ['/lizenzen'];
+  List<String> get pathBlueprints => ['/lizenzen/'];
 
   @override
   List<BeamPage> pagesBuilder(BuildContext context) => [

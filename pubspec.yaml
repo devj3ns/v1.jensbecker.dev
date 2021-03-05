@@ -14,7 +14,7 @@ dependencies:
   font_awesome_flutter: ^9.0.0-nullsafety
   url_launcher: ^6.0.1
   google_fonts: ^2.0.0
-  beamer: ^0.8.1+1
+  beamer: ^0.8.2
   scroll_to_index: ^2.0.0
   firebase_core: ^1.0.0
   cloud_firestore: ^1.0.0
