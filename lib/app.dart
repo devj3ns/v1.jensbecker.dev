@@ -1,6 +1,5 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'locations.dart';
 import 'theme.dart';
@@ -12,15 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: title,
-      theme: ThemeData(
-        textTheme: GoogleFonts.montserratTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        primarySwatch: Colors.indigo,
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.indigo,
-        ),
-      ),
+      theme: getThemeData(context),
       debugShowCheckedModeBanner: false,
       routerDelegate: BeamerRouterDelegate(
         initialLocation: HomeLocation(),
