@@ -19,7 +19,7 @@ class HomeLocation extends BeamLocation {
   List<String> get pathBlueprints => ['/'];
 
   @override
-  List<BeamPage> get pages => [
+  List<BeamPage> pagesBuilder(BuildContext context) => [
         BeamPage(
           key: const ValueKey('home'),
           child: HomePage(),
@@ -41,8 +41,8 @@ class ProjectLocation extends BeamLocation {
       ];
 
   @override
-  List<BeamPage> get pages => [
-        ...HomeLocation().pages,
+  List<BeamPage> pagesBuilder(BuildContext context) => [
+        ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: ValueKey(pathParameters['projectId']),
           child: ProjectDetailPage(
@@ -59,8 +59,8 @@ class ImprintLocation extends BeamLocation {
   List<String> get pathBlueprints => ['/impressum'];
 
   @override
-  List<BeamPage> get pages => [
-        ...HomeLocation().pages,
+  List<BeamPage> pagesBuilder(BuildContext context) => [
+        ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('imprint'),
           child: ImprintPage(),
@@ -75,8 +75,8 @@ class PrivacyLocation extends BeamLocation {
   List<String> get pathBlueprints => ['/datenschutz'];
 
   @override
-  List<BeamPage> get pages => [
-        ...HomeLocation().pages,
+  List<BeamPage> pagesBuilder(BuildContext context) => [
+        ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('privacy'),
           child: PrivacyPage(),
@@ -91,8 +91,8 @@ class LicenceLocation extends BeamLocation {
   List<String> get pathBlueprints => ['/lizenzen'];
 
   @override
-  List<BeamPage> get pages => [
-        ...HomeLocation().pages,
+  List<BeamPage> pagesBuilder(BuildContext context) => [
+        ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('licences'),
           child: const LicensePage(),

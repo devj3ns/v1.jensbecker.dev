@@ -61,6 +61,9 @@ class ContactSection extends StatelessWidget {
 class _Column1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final titleFontSize =
+        context.responsiveNumber(onMobile: 20, onTablet: 22, onDesktop: 22);
+
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -71,10 +74,10 @@ class _Column1 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SelectableText(
+            SelectableText(
               'Kontaktinformationen',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: titleFontSize,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

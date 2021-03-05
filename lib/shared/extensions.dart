@@ -7,12 +7,6 @@ double _tabletBreakpoint = 750;
 double _desktopBreakpoint = 1220;
 
 extension ContextExtensions on BuildContext {
-  // Theme
-  bool get isDarkMode =>
-      MediaQuery.of(this).platformBrightness == Brightness.dark ? true : false;
-
-  bool get isLightMode => !isDarkMode;
-
   // Responsive
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
@@ -78,11 +72,5 @@ extension StringExtensions on String {
 }
 
 extension WidgetExtensions on Widget {
-  Widget floatOnHover({bool enable = true}) {
-    return enable
-        ? TranslateOnHover(
-            child: this,
-          )
-        : this;
-  }
+  Widget floatOnHover() => TranslateOnHover(child: this);
 }

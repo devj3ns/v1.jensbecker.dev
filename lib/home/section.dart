@@ -34,6 +34,9 @@ class Section extends StatelessWidget {
     marginTop = doubleTopMargin ? marginTop * 2 : marginTop;
     marginBottom = doubleBottomMargin ? marginBottom * 2 : marginBottom;
 
+    final titleFontSize =
+        context.responsiveNumber(onMobile: 25, onTablet: 28, onDesktop: 30);
+
     return Padding(
       padding: EdgeInsets.only(
         right: horizontalMargin,
@@ -45,7 +48,8 @@ class Section extends StatelessWidget {
         children: [
           SelectableText(
             title,
-            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+            style:
+                TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.w400),
             textAlign: TextAlign.center,
           ),
           if (subtitle.isNotBlank) ...[

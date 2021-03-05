@@ -52,7 +52,10 @@ class Footer extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => context.beamTo(LicenceLocation()),
+              onPressed: () => context.beamTo(
+                LicenceLocation(),
+                beamBackOnPop: true,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

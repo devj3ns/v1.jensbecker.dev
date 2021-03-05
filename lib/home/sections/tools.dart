@@ -9,7 +9,9 @@ class ToolsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Section(
-      title: 'Programmiersprachen & Tools',
+      title: context.isMobile
+          ? 'Programmiersprachen\n& Tools'
+          : 'Programmiersprachen & Tools',
       subtitle:
           'Mit diesen Tools habe ich die letzten Jahre Erfahrung gesammelt.',
       child: ShadowBox(

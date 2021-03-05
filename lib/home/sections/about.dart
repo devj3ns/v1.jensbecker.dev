@@ -11,8 +11,8 @@ class AboutSection extends StatelessWidget {
       title: 'Über mich',
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 20,
-        spacing: 20,
+        runSpacing: 30,
+        spacing: 25,
         children: [
           context.isMobile ? Center(child: _Image()) : _Image(),
           _Text(

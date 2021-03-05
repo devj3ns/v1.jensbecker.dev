@@ -14,11 +14,9 @@ class MyApp extends StatelessWidget {
       theme: getThemeData(context),
       debugShowCheckedModeBanner: false,
       routerDelegate: BeamerRouterDelegate(
-        initialLocation: HomeLocation(),
-      ),
-      routeInformationParser: BeamerRouteInformationParser(
         beamLocations: beamLocations,
       ),
+      routeInformationParser: BeamerRouteInformationParser(),
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: MyScrollBehavior(),
