@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
   <base href="/">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO -->
   <title>Jens Becker - Digital Creator</title>
-  <meta name="description" content="Mein Name ist Jens Becker und ich bin IT-Freelancer mit Schwerpunkt Softwareentwicklung."/>
-  <meta name="keywords" content="Jens Becker, Digital Creator, Programmierer, Entwickler, IT-Freelancer, Softwareentwickler, Softwareentwicklung, Portfolio">
+  <meta name="description" content="Ich bin Jens Becker und IT-Freelancer mit Schwerpunkt Softwareentwicklung. Ich programmiere seit einigen Jahren Webseiten, Apps und andere Software."/>
+  <meta name="keywords" content="Jens Becker, Digital Creator, Programmierer, Programmierung, Entwickler, IT-Freelancer, Softwareentwickler, Softwareentwicklung, Portfolio, Apps, Webseiten">
   <meta name="author" content="Jens Becker"/>
+
+  <!-- Social Networks -->
+  <meta property="og:title" content="Jens Becker - Digital Creator">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Mein Name ist Jens Becker und ich bin IT-Freelancer mit Schwerpunkt Softwareentwicklung.">
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Jens Becker">
+  <meta property="og:url" content="https://jensbecker.dev">
+  <meta property="og:image" content="https://jensbecker.dev/assets/jensbecker.jpg">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
-  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" href="assets/favicon_small.png">
+  <link rel="icon" type="image/png" href="assets/favicon_small.png"/>
 </head>
 <body>
-<script src="main.dart.js?version=3" type="application/javascript"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDG_F8-1vXipA8rXqpkIy9Rphpyv6e-NM8",
+    authDomain: "jensbecker-dev.firebaseapp.com",
+    projectId: "jensbecker-dev",
+    storageBucket: "jensbecker-dev.appspot.com",
+    messagingSenderId: "414781891477",
+    appId: "1:414781891477:web:c6302a6dadf56de0af0c9c"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="main.dart.js?version=1" type="application/javascript"></script>
 </body>
 </html>
