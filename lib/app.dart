@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'locations.dart';
+import 'theme.dart';
 
 class MyApp extends StatelessWidget {
   final title = 'Jens Becker - Digital Creator';

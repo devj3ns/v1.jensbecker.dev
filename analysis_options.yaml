@@ -23,6 +23,7 @@ linter:
     - package_api_docs
     - package_names
     - package_prefixed_library_names
+    - prefer_final_locals
     - prefer_const_constructors
     - prefer_initializing_formals
     - prefer_interpolation_to_compose_strings

@@ -9,7 +9,7 @@ double _desktopBreakpoint = 1220;
 extension ContextExtensions on BuildContext {
   // Theme
   bool get isDarkMode =>
-      Theme.of(this).brightness == Brightness.dark ? true : false;
+      MediaQuery.of(this).platformBrightness == Brightness.dark ? true : false;
 
   bool get isLightMode => !isDarkMode;
 
