@@ -21,7 +21,7 @@ List<Project> projects = [
         '• KiTa Feed: Hier werden Nachrichten angezeigt, die für alle Eltern relevant sind. Eine Nachricht kann auch ein Dokument wie zum Beispiel den Essensplan enthalten.\n'
         '• Gruppen Feed: Hier werden Nachrichten von den Erziehern der Gruppe ihres Kindes angezeigt. Diese Nachrichten können nur Eltern von Kindern in derselben Gruppe sehen.\n'
         '• Privat Feed: Hier können Erzieher Nachrichten direkt an Sie schreiben.\n'
-        '• Kalender: Auf der Kalender Seite können Sie alle anstehenden Termine (für die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
+        '• Kalender: Auf der Kalenderseite können Sie alle anstehenden Termine (für die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
         '• Kind abmelden: Auf der Seite "Mein Kind" können Sie ihr Kind für den heutigen Tag (bis 8 Uhr) oder den nächsten Tag (ab 16 Uhr) abmelden. Rufen Sie uns außerhalb dieser Uhrzeiten bitte an, um ihr Kind abzumelden.\n\n'
         'Die App ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.',
     appStoreUrl:
@@ -40,7 +40,7 @@ List<Project> projects = [
         'Eine Buchungsassistent-Website für das Projekt Blickwechsel von nestwärme e.V. um ein Coaching online buchen zu können.',
     description:
         'Nestwärme bietet mit ihrem „Blickwechsel“ Projekt, emotionale Unterstützung und Hilfe zur Selbsthilfe an – diskret und behutsam. Siehe https://mein-blickwechsel.de\n\n'
-        'Es gibt mehrere Coaches, die bestimmte Themenschwerpunkte haben. Damit einfach und unkompliziert Termine gebucht werden können habe ich einen Buchungsassistent erstellt, bei welchem man Schritt für Schritt zur Terminbuchung geleitet wird.'
+        'Es gibt mehrere Coaches, die bestimmte Themenschwerpunkte haben. Damit einfach und unkompliziert Termine gebucht werden können, habe ich einen Buchungsassistenten entwickelt, bei welchem man Schritt für Schritt zur Terminbuchung geleitet wird.'
         'So bekommt man zum Beispiel für sein Thema alle passenden Termine angezeigt und kann einfach jenen wählen, welcher am besten in den eigenen Terminkalender passt.\n'
         'Die Coaches können ihre verfügbaren Zeiträume auf einer extra Seite angeben und werden dann benachrichtigt, sobald sich jemand für ein Coaching bei Ihnen angemeldet hat.\n\n'
         'Das Projekt ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.',
@@ -56,7 +56,7 @@ List<Project> projects = [
         'Ein Onlinebereich für die Trainierenden die Muskelwerkstatt Trier.',
     description:
         'In der Muskelwerkstatt arbeitet Sascha Telen mit seinen Muskelarbeitern an deren Körper, deren Fitness und deren Leistungsfähigkeit.\n\n'
-        'Um seinen Muskelarbeitern eine Plattform zu bieten, auf der diese gebündelt und einfach auf alle wichtigen Informationen, Dokumente, Tipps, Trainingspläne usw. zugreifen zu können, habe ich den Mehr Perfomrance Online Bereich entwickelt.\n\n'
+        'Um seinen Muskelarbeitern eine Plattform zu bieten, auf der diese gebündelt und einfach auf alle wichtigen Informationen, Dokumente, Tipps, Trainingspläne usw. zugreifen zu können, habe ich den Mehr Performance Online Bereich entwickelt.\n\n'
         'Der Onlinebreich bietet die folgenden Funktionen:\n\n'
         '• Aktuelle Messwerte und Ziele sehen und verfolgen können.\n'
         '• Kalender, in dem man eintragen kann, wann man trainieren war.\n'
@@ -78,7 +78,7 @@ List<Project> projects = [
     description:
         'Die Fleischerei Martin wollte aufgrund der aktuellen Situation ihren Kunden eine weitere Möglichkeit des einfachen, unkomplizierten Bestellens zu bieten.\n'
         'Daher habe ich eine Seite entwickelt, auf der die Kunden einfach und bequem ihre Bestellung rund um die Uhr einreichen können und so am nächsten Tag die Bestellung abholbereit im Laden steht.\n\n'
-        'Das Projekt ist Ende 2020 in Zusammenarbeit mit Nils Lauterbach entstanden und wird seitdem von den Kunden benutzt.',
+        'Das Projekt ist Ende 2020 in Zusammenarbeit mit Nils Lauterbach entstanden und wird seitdem von den Kunden genutzt.',
   ),
   Project(
     id: 'martin-ternes-mandantenportal',
@@ -88,10 +88,10 @@ List<Project> projects = [
     iconUrl: _getIconPath('martin_ternes.png'),
     mockupUrl: _getMockupPath('martin_ternes.png'),
     descriptionShort:
-        'Eine Mandantenportal zum Transfer von Belegen und andere Dokumenten für das Buchhaltungsbüro von Martin Ternes.',
+        'Ein Mandantenportal zum Transfer von Belegen und anderen Dokumenten für das Buchhaltungsbüro von Martin Ternes.',
     description:
         'Martin Ternes ist ein Buchhalter mit Sitz in Luxemburg. Für seine Mandanten brauchte er ein Portal, über das diese ihm Ihre Belege und andere Dokumente auf elektronische Weise zukommen lassen können. '
-        'So gibt es für seine Mandanten einen zentralen Ort für Dokumente die sie selber oder er Ihnen hochgeladen hat.\n\n'
+        'So gibt es für seine Mandanten einen zentralen Ort für Dokumente, die sie selber oder er Ihnen hochgeladen hat.\n\n'
         'Das Projekt ist Ende 2020 in Zusammenarbeit mit Nils Lauterbach entstanden.',
   ),
   Project(
@@ -105,7 +105,7 @@ List<Project> projects = [
         'Newsbots die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsuchen.',
     description:
         'Für den erfolgreichen News-Trader und Trader-Coach Norman Stolze habe ich mehrere Newsbots programmiert, die das Internet und die sozialen Medien nach börsenrelevanten Nachrichten durchsuchen. '
-        'Die enorme Menge aller Daten wird dann gefiltert und analysiert um dann nur die relevanten Nachrichten ihm und seinen Tradern gebündelt in einem Telegram Channel anzuzeigen.\n'
+        'Die enorme Menge aller Daten wird dann gefiltert und analysiert, um dann nur die relevanten Nachrichten ihm und seinen Tradern gebündelt in einem Telegram Channel anzuzeigen.\n'
         'Durch die Bots haben die Trader in Echtzeit alle börsenrelevanten Nachrichten auf ihrem Bildschirm und können darauf reagieren.\n\n'
         'Die Zusammenarbeit mit Norman Stolze besteht seit 2020.',
   ),
