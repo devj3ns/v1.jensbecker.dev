@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../shared/extensions.dart';
 
@@ -18,7 +19,10 @@ class PrivacyPage extends StatelessWidget {
         ),
         children: [
           const SizedBox(height: 50),
-          Html(data: _privacyHtmlString),
+          Html(
+            data: _privacyHtmlString,
+            onLinkTap: launch,
+          ),
         ],
       ),
     );
