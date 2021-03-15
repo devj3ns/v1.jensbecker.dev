@@ -14,7 +14,7 @@ class Footer extends StatelessWidget {
     // The beamer package owner has no idea why this happens
 
     return ColoredBox(
-      color: Colors.grey[100],
+      color: Colors.grey[100]!,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Wrap(

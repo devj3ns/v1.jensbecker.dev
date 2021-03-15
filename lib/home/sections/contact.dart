@@ -149,7 +149,7 @@ class _Column2 extends HookWidget {
     final showSuccessInfo = useState(false);
 
     void onFormSubmitted() async {
-      if (_formKey.currentState.validate()) {
+      if (_formKey.currentState!.validate()) {
         isSubmitting.value = true;
 
         await Mailer().sendEmail(

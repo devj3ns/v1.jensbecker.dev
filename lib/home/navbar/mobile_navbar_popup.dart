@@ -62,9 +62,9 @@ class MobileNavBarPopup extends StatelessWidget {
 
 class _SectionButton extends StatelessWidget {
   const _SectionButton({
-    @required this.name,
-    @required this.section,
-    @required this.scrollToSection,
+    required this.name,
+    required this.section,
+    required this.scrollToSection,
   });
   final String name;
   final Section section;

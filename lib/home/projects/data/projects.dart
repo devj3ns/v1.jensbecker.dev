@@ -15,14 +15,14 @@ List<Project> projects = [
     descriptionShort:
         'Eine App für die Nestwärme KiTa um die Eltern unkompliziert und in Echtzeit informieren zu können.',
     description:
-        'Der Verein nestwärme e.V. hat in Trier eine inklusive Kindergrippe und sucht nach einem Weg, die Eltern unkompliziert und in Echtzeit digital zu informieren.\n'
+        'Der Verein nestwärme e.V. hat in Trier eine inklusive Kindergrippe und suchte nach einem Weg, die Eltern unkompliziert und in Echtzeit digital zu erreichen und informieren.\n'
         'So ist die Nestwärme KiTa App entstanden.\n\n'
         'Die App bietet die folgenden Funktionen:\n\n'
         '• KiTa Feed: Hier werden Nachrichten angezeigt, die für alle Eltern relevant sind. Eine Nachricht kann auch ein Dokument wie zum Beispiel den Essensplan enthalten.\n'
-        '• Gruppen Feed: Hier werden Nachrichten von den Erziehern der Gruppe ihres Kindes angezeigt. Diese Nachrichten können nur Eltern von Kindern in derselben Gruppe sehen.\n'
-        '• Privat Feed: Hier können Erzieher Nachrichten direkt an Sie schreiben.\n'
-        '• Kalender: Auf der Kalenderseite können Sie alle anstehenden Termine (für die Gruppe ihres Kindes und die gesamte KiTa) sehen.\n'
-        '• Kind abmelden: Auf der Seite "Mein Kind" können Sie ihr Kind für den heutigen Tag (bis 8 Uhr) oder den nächsten Tag (ab 16 Uhr) abmelden. Rufen Sie uns außerhalb dieser Uhrzeiten bitte an, um ihr Kind abzumelden.\n\n'
+        '• Gruppen Feed: Hier werden den Eltern Nachrichten von den Erziehern der Gruppe ihres Kindes angezeigt. Diese Nachrichten können nur Eltern von Kindern in derselben Gruppe sehen.\n'
+        '• Privat Feed: Hier können Erzieher Nachrichten direkt an Eltern schreiben.\n'
+        '• Kalender: Auf der Kalenderseite können alle anstehenden Termine (für die Gruppe des Kindes und der gesamten KiTa) eingesehen werden.\n'
+        '• Kind abmelden: Auf der Seite "Mein Kind" können Eltern ihr Kind für den heutigen Tag (bis 9 Uhr) oder den nächsten Tag (ab 16 Uhr) abmelden.\n\n'
         'Die App ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.',
     appStoreUrl:
         'https://apps.apple.com/de/app/nestw%C3%A4rme-kita/id1550933241#?platform=iphone',

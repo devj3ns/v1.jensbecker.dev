@@ -21,7 +21,7 @@ class ImprintPage extends StatelessWidget {
           const SizedBox(height: 50),
           Html(
             data: _imprintHtmlString,
-            onLinkTap: launch,
+            onLinkTap: (link, context, attributes, elements) => launch(link!),
           ),
         ],
       ),

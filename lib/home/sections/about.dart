@@ -50,7 +50,7 @@ class _Image extends StatelessWidget {
 }
 
 class _Text extends StatelessWidget {
-  const _Text({@required this.width});
+  const _Text({required this.width});
   final double width;
 
   int get jensAge {

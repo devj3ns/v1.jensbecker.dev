@@ -5,10 +5,10 @@ class Mailer {
   final _emailsCollection = FirebaseFirestore.instance.collection('emails');
 
   Future<void> sendEmail({
-    @required String customerName,
-    @required String customerEmail,
-    @required String customerTel,
-    @required String message,
+    required String customerName,
+    required String customerEmail,
+    required String customerTel,
+    required String message,
   }) async {
     final emailDoc = {
       'to': ['info@jensbecker.dev'],

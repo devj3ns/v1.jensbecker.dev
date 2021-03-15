@@ -21,7 +21,7 @@ class PrivacyPage extends StatelessWidget {
           const SizedBox(height: 50),
           Html(
             data: _privacyHtmlString,
-            onLinkTap: launch,
+            onLinkTap: (link, context, attributes, elements) => launch(link!),
           ),
         ],
       ),

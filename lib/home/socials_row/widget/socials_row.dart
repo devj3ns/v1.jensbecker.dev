@@ -14,8 +14,8 @@ class AnimatedSocialsRow extends StatefulWidget {
 
 class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
     with SingleTickerProviderStateMixin {
-  AnimationController _baseAnimation;
-  Animation<double> _socialsAnimation;
+  late AnimationController _baseAnimation;
+  late Animation<double> _socialsAnimation;
 
   @override
   void initState() {
@@ -58,7 +58,6 @@ class SocialsRowContactForm extends StatelessWidget {
             (model) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: SocialIconButton(
-                size: 32.0,
                 model: model,
               ),
             ),
@@ -70,12 +69,9 @@ class SocialsRowContactForm extends StatelessWidget {
 
 class _SocialsRow extends AnimatableStatefulWidget {
   const _SocialsRow({
-    Key key,
-    @required Animation<double> animation,
-  }) : super(
-          key: key,
-          animation: animation,
-        );
+    Key? key,
+    required Animation<double> animation,
+  }) : super(key: key, animation: animation);
 
   @override
   _SocialsRowState createState() => _SocialsRowState();
@@ -117,7 +113,6 @@ class _SocialsRowState extends AnimatableState<_SocialsRow> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: SocialIconButton(
-                size: 32.0,
                 model: socialIcons.elementAt(i),
               ),
             ),

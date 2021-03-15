@@ -12,10 +12,10 @@ class ProjectDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height =
-        context.responsiveNumber(onMobile: null, onTablet: 325, onDesktop: 250);
-    final width =
-        context.responsiveNumber(onMobile: null, onTablet: 300, onDesktop: 450);
+    final height = context.responsiveNullableNumber(
+        onMobile: null, onTablet: 325, onDesktop: 250);
+    final width = context.responsiveNullableNumber(
+        onMobile: null, onTablet: 300, onDesktop: 450);
 
     return SizedBox(
       height: height,
@@ -77,7 +77,7 @@ class ProjectDetailsCard extends StatelessWidget {
 }
 
 class Chips extends StatelessWidget {
-  const Chips({@required this.project});
+  const Chips({required this.project});
   final Project project;
 
   @override

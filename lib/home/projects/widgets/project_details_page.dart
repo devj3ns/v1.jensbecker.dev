@@ -11,7 +11,7 @@ import '../../projects/models/project.dart';
 import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
-  ProjectDetailPage({@required this.id})
+  ProjectDetailPage({required this.id})
       : project = projects.firstWhere((project) => project.id == id);
   final String id;
   final Project project;
@@ -63,9 +63,9 @@ class ProjectDetailPage extends StatelessWidget {
                 child: Image.network(
                   project.mockupUrl,
                   fit: BoxFit.fill,
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent loadingProgress) {
+                  loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
+
                     return const AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Center(
@@ -118,7 +118,7 @@ class ProjectDetailPage extends StatelessWidget {
                     SizedBox(
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
-                        onTap: () => launch(project.playStoreUrl),
+                        onTap: () => launch(project.playStoreUrl!),
                         child: Image.network('/assets/play_store_badge.png'),
                       ),
                     ),
@@ -127,7 +127,7 @@ class ProjectDetailPage extends StatelessWidget {
                     SizedBox(
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
-                        onTap: () => launch(project.appStoreUrl),
+                        onTap: () => launch(project.appStoreUrl!),
                         child: Image.network('/assets/app_store_badge.png'),
                       ),
                     ),

@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 
 abstract class AnimatableWidget extends StatelessWidget {
   const AnimatableWidget({
-    Key key,
-    @required this.animation,
+    Key? key,
+    required this.animation,
   }) : super(key: key);
 
   final Animation<double> animation;
 
-  Animation<double> get baseAnimation =>
-      animation ?? const AlwaysStoppedAnimation(1.0);
+  Animation<double> get baseAnimation => animation;
 }
 
 abstract class AnimatableStatefulWidget extends StatefulWidget {
   const AnimatableStatefulWidget({
-    Key key,
-    @required this.animation,
+    Key? key,
+    required this.animation,
   }) : super(key: key);
 
   final Animation<double> animation;
@@ -26,6 +25,5 @@ abstract class AnimatableStatefulWidget extends StatefulWidget {
 
 abstract class AnimatableState<T extends AnimatableStatefulWidget>
     extends State<T> with SingleTickerProviderStateMixin {
-  Animation<double> get baseAnimation =>
-      widget.animation ?? const AlwaysStoppedAnimation(0.0);
+  Animation<double> get baseAnimation => widget.animation;
 }

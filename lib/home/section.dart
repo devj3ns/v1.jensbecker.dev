@@ -4,19 +4,20 @@ import '../shared/extensions.dart';
 
 class Section extends StatelessWidget {
   const Section({
-    @required this.title,
-    @required this.child,
-    this.subtitle,
+    required this.title,
+    required this.child,
     this.applyHorizontalMargin = true,
     this.doubleTopMargin = false,
     this.doubleBottomMargin = false,
+    this.subtitle,
   });
+
   final String title;
   final Widget child;
-  final String subtitle;
   final bool applyHorizontalMargin;
   final bool doubleTopMargin;
   final bool doubleBottomMargin;
+  final String? subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class Section extends StatelessWidget {
           ),
           if (subtitle.isNotBlank) ...[
             SelectableText(
-              subtitle,
+              subtitle!,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w200,

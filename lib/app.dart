@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: MyScrollBehavior(),
-          child: child,
+          child: child!,
         );
       },
     );

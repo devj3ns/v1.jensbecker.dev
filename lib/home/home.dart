@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../shared/extensions.dart';
 import 'footer/footer.dart';
 import 'sections/sections.dart';
 
@@ -14,8 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  AutoScrollController controller;
-  ScrollController _scrollController;
+  late AutoScrollController controller;
+  late ScrollController _scrollController;
 
   @override
   void initState() {

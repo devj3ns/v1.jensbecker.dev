@@ -6,8 +6,8 @@ import '../model/social_icon.dart';
 
 class SocialIconButton extends StatelessWidget {
   const SocialIconButton({
-    @required this.model,
-    this.size,
+    required this.model,
+    this.size = 32,
   });
 
   final SocialIcon model;

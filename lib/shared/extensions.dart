@@ -24,10 +24,24 @@ extension ContextExtensions on BuildContext {
 
   bool get isDesktop => screenWidth >= _desktopBreakpoint;
 
+  double? responsiveNullableNumber({
+    double? onMobile,
+    double? onTablet,
+    double? onDesktop,
+  }) {
+    return isMobile
+        ? onMobile
+        : isTablet
+            ? onTablet
+            : isDesktop
+                ? onDesktop
+                : null;
+  }
+
   double responsiveNumber({
-    @required double onMobile,
-    @required double onTablet,
-    @required double onDesktop,
+    required double onMobile,
+    required double onTablet,
+    required double onDesktop,
   }) {
     return isMobile
         ? onMobile
@@ -37,9 +51,9 @@ extension ContextExtensions on BuildContext {
   }
 
   EdgeInsets responsiveEdgeInsets({
-    @required EdgeInsets onMobile,
-    @required EdgeInsets onTablet,
-    @required EdgeInsets onDesktop,
+    required EdgeInsets onMobile,
+    required EdgeInsets onTablet,
+    required EdgeInsets onDesktop,
   }) {
     return isMobile
         ? onMobile
@@ -49,9 +63,9 @@ extension ContextExtensions on BuildContext {
   }
 
   Widget responsiveWidget({
-    @required Widget onMobile,
-    @required Widget onTablet,
-    @required Widget onDesktop,
+    required Widget onMobile,
+    required Widget onTablet,
+    required Widget onDesktop,
   }) {
     return isMobile
         ? onMobile
@@ -61,14 +75,15 @@ extension ContextExtensions on BuildContext {
   }
 }
 
-extension StringExtensions on String {
-  bool get isBlank => this == null || trim().isEmpty;
+extension NullableStringExtensions on String? {
+  bool get isNotBlank => this != null && this!.trim().isNotEmpty;
 
-  bool get isNotBlank => this != null && trim().isNotEmpty;
+  bool get isBlank => !isNotBlank;
 
-  bool get isValidEmail => RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(this);
+  bool get isValidEmail =>
+      isNotBlank &&
+      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          .hasMatch(this!);
 }
 
 extension WidgetExtensions on Widget {
