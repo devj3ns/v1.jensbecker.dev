@@ -1,10 +1,44 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/home/navbar/language_selection.dart';
 
 import '../home.dart';
 
-class MobileNavBarPopup extends StatelessWidget {
-  const MobileNavBarPopup(this.scrollToSection);
+class MobileNavBar extends StatelessWidget {
+  const MobileNavBar(this.scrollToSection);
+  final Function(Section) scrollToSection;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        const Text(
+          'Jens Becker',
+          style: TextStyle(color: Colors.white, fontSize: 35),
+        ),
+        const Expanded(child: SizedBox()),
+        IconButton(
+          onPressed: () => Navigator.push<void>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => _MobileNavBarPopup(scrollToSection),
+            ),
+          ),
+          icon: const FaIcon(
+            FontAwesomeIcons.bars,
+            color: Colors.white,
+            size: 30,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _MobileNavBarPopup extends StatelessWidget {
+  const _MobileNavBarPopup(this.scrollToSection);
   final Function(Section) scrollToSection;
 
   @override
@@ -32,27 +66,32 @@ class MobileNavBarPopup extends StatelessWidget {
               ],
             ),
             const Expanded(child: SizedBox()),
-            _SectionButton(
-              name: 'Projekte',
+            _MobileNavBarSectionButton(
+              name: tr('navbar_projects'),
               section: Section.projects,
               scrollToSection: scrollToSection,
             ),
-            _SectionButton(
-              name: 'Über mich',
+            _MobileNavBarSectionButton(
+              name: tr('navbar_about-me'),
               section: Section.about,
               scrollToSection: scrollToSection,
             ),
-            _SectionButton(
-              name: 'Tools',
+            _MobileNavBarSectionButton(
+              name: tr('navbar_tools'),
               section: Section.tools,
               scrollToSection: scrollToSection,
             ),
-            _SectionButton(
-              name: 'Kontakt',
+            _MobileNavBarSectionButton(
+              name: tr('navbar_contact'),
               section: Section.contact,
               scrollToSection: scrollToSection,
             ),
             const Expanded(child: SizedBox()),
+            const SizedBox(height: 15),
+            const LanguageSelection(
+              textColor: Colors.black,
+              dropdownColor: Colors.white,
+            ),
           ],
         ),
       ),
@@ -60,8 +99,8 @@ class MobileNavBarPopup extends StatelessWidget {
   }
 }
 
-class _SectionButton extends StatelessWidget {
-  const _SectionButton({
+class _MobileNavBarSectionButton extends StatelessWidget {
+  const _MobileNavBarSectionButton({
     required this.name,
     required this.section,
     required this.scrollToSection,

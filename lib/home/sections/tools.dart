@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/extensions.dart';
@@ -10,10 +11,9 @@ class ToolsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Section(
       title: context.isMobile
-          ? 'Programmiersprachen\n& Tools'
-          : 'Programmiersprachen & Tools',
-      subtitle:
-          'Mit diesen Tools habe ich die letzten Jahre Erfahrung gesammelt.',
+          ? tr('tools_section_title_mobile')
+          : tr('tools_section_title'),
+      subtitle: tr('tools_section_subtitle'),
       child: ShadowBox(
         child: context.responsiveWidget(
           onMobile: _MobileTools(),

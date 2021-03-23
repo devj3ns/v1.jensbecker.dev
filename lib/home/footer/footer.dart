@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 
@@ -8,10 +9,6 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(fontSize: 17, color: Colors.blueGrey[200]);
-
-    // HINT: With HTML renderer the navigation to the pages does not work
-    // (Page freezes and crashes)!
-    // The beamer package owner has no idea why this happens
 
     return ColoredBox(
       color: Colors.grey[100]!,
@@ -40,7 +37,7 @@ class Footer extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Impressum',
+                  tr('footer_imprint'),
                   style: textStyle,
                 ),
               ),
@@ -50,20 +47,18 @@ class Footer extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Datenschutz',
+                  tr('footer_privacy'),
                   style: textStyle,
                 ),
               ),
             ),
             TextButton(
-              onPressed: () => context.beamTo(
-                LicenceLocation(),
-                beamBackOnPop: true,
-              ),
+              onPressed: () =>
+                  context.beamTo(LicenceLocation(), beamBackOnPop: true),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Lizenzen',
+                  tr('footer_licences'),
                   style: textStyle,
                 ),
               ),

@@ -28,7 +28,7 @@ class Mailer {
     await _emailsCollection.add(emailDoc);
     debugPrint('Done!');
 
-    // with a small delay it feels more natural
+    // With a small delay it feels more natural
     await Future<void>.delayed(const Duration(milliseconds: 500));
   }
 }

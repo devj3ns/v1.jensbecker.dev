@@ -1,0 +1,69 @@
+{
+  "back-tooltip": "Back",
+
+  "navbar_projects": "Projects",
+  "navbar_about-me": "About me",
+  "navbar_tools": "Tools",
+  "navbar_contact": "Contact",
+
+  "projects_section_title": "My last projects",
+  "projects_section_subtitle": "A selection of projects I've recently worked on.",
+  "projects_section_learn-more": "Learn more",
+
+  "about-me_section_title": "About me",
+  "about-me_section_text": "my name is Jens Becker, I'm {age} years old and a self-employed IT-Freelancer with a focus on software development. \n\nIn 2020 I started my own business and have worked on many projects since then. Including apps, web apps, news bots and websites.\n\nBut even before I was self-employed, I gained many years of experience in programming and working on my own projects.",
+
+  "tools_section_title": "Programming languages & tools",
+  "tools_section_title_mobile": "Programming languages\n& tools",
+  "tools_section_subtitle": "With these tools I have gained experience over the last few years.",
+
+  "contact_section_title": "Contact",
+  "contact_section_subtitle": "I look forward to hearing from you!",
+  "contact_section_first-column_title": "Contact information",
+  "contact_section_first-column_subtitle": "Fill out the contact form and I will get back to you as soon as possible.",
+  "contact_section_form_first-name_placeholder": "First name",
+  "contact_section_form_first-name_validator": "Please enter your first name.",
+  "contact_section_form_last-name_placeholder": "Last name",
+  "contact_section_form_last-name_validator": "Please enter your last name.",
+  "contact_section_form_email_placeholder": "E-Mail",
+  "contact_section_form_email_validator": "Please enter a valid e-mail.",
+  "contact_section_form_phone_placeholder": "Phone (optional)",
+  "contact_section_form_message_placeholder": "Message",
+  "contact_section_form_message_validator": "Please enter your message.",
+  "contact_section_form_send-button": "Send message",
+  "contact_section_form_successfully-sent": "The message was sent successfully!",
+
+  "footer_imprint": "Imprint",
+  "footer_privacy": "Privacy",
+  "footer_licences": "Licences",
+
+  "projects_nestwaerme-kita-app_name": "Nestwärme Kindergarten App",
+  "projects_nestwaerme-kita-app_brief-description": "An app for the Nestwärme Kindergarten to inform the parents easily and in real time.",
+  "projects_nestwaerme-kita-app_description": "The association nestwärme e.V. has an inclusive child flu in Trier and was looking for a way to reach and inform parents digitally in an uncomplicated way and in real time. This is how the Nestwärme KiTa app was created.\n\nThe app offers the following functions:\n• News: This is where the entire KiTa is displayed. In addition to text, these can also contain an attachment or link. In addition, messages can (and should) be marked as read after they have been read.\n• Group feed: Group-specific messages are displayed here. These can only be seen by parents of children in the same group.\n• Private feed: Here educators can write messages directly to parents.\n• Calendar: All upcoming appointments can be viewed on the calendar page. In addition, similar to the messages, a response (participation cancellation) can be sent.\n• Unsubscribe child: On the 'My child' page, parents can send their child for today (until 9 a.m.) or the next day (from 4 p.m.) sign out. Delays can also be entered here.\n\nThe app was created in early 2021 in collaboration with Nils Lauterbach.",
+  "projects_nestwaerme-kita-app_tags": "nestwärme e.V.,Kindergarden,Communication",
+
+  "projects_nestwaerme-blickwechsel-buchungsassistent_name": "Nestwärme Blickwechsel booking assistant",
+  "projects_nestwaerme-blickwechsel-buchungsassistent_brief-description": "A booking assistant website for the Blickwechsel project by nestwärme e.V. to be able to book a coaching online.",
+  "projects_nestwaerme-blickwechsel-buchungsassistent_description": "Nestwärme bietet mit ihrem „Blickwechsel“ Projekt, emotionale Unterstützung und Hilfe zur Selbsthilfe an – diskret und behutsam. Siehe https://mein-blickwechsel.de\n\n\nEs gibt mehrere Coaches, die bestimmte Themenschwerpunkte haben. Damit einfach und unkompliziert Termine gebucht werden können, habe ich einen Buchungsassistenten entwickelt, bei welchem man Schritt für Schritt zur Terminbuchung geleitet wird.\nSo bekommt man zum Beispiel für sein Thema alle passenden Termine angezeigt und kann einfach jenen wählen, welcher am besten in den eigenen Terminkalender passt.\n\nDie Coaches können ihre verfügbaren Zeiträume auf einer extra Seite angeben und werden dann benachrichtigt, sobald sich jemand für ein Coaching bei Ihnen angemeldet hat.\n\n\nDas Projekt ist Anfang 2021 in Zusammenarbeit mit Nils Lauterbach entstanden.",
+  "projects_nestwaerme-blickwechsel-buchungsassistent_tags": "nestwärme e.V.,Blickwechsel,Coachings",
+
+  "projects_muskelwerkstatt-mehr-performance-onlinebereich_name": "Muskelwerkstatt More Performance Online Area",
+  "projects_muskelwerkstatt-mehr-performance-onlinebereich_brief-description": "An online area for those exercising is the Muskelwerkstatt.",
+  "projects_muskelwerkstatt-mehr-performance-onlinebereich_description": "In the muscle workshop, Sascha Telen works with his muscle workers on their bodies, their fitness and their performance.\n\nIn order to offer his muscle workers a platform on which they can easily access all important information, documents, tips, training plans, etc. I have developed the More Performance Online area.\n\nThe online area offers the following functions:\n\n• Being able to see and track current measured values and goals.\n• Calendar in which you can enter when you are training was.\n• Daily tracker, through which you can track your diet, sleep, exercise and mood every day.\n• View personal documents and training plans.\n• Search and view videos with training exercises, etc.\n• Get in contact with Sascha Telen via a chat.\n\nThe project was created in mid-2020 in collaboration with Nils Lauterbach and is expanded with new functions from time to time.",
+  "projects_muskelwerkstatt-mehr-performance-onlinebereich_tags": "Muskelwerkstatt,Sport,Online area",
+
+  "projects_fleischerei-martin-click-und-collect_name": "Fleischerei Martin Click & Collect",
+  "projects_fleischerei-martin-click-und-collect_brief-description": "A Click & Collect page for the Fleischerei Martin.",
+  "projects_fleischerei-martin-click-und-collect_description": "Due to the current situation, the Fleischerei Martin wanted to offer its customers another option for simple, uncomplicated ordering.\n\nTherefore, I have developed a page on which customers can easily and conveniently place their order around the clock and so on the next On the day the order is ready for collection in the store.\n\nThe project was created at the end of 2020 in cooperation with Nils Lauterbach and has been used by customers since then.",
+  "projects_fleischerei-martin-click-und-collect_tags": "Fleischerei Martin,Click & Collect",
+
+  "projects_martin-ternes-mandantenportal_name": "Martin Ternes client portal",
+  "projects_martin-ternes-mandantenportal_brief-description": "A client portal for the transfer of receipts and other documents for the accounting office of Martin Ternes.",
+  "projects_martin-ternes-mandantenportal_description": "Martin Ternes is an accountant based in Luxembourg. He needed a portal for his clients through which they could send him their receipts and other documents electronically. So there is a central location for his clients for documents that he or she has uploaded for you.\n\nThe project was created at the end of 2020 in collaboration with Nils Lauterbach.",
+  "projects_martin-ternes-mandantenportal_tags": "Martin Ternes,Client portal",
+
+  "projects_trading-newsbots_name": "Trading Newsbots",
+  "projects_trading-newsbots_brief-description": "Newsbots that search the Internet and social media for news relevant to the stock market.",
+  "projects_trading-newsbots_description": "For the successful news trader and trader coach Norman Stolze, I programmed several newsbots that search the Internet and social media for news relevant to the stock market. The enormous amount of all data is then filtered and analyzed in order to show only the relevant news to him and his traders bundled in a Telegram channel.\nThanks to the bots, traders have all exchange-relevant news on their screen in real time and can react to them.\n\nThe collaboration with Norman Stolze has existed since 2020.",
+  "projects_trading-newsbots_tags": "Norman Stolze,Trading,Newsbots"
+}

@@ -4,7 +4,7 @@ class Project {
     required this.name,
     required this.tags,
     required this.tools,
-    required this.descriptionShort,
+    required this.briefDescription,
     required this.description,
     required this.iconUrl,
     required this.mockupUrl,
@@ -15,8 +15,8 @@ class Project {
   final String id;
   final String name;
   final List<String> tools;
-  final List<String> tags;
-  final String descriptionShort;
+  final String tags;
+  final String briefDescription;
   final String description;
   final String iconUrl;
   final String mockupUrl;

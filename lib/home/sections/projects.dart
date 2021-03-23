@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../shared/shared_widgets.dart';
 import '../projects/projects.dart';
@@ -8,9 +9,8 @@ class ProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Section(
-      title: 'Meine letzten Projekte',
-      subtitle:
-          'Eine Auswahl an Projekten, an denen ich zuletzt gearbeitet habe.',
+      title: tr('projects_section_title'),
+      subtitle: tr('projects_section_subtitle'),
       doubleTopMargin: true,
       child: ShadowBox(
         child: Wrap(

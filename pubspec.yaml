@@ -21,6 +21,7 @@ dependencies:
   flutter_hooks: ^0.16.0
   flutter_html: ^2.0.0-nullsafety.0
   flutter_svg: ^0.21.0-nullsafety.0
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +32,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/translations/

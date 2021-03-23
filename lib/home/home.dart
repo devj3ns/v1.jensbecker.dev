@@ -70,9 +70,6 @@ class _HomePageState extends State<HomePage> {
       Footer(),
     ];
 
-    // I removed the scrollbar because on mobile it had some problems with the textfield
-    // and it did not work that well on desktop too (https://github.com/flutter/flutter/issues/70866)
-    // see the old code with the scrollbar down below
     return Scaffold(
       body: ListView.builder(
         controller: controller,
@@ -80,6 +77,9 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (context, index) => sections.elementAt(index),
       ),
     );
+
+    // I removed the scrollbar because on mobile it had some problems with the textfield
+    // and it did not work that well on desktop too (see https://github.com/flutter/flutter/issues/70866)
 
     /*return Scaffold(
       body: Scrollbar(

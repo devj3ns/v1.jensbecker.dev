@@ -20,6 +20,7 @@ class ProjectDetailPage extends StatelessWidget {
     final verticalPadding = context.isMobile ? 25.0 : 75.0;
     final horizontalImagePadding =
         context.isMobile ? 0.0 : horizontalPadding / 2;
+    final locale = context.locale == const Locale('de') ? 'de' : 'en';
 
     return Scaffold(
       body: Center(
@@ -33,7 +34,7 @@ class ProjectDetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  tooltip: 'Zurück',
+                  tooltip: tr('back-tooltip'),
                   onPressed: () {
                     Beamer.of(context).canBeamBack
                         ? context.beamBack()
@@ -54,6 +55,7 @@ class ProjectDetailPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
+            // todo: Translate mockups
             Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalImagePadding),
               child: ClipRRect(
@@ -81,9 +83,8 @@ class ProjectDetailPage extends StatelessWidget {
                 runSpacing: 4,
                 spacing: 4,
                 children: project.tags
-                    .map(
-                      (tag) => TextChip(text: tag),
-                    )
+                    .split(',')
+                    .map((tag) => TextChip(text: tag))
                     .toList(),
               ),
             ),
@@ -93,11 +94,8 @@ class ProjectDetailPage extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 runSpacing: 4,
                 spacing: 4,
-                children: project.tools
-                    .map(
-                      (tag) => TextChip(text: tag),
-                    )
-                    .toList(),
+                children:
+                    project.tools.map((tag) => TextChip(text: tag)).toList(),
               ),
             ),
             const SizedBox(height: 30),
@@ -117,7 +115,8 @@ class ProjectDetailPage extends StatelessWidget {
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.playStoreUrl!),
-                        child: Image.network('/assets/play_store_badge.png'),
+                        child: Image.network(
+                            '/assets/badges/$locale/play_store_badge.png'),
                       ),
                     ),
                   if (project.appStoreUrl.isNotBlank) ...[
@@ -126,7 +125,8 @@ class ProjectDetailPage extends StatelessWidget {
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.appStoreUrl!),
-                        child: Image.network('/assets/app_store_badge.png'),
+                        child: Image.network(
+                            '/assets/badges/$locale/app_store_badge.png'),
                       ),
                     ),
                   ]

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,8 +16,8 @@ class ContactSection extends StatelessWidget {
     final horizontalMargin = context.screenWidth > 1500 ? 80.0 : 0.0;
 
     return Section(
-      title: 'Kontakt',
-      subtitle: 'Ich freue mich von Ihnen zu hören!',
+      title: tr('contact_section_title'),
+      subtitle: tr('contact_section_subtitle'),
       doubleBottomMargin: true,
       child: RoundedBox(
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
@@ -75,7 +76,7 @@ class _Column1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SelectableText(
-              'Kontaktinformationen',
+              tr('contact_section_first-column_title'),
               style: TextStyle(
                 fontSize: titleFontSize,
                 fontWeight: FontWeight.bold,
@@ -83,9 +84,9 @@ class _Column1 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const SelectableText(
-              'Füllen Sie das Kontaktformular aus, und ich werde mich zeitnah bei Ihnen melden.',
-              style: TextStyle(
+            SelectableText(
+              tr('contact_section_first-column_subtitle'),
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white70,
               ),
@@ -169,9 +170,9 @@ class _Column2 extends HookWidget {
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SelectableText(
-                'Die Nachricht wurde erfolgreich versandt!',
-                style: TextStyle(fontSize: 17),
+              SelectableText(
+                tr('contact_section_form_successfully-sent'),
+                style: const TextStyle(fontSize: 17),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
@@ -193,10 +194,11 @@ class _Column2 extends HookWidget {
                         child: TextFormField(
                           keyboardType: TextInputType.name,
                           controller: firstNameController,
-                          decoration:
-                              const InputDecoration(labelText: 'Vorname'),
+                          decoration: InputDecoration(
+                              labelText: tr(
+                                  'contact_section_form_first-name_placeholder')),
                           validator: (value) => value.isBlank
-                              ? 'Bitte gib deinen Vornamen ein.'
+                              ? tr('contact_section_form_first-name_validator')
                               : null,
                         ),
                       ),
@@ -207,10 +209,11 @@ class _Column2 extends HookWidget {
                         child: TextFormField(
                           keyboardType: TextInputType.name,
                           controller: lastNameController,
-                          decoration:
-                              const InputDecoration(labelText: 'Nachname'),
+                          decoration: InputDecoration(
+                              labelText: tr(
+                                  'contact_section_form_last-name_placeholder')),
                           validator: (value) => value.isBlank
-                              ? 'Bitte gib deinen Nachnamen ein.'
+                              ? tr('contact_section_form_last-name_validator')
                               : null,
                         ),
                       ),
@@ -225,10 +228,11 @@ class _Column2 extends HookWidget {
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
-                          decoration:
-                              const InputDecoration(labelText: 'E-Mail'),
+                          decoration: InputDecoration(
+                              labelText:
+                                  tr('contact_section_form_email_placeholder')),
                           validator: (value) => !value.isValidEmail
-                              ? 'Bitte gib eine valide E-Mail Adresse ein.'
+                              ? tr('contact_section_form_email_validator')
                               : null,
                         ),
                       ),
@@ -239,8 +243,9 @@ class _Column2 extends HookWidget {
                         child: TextFormField(
                           keyboardType: TextInputType.phone,
                           controller: telController,
-                          decoration: const InputDecoration(
-                              labelText: 'Telefon (optional)'),
+                          decoration: InputDecoration(
+                              labelText:
+                                  tr('contact_section_form_phone_placeholder')),
                         ),
                       ),
                     ),
@@ -253,12 +258,13 @@ class _Column2 extends HookWidget {
                     minLines: 4,
                     maxLines: null,
                     controller: messageController,
-                    decoration: const InputDecoration(
-                      labelText: 'Nachricht',
+                    decoration: InputDecoration(
+                      labelText: tr('contact_section_form_message_placeholder'),
                       alignLabelWithHint: true,
                     ),
-                    validator: (value) =>
-                        value.isBlank ? 'Bitte gib deine Nachricht ein.' : null,
+                    validator: (value) => value.isBlank
+                        ? tr('contact_section_form_message_validator')
+                        : null,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -267,7 +273,7 @@ class _Column2 extends HookWidget {
                         child: CircularProgressIndicator(),
                       )
                     : Button(
-                        text: 'Nachricht senden',
+                        text: tr('contact_section_form_send-button'),
                         iconData: FontAwesomeIcons.paperPlane,
                         onPressed: onFormSubmitted,
                       ),

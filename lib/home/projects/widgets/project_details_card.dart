@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 
@@ -52,16 +53,16 @@ class ProjectDetailsCard extends StatelessWidget {
             Chips(project: project),
             const SizedBox(height: 10),
             SelectableText(
-              project.descriptionShort,
+              project.briefDescription,
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 5),
             Center(
               child: TextButton(
                 onPressed: () => context.beamTo(ProjectLocation(project.id)),
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text('MEHR ERFAHREN'),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(tr('projects_section_learn-more').toUpperCase()),
                 ),
               ).floatOnHover(),
             ),
@@ -86,24 +87,12 @@ class Chips extends StatelessWidget {
           runSpacing: 4,
           spacing: 4,
           children: project.tags
+              .split(',')
               .map(
                 (tag) => TextChip(text: tag),
               )
               .toList(),
         ),
-        /*const SizedBox(height: 10),
-        Wrap(
-          alignment: WrapAlignment.center,
-          runSpacing: 4,
-          spacing: 4,
-          children: project.tools
-              .map(
-                (tag) => TextChip(
-                  text: SelectableText(tag),
-                ),
-              )
-              .toList(),
-        ),*/
       ],
     );
   }

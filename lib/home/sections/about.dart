@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/shared/shared_widgets.dart';
 
@@ -8,7 +9,7 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Section(
-      title: 'Über mich',
+      title: tr('about-me_section_title'),
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         runSpacing: 30,
@@ -53,14 +54,15 @@ class _Text extends StatelessWidget {
   const _Text({required this.width});
   final double width;
 
-  int get jensAge {
+  String get jensAge {
     final birthday = DateTime(2001, 11, 16);
     final today = DateTime.now();
 
-    return DateTime.fromMillisecondsSinceEpoch(
-                today.difference(birthday).inMilliseconds)
-            .year -
-        1970;
+    return (DateTime.fromMillisecondsSinceEpoch(
+                    today.difference(birthday).inMilliseconds)
+                .year -
+            1970)
+        .toString();
   }
 
   @override
@@ -79,9 +81,7 @@ class _Text extends StatelessWidget {
             ],
           ),
           SelectableText(
-            'mein Name ist Jens Becker, ich bin $jensAge Jahre alt und selbstständiger IT-Freelancer mit Schwerpunkt Softwareentwicklung.\n\n'
-            'Im Jahr 2020 habe ich mich selbstständig gemacht und seitdem schon viele Projekte umgesetzt. Darunter Apps, Web-Apps, News-Bots und Webseiten für Kunden/Firmen.\n\n'
-            'Aber auch bevor ich selbstständig war, habe ich viele Jahre Erfahrung beim Programmieren und Umsetzten eigener Projekte gesammelt.',
+            tr('about-me_section_text', namedArgs: {'age': jensAge}),
             style: const TextStyle(fontSize: 18),
           ),
         ],
