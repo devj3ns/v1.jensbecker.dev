@@ -8,15 +8,13 @@ import 'pages/privacy_page.dart';
 
 final beamLocations = <BeamLocation>[
   HomeLocation(),
-  ProjectLocation(pathParameters: {}),
+  ProjectLocation(''),
   ImprintLocation(),
   PrivacyLocation(),
   LicenceLocation(),
 ];
 
 class HomeLocation extends BeamLocation {
-  HomeLocation() : super(pathBlueprint: '/');
-
   @override
   List<String> get pathBlueprints => ['/'];
 
@@ -30,36 +28,48 @@ class HomeLocation extends BeamLocation {
 }
 
 class ProjectLocation extends BeamLocation {
-  ProjectLocation({
-    required Map<String, String> pathParameters,
-  }) : super(
-          pathBlueprint: '/projects/:projectId/',
-          pathParameters: pathParameters,
+  ProjectLocation(String projectId)
+      : super(
+          state: BeamState(
+            pathBlueprintSegments: ['projects', ':projectId'],
+            pathParameters: {'projectId': projectId},
+          ),
         );
 
-  @override
-  List<String> get pathBlueprints => ['/projects/:projectId/'];
+  Project? get project {
+    if (state.pathParameters.containsKey('projectId')) {
+      final index = projects.indexWhere(
+          (project) => project.id == state.pathParameters['projectId']);
+
+      if (index != -1) {
+        return projects[index];
+      }
+    }
+  }
 
   @override
-  List<BeamPage> pagesBuilder(BuildContext? context) => [
+  List<String> get pathBlueprints => ['projects/:projectId'];
+
+  @override
+  List<BeamPage> pagesBuilder(BuildContext context) => [
         ...HomeLocation().pagesBuilder(context),
-        BeamPage(
-          key: ValueKey(pathParameters['projectId']),
-          child: ProjectDetailPage(
-            id: (pathParameters['projectId'])!,
+        if (project != null)
+          BeamPage(
+            key: ValueKey('project-${project!.id}'),
+            child: ProjectDetailPage(project!),
           ),
-        ),
       ];
 }
 
 class ImprintLocation extends BeamLocation {
-  ImprintLocation() : super(pathBlueprint: '/impressum/');
+  ImprintLocation()
+      : super(state: BeamState(pathBlueprintSegments: ['impressum']));
 
   @override
-  List<String> get pathBlueprints => ['/impressum/'];
+  List<String> get pathBlueprints => ['impressum'];
 
   @override
-  List<BeamPage> pagesBuilder(BuildContext? context) => [
+  List<BeamPage> pagesBuilder(BuildContext context) => [
         ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('imprint'),
@@ -69,13 +79,14 @@ class ImprintLocation extends BeamLocation {
 }
 
 class PrivacyLocation extends BeamLocation {
-  PrivacyLocation() : super(pathBlueprint: '/datenschutz/');
+  PrivacyLocation()
+      : super(state: BeamState(pathBlueprintSegments: ['datenschutz']));
 
   @override
-  List<String> get pathBlueprints => ['/datenschutz/'];
+  List<String> get pathBlueprints => ['datenschutz'];
 
   @override
-  List<BeamPage> pagesBuilder(BuildContext? context) => [
+  List<BeamPage> pagesBuilder(BuildContext context) => [
         ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('privacy'),
@@ -85,13 +96,14 @@ class PrivacyLocation extends BeamLocation {
 }
 
 class LicenceLocation extends BeamLocation {
-  LicenceLocation() : super(pathBlueprint: '/lizenzen/');
+  LicenceLocation()
+      : super(state: BeamState(pathBlueprintSegments: ['lizenzen']));
 
   @override
-  List<String> get pathBlueprints => ['/lizenzen/'];
+  List<String> get pathBlueprints => ['lizenzen'];
 
   @override
-  List<BeamPage> pagesBuilder(BuildContext? context) => [
+  List<BeamPage> pagesBuilder(BuildContext context) => [
         ...HomeLocation().pagesBuilder(context),
         BeamPage(
           key: const ValueKey('licences'),

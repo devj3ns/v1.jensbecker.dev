@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,12 +9,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 import '../../projects/models/project.dart';
-import '../data/projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
-  ProjectDetailPage({required this.id})
-      : project = projects.firstWhere((project) => project.id == id);
-  final String id;
+  const ProjectDetailPage(this.project);
   final Project project;
 
   @override

@@ -58,11 +58,7 @@ class ProjectDetailsCard extends StatelessWidget {
             const SizedBox(height: 5),
             Center(
               child: TextButton(
-                onPressed: () => context.beamTo(
-                  ProjectLocation(
-                    pathParameters: {'projectId': project.id},
-                  ),
-                ),
+                onPressed: () => context.beamTo(ProjectLocation(project.id)),
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text('MEHR ERFAHREN'),
