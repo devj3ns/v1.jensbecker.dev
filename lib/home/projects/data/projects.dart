@@ -3,8 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import '../models/project.dart';
 
 String _getMockupPath(String imageName) =>
-    '/assets/projects/mockups/$imageName';
-String _getIconPath(String imageName) => '/assets/projects/icons/$imageName';
+    'assets/images/projects/mockups/$imageName';
+String _getIconPath(String imageName) =>
+    'assets/images/projects/icons/$imageName';
 
 // This is a getter and not just a variable because then the translations wouldn't get updated
 List<Project> get projects => [

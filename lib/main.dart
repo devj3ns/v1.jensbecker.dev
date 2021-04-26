@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -23,7 +22,7 @@ void main() async {
         const Locale('en'),
       ],
       fallbackLocale: const Locale('en'),
-      path: kDebugMode ? 'translations' : 'assets/translations',
+      path: 'assets/translations',
       child: MyApp(),
     ),
   );

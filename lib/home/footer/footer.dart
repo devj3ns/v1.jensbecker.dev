@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 
-import '../../locations.dart';
 import '../../shared/extensions.dart';
 
 class Footer extends StatelessWidget {
@@ -33,7 +32,7 @@ class Footer extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => context.beamTo(ImprintLocation()),
+              onPressed: () => context.beamToNamed('/impressum'),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -43,7 +42,7 @@ class Footer extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => context.beamTo(PrivacyLocation()),
+              onPressed: () => context.beamToNamed('/datenschutz'),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -53,8 +52,7 @@ class Footer extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () =>
-                  context.beamTo(LicenceLocation(), beamBackOnPop: true),
+              onPressed: () => context.beamToNamed('/lizenzen'),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

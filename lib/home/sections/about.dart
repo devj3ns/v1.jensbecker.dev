@@ -40,8 +40,8 @@ class _Image extends StatelessWidget {
       child: const ShadowBox(
         borderRadius: 100,
         child: CircleAvatar(
-          backgroundImage: NetworkImage(
-            'assets/jensbecker_small.jpg',
+          backgroundImage: AssetImage(
+            'assets/images/jensbecker_small.jpg',
           ),
           backgroundColor: Colors.transparent,
         ),

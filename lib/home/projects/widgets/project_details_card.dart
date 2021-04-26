@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 
-import '../../../locations.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 import '../models/project.dart';
@@ -34,7 +33,7 @@ class ProjectDetailsCard extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     height: 50,
-                    child: Image.network(
+                    child: Image.asset(
                       project.iconUrl,
                     ),
                   ),
@@ -59,7 +58,7 @@ class ProjectDetailsCard extends StatelessWidget {
             const SizedBox(height: 5),
             Center(
               child: TextButton(
-                onPressed: () => context.beamTo(ProjectLocation(project.id)),
+                onPressed: () => context.beamToNamed('projects/${project.id}'),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(tr('projects_section_learn-more').toUpperCase()),

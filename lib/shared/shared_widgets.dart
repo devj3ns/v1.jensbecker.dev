@@ -4,16 +4,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'extensions.dart';
 
+enum AlignIcon { beforeText, afterText }
+
 class Button extends StatelessWidget {
   const Button({
     required this.text,
     required this.onPressed,
+    this.alignIcon = AlignIcon.afterText,
     this.margin = const EdgeInsets.all(6.0),
     this.iconData,
   });
 
   final String text;
   final VoidCallback onPressed;
+  final AlignIcon alignIcon;
   final EdgeInsets margin;
   final IconData? iconData;
 
@@ -33,11 +37,19 @@ class Button extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              if (iconData != null && alignIcon == AlignIcon.beforeText) ...[
+                FaIcon(
+                  iconData,
+                  color: Colors.white,
+                  size: 17,
+                ),
+                const SizedBox(width: 10.0),
+              ],
               Text(
                 text,
                 style: const TextStyle(color: Colors.white, fontSize: 17),
               ),
-              if (iconData != null) ...[
+              if (iconData != null && alignIcon == AlignIcon.afterText) ...[
                 const SizedBox(width: 10.0),
                 FaIcon(
                   iconData,
@@ -209,18 +221,27 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
   }
 }
 
-class AnimateTranslate extends StatefulWidget {
-  const AnimateTranslate({
+class AnimateVerticalTranslate extends StatefulWidget {
+  const AnimateVerticalTranslate({
     required this.child,
+    required this.duration,
+    this.tweenBegin = -2.0,
+    this.tweenEnd = 2.0,
+    this.repeat = true,
   });
 
   final Widget child;
+  final Duration duration;
+  final double tweenBegin;
+  final double tweenEnd;
+  final bool repeat;
 
   @override
-  _AnimateTranslateState createState() => _AnimateTranslateState();
+  _AnimateVerticalTranslateState createState() =>
+      _AnimateVerticalTranslateState();
 }
 
-class _AnimateTranslateState extends State<AnimateTranslate>
+class _AnimateVerticalTranslateState extends State<AnimateVerticalTranslate>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
@@ -229,14 +250,16 @@ class _AnimateTranslateState extends State<AnimateTranslate>
   void initState() {
     super.initState();
     controller = AnimationController(
-      duration: const Duration(milliseconds: 750),
+      duration: widget.duration,
       vsync: this,
     )..addListener(() => setState(() {}));
 
     final Animation<double> curve =
-        CurvedAnimation(parent: controller, curve: Curves.easeInOutSine);
-    animation = Tween(begin: -2.0, end: 2.0).animate(curve);
-    controller.repeat(reverse: true);
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    animation =
+        Tween(begin: widget.tweenBegin, end: widget.tweenEnd).animate(curve);
+
+    if (widget.repeat) controller.repeat(reverse: true);
   }
 
   @override
@@ -339,8 +362,8 @@ class WinkingHandEmoji extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: SvgPicture.network(
-        'assets/emoji_u1f44b.svg',
+      child: SvgPicture.asset(
+        'assets/images/emoji_u1f44b.svg',
         semanticsLabel: 'Winking hand emoji',
       ),
     );

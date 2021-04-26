@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/locations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 import '../../projects/models/project.dart';
+import '../projects.dart';
 
 class ProjectDetailPage extends StatelessWidget {
   const ProjectDetailPage(this.project);
@@ -16,6 +16,8 @@ class ProjectDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (project.id == '') context.beamBack();
+
     final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
     final verticalPadding = context.isMobile ? 25.0 : 75.0;
     final horizontalImagePadding =
@@ -36,9 +38,9 @@ class ProjectDetailPage extends StatelessWidget {
                 IconButton(
                   tooltip: tr('back-tooltip'),
                   onPressed: () {
-                    Beamer.of(context).canBeamBack
+                    context.canBeamBack
                         ? context.beamBack()
-                        : context.beamTo(HomeLocation());
+                        : context.beamToNamed('/');
                   },
                   icon: const FaIcon(
                     FontAwesomeIcons.chevronLeft,
@@ -55,24 +57,18 @@ class ProjectDetailPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
-            // todo: Translate mockups
+            // todo: Translate images (mockups).
             Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalImagePadding),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.network(
-                  project.mockupUrl,
-                  fit: BoxFit.fill,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-
-                    return const AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  },
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      project.mockupUrl,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -115,8 +111,8 @@ class ProjectDetailPage extends StatelessWidget {
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.playStoreUrl!),
-                        child: Image.network(
-                            '/assets/badges/$locale/play_store_badge.png'),
+                        child: Image.asset(
+                            'assets/images/badges/$locale/play_store_badge.png'),
                       ),
                     ),
                   if (project.appStoreUrl.isNotBlank) ...[
@@ -125,8 +121,8 @@ class ProjectDetailPage extends StatelessWidget {
                       height: context.isMobile ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.appStoreUrl!),
-                        child: Image.network(
-                            '/assets/badges/$locale/app_store_badge.png'),
+                        child: Image.asset(
+                            'assets/images/badges/$locale/app_store_badge.png'),
                       ),
                     ),
                   ]

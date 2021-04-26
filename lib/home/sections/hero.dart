@@ -19,7 +19,7 @@ class HeroSection extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage('assets/background.png'),
+          image: AssetImage('assets/images/background.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -38,8 +38,8 @@ class HeroSection extends StatelessWidget {
                     width: pictureSize,
                     height: pictureSize,
                     child: const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        'assets/jensbecker_small.jpg',
+                      backgroundImage: AssetImage(
+                        'assets/images/jensbecker_small.jpg',
                       ),
                       backgroundColor: Colors.transparent,
                     ),
@@ -52,7 +52,8 @@ class HeroSection extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: AnimateTranslate(
+            child: AnimateVerticalTranslate(
+              duration: const Duration(milliseconds: 1000),
               child: IconButton(
                 onPressed: () => scrollToSection(Section.projects),
                 icon: const FaIcon(

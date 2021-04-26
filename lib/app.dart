@@ -2,7 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import 'locations.dart';
+import 'routes.dart';
 import 'theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -17,27 +17,25 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      routerDelegate: BeamerRouterDelegate(
-        beamLocations: beamLocations,
-        notFoundRedirect: HomeLocation(),
-      ),
+      routerDelegate: beamerDelegate,
       routeInformationParser: BeamerRouteInformationParser(),
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: MyScrollBehavior(),
-          child: child!,
-        );
-      },
+      builder: (context, child) => ScrollConfiguration(
+        behavior: MyScrollBehavior(),
+        child: child!,
+      ),
     );
   }
 }
 
-/// This is used to remove the scroll glow effect
-/// see https://stackoverflow.com/questions/51119795/how-to-remove-scroll-glow
+/// A custom [ScrollBehavior] which is used to remove the scroll glow effect,
+/// see https://stackoverflow.com/questions/51119795/how-to-remove-scroll-glow.
 class MyScrollBehavior extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+    BuildContext context,
+    Widget child,
+    AxisDirection axisDirection,
+  ) {
     return child;
   }
 }

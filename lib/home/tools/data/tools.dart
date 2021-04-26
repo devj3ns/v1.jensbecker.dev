@@ -1,6 +1,6 @@
 import '../models/tool.dart';
 
-String _getLogoPath(String imageName) => 'assets/tools_icons/$imageName';
+String _getLogoPath(String imageName) => 'assets/images/tools_icons/$imageName';
 
 final tools = [
   Tool(
