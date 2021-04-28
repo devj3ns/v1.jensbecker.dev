@@ -18,6 +18,9 @@ class HeroSection extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(
+        // Fallback color, which is used as background color
+        // when the image is not yet loaded:
+        color: Color.fromRGBO(50, 11, 65, 1),
         image: DecorationImage(
           image: AssetImage('assets/images/background.png'),
           fit: BoxFit.cover,

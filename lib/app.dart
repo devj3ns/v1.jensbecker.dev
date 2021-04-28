@@ -5,8 +5,22 @@ import 'package:easy_localization/easy_localization.dart';
 import 'routes.dart';
 import 'theme.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final title = 'Jens Becker - Digital Creator';
+
+  @override
+  void didChangeDependencies() {
+    // Precache images:
+    precacheImage(const AssetImage('assets/images/background.png'), context);
+    precacheImage(
+        const AssetImage('assets/images/jensbecker_small.jpg'), context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
