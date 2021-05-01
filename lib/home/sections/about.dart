@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/shared/shared_widgets.dart';
 
 import '../../shared/extensions.dart';
+import '../../shared/shared_widgets.dart';
 import '../section.dart';
 
 class AboutSection extends StatelessWidget {

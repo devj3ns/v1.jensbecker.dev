@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/home/navbar/language_selection.dart';
 
 import '../home.dart';
+import '../navbar/language_selection.dart';
 
 class MobileNavBar extends StatelessWidget {
   const MobileNavBar(this.scrollToSection);

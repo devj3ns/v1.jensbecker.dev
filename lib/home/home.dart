@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'footer/footer.dart';
 import 'sections/sections.dart';
@@ -41,6 +42,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // Workaround for https://github.com/devj3ns/portfolio/issues/5
+    final locale = context.locale;
+
     final sections = [
       HeroSection(scrollToSection),
       AutoScrollTag(
