@@ -12,5 +12,8 @@ ThemeData getThemeData(BuildContext context) {
       brightness: Brightness.light,
       primarySwatch: Colors.indigo,
     ),
+    scrollbarTheme: const ScrollbarThemeData().copyWith(
+      thumbColor: MaterialStateProperty.all(Colors.black.withOpacity(0.6)),
+    ),
   );
 }

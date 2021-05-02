@@ -18,11 +18,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late AutoScrollController controller;
+  late AutoScrollController scrollController;
 
   @override
   void initState() {
-    controller = AutoScrollController(
+    scrollController = AutoScrollController(
       viewportBoundaryGetter: () =>
           Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
       axis: Axis.vertical,
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void scrollToSection(SectionEnum section) async {
-    await controller.scrollToIndex(
+    await scrollController.scrollToIndex(
       section.index,
       preferPosition: AutoScrollPosition.begin,
     );
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    controller.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -56,25 +56,25 @@ class _HomePageState extends State<HomePage> {
       AutoScrollTag(
         key: ValueKey(SectionEnum.projects.index),
         index: SectionEnum.projects.index,
-        controller: controller,
+        controller: scrollController,
         child: ProjectsSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.about.index),
         index: SectionEnum.about.index,
-        controller: controller,
+        controller: scrollController,
         child: AboutSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.tools.index),
         index: SectionEnum.tools.index,
-        controller: controller,
+        controller: scrollController,
         child: ToolsSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.contact.index),
         index: SectionEnum.contact.index,
-        controller: controller,
+        controller: scrollController,
         child: ContactSection(),
       ),
       Footer(),
@@ -82,21 +82,20 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: ListView.builder(
-        controller: controller,
+        controller: scrollController,
         itemCount: sections.length,
         itemBuilder: (context, index) => sections.elementAt(index),
       ),
     );
 
-    // todo: https://github.com/devj3ns/portfolio/issues/7
     // I removed the scrollbar because on mobile it had some problems with the textfield
-    // and it did not work that well on desktop too (see https://github.com/flutter/flutter/issues/70866)
+    // and it did not work that well on desktop too (see https://github.com/flutter/flutter/issues/25652)
     /*return Scaffold(
       body: Scrollbar(
         isAlwaysShown: context.isDesktop,
-        controller: controller,
+        controller: scrollController,
         child: ListView.builder(
-          controller: controller,
+          controller: scrollController,
           itemCount: sections.length,
           itemBuilder: (context, index) => sections.elementAt(index),
         ),
