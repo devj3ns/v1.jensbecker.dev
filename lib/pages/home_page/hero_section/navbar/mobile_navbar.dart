@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../home.dart';
+import '../../home_page.dart';
 import '../navbar/language_selection.dart';
 
 class MobileNavBar extends StatelessWidget {
   const MobileNavBar(this.scrollToSection);
-  final Function(Section) scrollToSection;
+  final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class MobileNavBar extends StatelessWidget {
 
 class _MobileNavBarPopup extends StatelessWidget {
   const _MobileNavBarPopup(this.scrollToSection);
-  final Function(Section) scrollToSection;
+  final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
@@ -68,22 +68,22 @@ class _MobileNavBarPopup extends StatelessWidget {
             const Expanded(child: SizedBox()),
             _MobileNavBarSectionButton(
               name: tr('navbar_projects'),
-              section: Section.projects,
+              section: SectionEnum.projects,
               scrollToSection: scrollToSection,
             ),
             _MobileNavBarSectionButton(
               name: tr('navbar_about-me'),
-              section: Section.about,
+              section: SectionEnum.about,
               scrollToSection: scrollToSection,
             ),
             _MobileNavBarSectionButton(
               name: tr('navbar_tools'),
-              section: Section.tools,
+              section: SectionEnum.tools,
               scrollToSection: scrollToSection,
             ),
             _MobileNavBarSectionButton(
               name: tr('navbar_contact'),
-              section: Section.contact,
+              section: SectionEnum.contact,
               scrollToSection: scrollToSection,
             ),
             const Expanded(child: SizedBox()),
@@ -105,16 +105,17 @@ class _MobileNavBarSectionButton extends StatelessWidget {
     required this.section,
     required this.scrollToSection,
   });
+
   final String name;
-  final Section section;
-  final Function(Section) scrollToSection;
+  final SectionEnum section;
+  final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
     void popAndScroll() async {
       Navigator.of(context).pop();
 
-      // it feels more natural with the delay
+      // It feels a bit more natural with this delay.
       await Future<void>.delayed(const Duration(milliseconds: 200));
 
       scrollToSection(section);

@@ -1,6 +1,8 @@
 name: portfolio
 description: Jens Becker portfolio page, visit jensbecker.dev
 
+publish_to: none
+
 version: 1.0.0+1
 
 environment:
@@ -21,6 +23,8 @@ dependencies:
   flutter_html: ^2.0.0-nullsafety.1
   flutter_svg: ^0.22.0
   easy_localization: ^3.0.0
+  flutter_extensions:
+    git: https://github.com/devj3ns/flutter_extensions
 
 dev_dependencies:
   flutter_test:

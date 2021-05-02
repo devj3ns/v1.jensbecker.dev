@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_extensions/flutter_extensions.dart';
 
-import '../../shared/extensions.dart';
-import '../../shared/mailer.dart';
-import '../../shared/shared_widgets.dart';
-import '../section.dart';
-import '../socials_row/socials_row.dart';
+import '../../../shared/extensions.dart';
+import '../../../shared/mailer.dart';
+import '../../../shared/shared_widgets.dart';
+import '../../../shared/socials_row/socials_row.dart';
 
 class ContactSection extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class ContactSection extends StatelessWidget {
     return Section(
       title: tr('contact_section_title'),
       subtitle: tr('contact_section_subtitle'),
-      doubleBottomMargin: true,
+      bottomMarginMultiplier: 2,
       child: RoundedBox(
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
         withShadow: true,
@@ -63,7 +63,7 @@ class _Column1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleFontSize =
-        context.responsiveNumber(onMobile: 20, onTablet: 22, onDesktop: 22);
+        context.responsive<double>(onMobile: 20, onTablet: 22, onDesktop: 22);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -127,7 +127,7 @@ class _Column1 extends StatelessWidget {
               onPressed: () => launch('https://wa.me/+4917623867324'),
             ).floatOnHover(),
             const SizedBox(height: 10),
-            SocialsRowContactForm(),
+            SocialsRowWithoutEmail(),
           ],
         ),
       ),

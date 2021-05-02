@@ -11,8 +11,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final title = 'Jens Becker - Digital Creator';
-
   @override
   void didChangeDependencies() {
     // Precache images:
@@ -25,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: title,
+      title: 'Jens Becker - Digital Creator',
       theme: getThemeData(context),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../shared/extensions.dart';
-import '../../shared/shared_widgets.dart';
-import '../home.dart';
-import '../navbar/navbar.dart';
-import '../socials_row/socials_row.dart';
+import '../../../shared/extensions.dart';
+import '../../../shared/shared_widgets.dart';
+import '../../../shared/socials_row/socials_row.dart';
+import '../home_page.dart';
+import 'navbar/navbar.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection(this.scrollToSection);
-  final Function(Section) scrollToSection;
+  final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class HeroSection extends StatelessWidget {
             children: [
               AnimateScale(
                 child: InkWell(
-                  onTap: () => scrollToSection(Section.about),
+                  onTap: () => scrollToSection(SectionEnum.about),
                   child: SizedBox(
                     width: pictureSize,
                     height: pictureSize,
@@ -58,7 +58,7 @@ class HeroSection extends StatelessWidget {
             child: AnimateVerticalTranslate(
               duration: const Duration(milliseconds: 1000),
               child: IconButton(
-                onPressed: () => scrollToSection(Section.projects),
+                onPressed: () => scrollToSection(SectionEnum.projects),
                 icon: const FaIcon(
                   FontAwesomeIcons.chevronDown,
                   color: Colors.white60,

@@ -1,14 +1,13 @@
 import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_extensions/flutter_extensions.dart';
 
-import '../../../shared/extensions.dart';
-import '../../../shared/shared_widgets.dart';
-import '../../projects/models/project.dart';
-import '../projects.dart';
+import '../shared/extensions.dart';
+import '../shared/shared_widgets.dart';
+import 'home_page/projects_section/models/project.dart';
 
 class ProjectDetailPage extends StatelessWidget {
   const ProjectDetailPage(this.project);
@@ -16,8 +15,6 @@ class ProjectDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (project.id == '') context.beamBack();
-
     final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
     final verticalPadding = context.isMobile ? 25.0 : 75.0;
     final horizontalImagePadding =

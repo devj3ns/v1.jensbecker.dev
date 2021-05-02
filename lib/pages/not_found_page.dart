@@ -10,7 +10,7 @@ class RouteNotFoundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontSize =
-        context.responsiveNumber(onMobile: 25, onTablet: 28, onDesktop: 30);
+        context.responsive<double>(onMobile: 25, onTablet: 28, onDesktop: 30);
 
     return Scaffold(
       body: Center(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_extensions/flutter_extensions.dart';
 
 import 'extensions.dart';
 
@@ -353,18 +353,64 @@ class TextChip extends StatelessWidget {
   }
 }
 
-class WinkingHandEmoji extends StatelessWidget {
-  const WinkingHandEmoji({this.size = 22});
-  final double size;
+class Section extends StatelessWidget {
+  const Section({
+    required this.title,
+    required this.child,
+    this.horizontalMarginMultiplier = 1,
+    this.topMarginMultiplier = 1,
+    this.bottomMarginMultiplier = 1,
+    this.subtitle,
+  });
+
+  final String title;
+  final Widget child;
+  final double horizontalMarginMultiplier;
+  final double topMarginMultiplier;
+  final double bottomMarginMultiplier;
+  final String? subtitle;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: SvgPicture.asset(
-        'assets/images/emoji_u1f44b.svg',
-        semanticsLabel: 'Winking hand emoji',
+    final horizontalMargin = context.responsive<double>(
+            onMobile: 15, onTablet: 50, onDesktop: context.screenWidth / 8) *
+        horizontalMarginMultiplier;
+    final marginTop =
+        context.responsive<double>(onMobile: 20, onTablet: 40, onDesktop: 60) *
+            topMarginMultiplier;
+    final marginBottom = marginTop * bottomMarginMultiplier;
+    final titleFontSize =
+        context.responsive<double>(onMobile: 25, onTablet: 28, onDesktop: 30);
+
+    return Padding(
+      padding: EdgeInsets.only(
+        right: horizontalMargin,
+        left: horizontalMargin,
+        top: marginTop,
+        bottom: marginBottom,
+      ),
+      child: Column(
+        children: [
+          SelectableText(
+            title,
+            style:
+                TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.w400),
+            textAlign: TextAlign.center,
+          ),
+          if (subtitle.isNotBlank) ...[
+            SelectableText(
+              subtitle!,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w200,
+                color: Colors.black45,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+          const SizedBox(height: 25),
+          child,
+        ],
       ),
     );
   }

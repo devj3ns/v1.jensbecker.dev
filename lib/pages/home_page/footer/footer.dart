@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 
-import '../../shared/extensions.dart';
+import '../../../shared/extensions.dart';
 
 class Footer extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class Footer extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Wrap(
           alignment: WrapAlignment.center,
-          spacing: context.responsiveNumber(
+          spacing: context.responsive<double>(
             onMobile: 5,
             onTablet: 30,
             onDesktop: 80,

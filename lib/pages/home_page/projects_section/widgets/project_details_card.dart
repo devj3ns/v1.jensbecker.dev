@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
+import 'package:flutter_extensions/flutter_extensions.dart';
 
-import '../../../shared/extensions.dart';
-import '../../../shared/shared_widgets.dart';
+import '../../../../shared/extensions.dart';
+import '../../../../shared/shared_widgets.dart';
 import '../models/project.dart';
 
 class ProjectDetailsCard extends StatelessWidget {
@@ -12,9 +13,9 @@ class ProjectDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = context.responsiveNullableNumber(
+    final height = context.responsive<double?>(
         onMobile: null, onTablet: 325, onDesktop: 250);
-    final width = context.responsiveNullableNumber(
+    final width = context.responsive<double?>(
         onMobile: null, onTablet: 300, onDesktop: 450);
 
     return SizedBox(

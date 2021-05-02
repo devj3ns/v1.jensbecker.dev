@@ -7,7 +7,7 @@ String _getMockupPath(String imageName) =>
 String _getIconPath(String imageName) =>
     'assets/images/projects/icons/$imageName';
 
-// This is a getter and not just a variable because then the translations wouldn't get updated
+// This is a getter and not just a variable because then the translations wouldn't get updated.
 List<Project> get projects => [
       Project(
         id: 'nestwaerme-kita-app',

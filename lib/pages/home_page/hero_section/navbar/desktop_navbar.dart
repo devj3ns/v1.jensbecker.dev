@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/extensions.dart';
-import '../home.dart';
+import '../../../../shared/extensions.dart';
+import '../../home_page.dart';
 import 'language_selection.dart';
 
 class DesktopNavBar extends StatelessWidget {
   const DesktopNavBar(this.scrollToSection);
-  final Function(Section) scrollToSection;
+  final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class DesktopNavBar extends StatelessWidget {
         ),
         const Expanded(child: SizedBox()),
         InkWell(
-          onTap: () => scrollToSection(Section.projects),
+          onTap: () => scrollToSection(SectionEnum.projects),
           child: Text(
             tr('navbar_projects'),
             style: textStyle,
@@ -32,7 +32,7 @@ class DesktopNavBar extends StatelessWidget {
         ).floatOnHover(),
         SizedBox(width: spacerWith),
         InkWell(
-          onTap: () => scrollToSection(Section.about),
+          onTap: () => scrollToSection(SectionEnum.about),
           child: Text(
             tr('navbar_about-me'),
             style: textStyle,
@@ -40,7 +40,7 @@ class DesktopNavBar extends StatelessWidget {
         ).floatOnHover(),
         SizedBox(width: spacerWith),
         InkWell(
-          onTap: () => scrollToSection(Section.tools),
+          onTap: () => scrollToSection(SectionEnum.tools),
           child: Text(
             tr('navbar_tools'),
             style: textStyle,
@@ -48,7 +48,7 @@ class DesktopNavBar extends StatelessWidget {
         ).floatOnHover(),
         SizedBox(width: spacerWith),
         InkWell(
-          onTap: () => scrollToSection(Section.contact),
+          onTap: () => scrollToSection(SectionEnum.contact),
           child: Text(
             tr('navbar_contact'),
             style: textStyle,

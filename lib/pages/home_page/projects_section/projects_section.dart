@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import '../../shared/shared_widgets.dart';
-import '../projects/projects.dart';
-import '../section.dart';
+import '../../../shared/shared_widgets.dart';
+import 'data/projects.dart';
+import 'widgets/project_details_card.dart';
 
 class ProjectsSection extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class ProjectsSection extends StatelessWidget {
     return Section(
       title: tr('projects_section_title'),
       subtitle: tr('projects_section_subtitle'),
-      doubleTopMargin: true,
+      topMarginMultiplier: 2,
       child: ShadowBox(
         child: Wrap(
           spacing: 12,

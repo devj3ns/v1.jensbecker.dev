@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_extensions/flutter_extensions.dart';
 
-import '../../shared/extensions.dart';
-import '../../shared/shared_widgets.dart';
-import '../section.dart';
+import '../../../shared/extensions.dart';
+import '../../../shared/shared_widgets.dart';
 
 class AboutSection extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class AboutSection extends StatelessWidget {
         children: [
           context.isMobile ? Center(child: _Image()) : _Image(),
           _Text(
-            width: context.responsiveNumber(
+            width: context.responsive<double>(
               onMobile: double.infinity,
               onTablet: context.screenWidth / 2.5,
               onDesktop: context.screenWidth / 3,
@@ -71,13 +72,12 @@ class _Text extends StatelessWidget {
       width: width,
       child: Column(
         children: [
-          // just using the 👋 emoji in the text decreases performance drastically
-          // see: https://github.com/flutter/flutter/issues/76248
+          // Just using the 👋 emoji in the text decreases performance drastically.
+          // See: https://github.com/flutter/flutter/issues/76248
           Row(
             children: [
               const SelectableText('Hey', style: TextStyle(fontSize: 18)),
-              // unfortunately the svg does not work when viewing on a phone (because of the html renderer)
-              const WinkingHandEmoji(),
+              const _WinkingHandEmoji(),
             ],
           ),
           SelectableText(
@@ -85,6 +85,24 @@ class _Text extends StatelessWidget {
             style: const TextStyle(fontSize: 18),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// NOTE: The SVG does not work with the html renderer.
+class _WinkingHandEmoji extends StatelessWidget {
+  const _WinkingHandEmoji({this.size = 22});
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: SvgPicture.asset(
+        'assets/images/emoji_u1f44b.svg',
+        semanticsLabel: 'Winking hand emoji',
       ),
     );
   }

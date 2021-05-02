@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'app.dart';
 
-/// HINT: Build this page with the CanvasKit renderer.
+/// HINT: Build this web app with the CanvasKit renderer.
 /// Otherwise the performance is bad and the navigation won't work.
 
 void main() async {

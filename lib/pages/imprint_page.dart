@@ -12,7 +12,7 @@ class ImprintPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: context.responsiveEdgeInsets(
+        padding: context.responsive<EdgeInsets>(
           onMobile: const EdgeInsets.symmetric(horizontal: 10),
           onTablet: const EdgeInsets.symmetric(horizontal: 50),
           onDesktop: const EdgeInsets.symmetric(horizontal: 200),
