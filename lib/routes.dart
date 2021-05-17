@@ -15,6 +15,7 @@ final routerDelegate = BeamerDelegate(
     routes: {
       '/': (context) => BeamPage(
             key: ValueKey('home-${context.locale}'),
+            type: BeamPageType.noTransition,
             child: HomePage(),
           ),
       '/impressum': (context) => ImprintPage(),
