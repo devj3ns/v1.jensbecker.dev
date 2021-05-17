@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import 'about_section/about_sections.dart';
 import 'contact_section/contact_section.dart';
@@ -45,12 +44,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // todo: When https://github.com/slovnicki/beamer/issues/232 is done the SimpleLocationBuilder
-    // todo: has to be updated like explained here: https://github.com/slovnicki/beamer/issues/239.
-    //
-    // This is just a workaround:
-    final locale = context.locale;
-
     final sections = [
       HeroSection(scrollToSection),
       AutoScrollTag(

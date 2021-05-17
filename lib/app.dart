@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      routerDelegate: beamerDelegate,
-      routeInformationParser: BeamerRouteInformationParser(),
+      routerDelegate: routerDelegate,
+      routeInformationParser: BeamerParser(),
       builder: (context, child) => ScrollConfiguration(
         behavior: MyScrollBehavior(),
         child: child!,
