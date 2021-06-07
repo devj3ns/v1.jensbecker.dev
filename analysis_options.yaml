@@ -1,5 +1,23 @@
 include: package:pedantic/analysis_options.yaml
 
+analyzer:
+  plugins:
+    - dart_code_metrics
+
+dart_code_metrics:
+  rules:
+    - avoid-unused-parameters
+    - avoid-wrapping-in-padding
+    - avoid-returning-widgets
+    - avoid-unnecessary-setstate
+    - always-remove-listener
+    - double-literal-format
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-equal-then-else
+    - no-object-declaration
+    - prefer-conditional-expressions
+
 linter:
   rules:
     - avoid_empty_else

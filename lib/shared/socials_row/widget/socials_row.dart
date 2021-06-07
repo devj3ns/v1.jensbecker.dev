@@ -26,7 +26,7 @@ class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
     )..forward();
     _socialsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: const Interval(0.50, 1.0),
+      curve: const Interval(0.5, 1.0),
     );
   }
 
@@ -102,6 +102,7 @@ class _SocialsRowState extends AnimatableState<_SocialsRow> {
             animation: _socialIconsAnimations.elementAt(i),
             builder: (context, child) {
               final animation = _socialIconsAnimations.elementAt(i);
+
               return Transform.translate(
                 offset: Offset(0.0, 150 - (animation.value * 150)),
                 child: Opacity(
