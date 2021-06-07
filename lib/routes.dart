@@ -13,18 +13,17 @@ import 'pages/project_details_page.dart';
 final routerDelegate = BeamerDelegate(
   locationBuilder: SimpleLocationBuilder(
     routes: {
-      '/': (context) => BeamPage(
+      '/': (context, state) => BeamPage(
             key: ValueKey('home-${context.locale}'),
             type: BeamPageType.noTransition,
             child: HomePage(),
           ),
-      '/impressum': (context) => ImprintPage(),
-      '/datenschutz': (context) => PrivacyPage(),
-      '/lizenzen': (context) => const LicensePage(),
-      '/projects/:projectId': (context) {
-        final project = projects.find((project) =>
-            project.id ==
-            context.currentBeamLocation.state.pathParameters['projectId']);
+      '/impressum': (context, state) => ImprintPage(),
+      '/datenschutz': (context, state) => PrivacyPage(),
+      '/lizenzen': (context, state) => const LicensePage(),
+      '/projects/:projectId': (context, state) {
+        final project = projects
+            .find((project) => project.id == state.pathParameters['projectId']);
 
         return project != null
             ? ProjectDetailPage(project)
