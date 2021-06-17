@@ -75,9 +75,9 @@ class _Text extends StatelessWidget {
           // Just using the 👋 emoji in the text decreases performance drastically.
           // See: https://github.com/flutter/flutter/issues/76248
           Row(
-            children: [
-              const SelectableText('Hey', style: TextStyle(fontSize: 18)),
-              const _WinkingHandEmoji(),
+            children: const [
+              SelectableText('Hey', style: TextStyle(fontSize: 18)),
+              _WinkingHandEmoji(),
             ],
           ),
           SelectableText(

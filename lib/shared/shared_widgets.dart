@@ -184,7 +184,7 @@ class ShadowBox extends StatelessWidget {
 }
 
 class TranslateOnHover extends StatefulWidget {
-  TranslateOnHover({
+  const TranslateOnHover({
     Key? key,
     required this.child,
   }) : super(key: key);

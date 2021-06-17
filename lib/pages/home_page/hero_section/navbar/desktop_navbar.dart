@@ -11,7 +11,7 @@ class DesktopNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = const TextStyle(
+    const textStyle = TextStyle(
         color: Colors.white, fontSize: 20, fontWeight: FontWeight.w100);
     final spacerWith = context.isTablet ? 30.0 : 40.0;
 

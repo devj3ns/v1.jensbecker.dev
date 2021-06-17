@@ -18,9 +18,6 @@ abstract class AnimatableStatefulWidget extends StatefulWidget {
   }) : super(key: key);
 
   final Animation<double> animation;
-
-  @override
-  AnimatableState<AnimatableStatefulWidget> createState();
 }
 
 abstract class AnimatableState<T extends AnimatableStatefulWidget>

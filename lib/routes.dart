@@ -12,7 +12,7 @@ import 'pages/project_details_page.dart';
 
 final routerDelegate = BeamerDelegate(
   locationBuilder: SimpleLocationBuilder(
-    routes: {
+    routes: <dynamic, dynamic Function(BuildContext, BeamState)>{
       '/': (context, state) => BeamPage(
             key: ValueKey('home-${context.locale}'),
             type: BeamPageType.noTransition,
