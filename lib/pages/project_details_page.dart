@@ -3,22 +3,24 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
-import '../shared/extensions.dart';
 import '../shared/shared_widgets.dart';
 import 'home_page/projects_section/models/project.dart';
 
 class ProjectDetailPage extends StatelessWidget {
-  const ProjectDetailPage(this.project);
+  const ProjectDetailPage(this.project, {Key? key}) : super(key: key);
   final Project project;
 
   @override
   Widget build(BuildContext context) {
-    final horizontalPadding = context.isMobile ? 15.0 : context.screenWidth / 6;
-    final verticalPadding = context.isMobile ? 25.0 : 75.0;
+    final horizontalPadding = context.formFactor == FormFactor.handset
+        ? 15.0
+        : context.screenWidth / 6;
+    final verticalPadding =
+        context.formFactor == FormFactor.handset ? 25.0 : 75.0;
     final horizontalImagePadding =
-        context.isMobile ? 0.0 : horizontalPadding / 2;
+        context.formFactor == FormFactor.handset ? 0.0 : horizontalPadding / 2;
     final locale = context.locale == const Locale('de') ? 'de' : 'en';
 
     return Scaffold(
@@ -105,7 +107,8 @@ class ProjectDetailPage extends StatelessWidget {
                 children: [
                   if (project.playStoreUrl.isNotBlank)
                     SizedBox(
-                      height: context.isMobile ? 40 : 50,
+                      height:
+                          context.formFactor == FormFactor.handset ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.playStoreUrl!),
                         child: Image.asset(
@@ -115,7 +118,8 @@ class ProjectDetailPage extends StatelessWidget {
                   if (project.appStoreUrl.isNotBlank) ...[
                     const SizedBox(width: 15),
                     SizedBox(
-                      height: context.isMobile ? 40 : 50,
+                      height:
+                          context.formFactor == FormFactor.handset ? 40 : 50,
                       child: InkWell(
                         onTap: () => launch(project.appStoreUrl!),
                         child: Image.asset(

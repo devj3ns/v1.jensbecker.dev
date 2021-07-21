@@ -7,6 +7,8 @@ import '../shared/extensions.dart';
 import '../shared/shared_widgets.dart';
 
 class RouteNotFoundPage extends StatelessWidget {
+  const RouteNotFoundPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final fontSize =

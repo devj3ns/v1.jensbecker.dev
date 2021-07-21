@@ -12,6 +12,8 @@ import 'tools_section/tools_section.dart';
 enum SectionEnum { projects, about, tools, contact }
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -50,27 +52,27 @@ class _HomePageState extends State<HomePage> {
         key: ValueKey(SectionEnum.projects.index),
         index: SectionEnum.projects.index,
         controller: scrollController,
-        child: ProjectsSection(),
+        child: const ProjectsSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.about.index),
         index: SectionEnum.about.index,
         controller: scrollController,
-        child: AboutSection(),
+        child: const AboutSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.tools.index),
         index: SectionEnum.tools.index,
         controller: scrollController,
-        child: ToolsSection(),
+        child: const ToolsSection(),
       ),
       AutoScrollTag(
         key: ValueKey(SectionEnum.contact.index),
         index: SectionEnum.contact.index,
         controller: scrollController,
-        child: ContactSection(),
+        child: const ContactSection(),
       ),
-      Footer(),
+      const Footer(),
     ];
 
     return Scaffold(
@@ -80,19 +82,5 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (context, index) => sections.elementAt(index),
       ),
     );
-
-    // I removed the scrollbar because on mobile it had some problems with the textfield
-    // and it did not work that well on desktop too (see https://github.com/flutter/flutter/issues/25652)
-    /*return Scaffold(
-      body: Scrollbar(
-        isAlwaysShown: context.isDesktop,
-        controller: scrollController,
-        child: ListView.builder(
-          controller: scrollController,
-          itemCount: sections.length,
-          itemBuilder: (context, index) => sections.elementAt(index),
-        ),
-      ),
-    );*/
   }
 }

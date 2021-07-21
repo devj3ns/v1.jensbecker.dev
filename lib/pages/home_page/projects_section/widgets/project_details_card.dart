@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../../../shared/extensions.dart';
 import '../../../../shared/shared_widgets.dart';
 import '../models/project.dart';
 
 class ProjectDetailsCard extends StatelessWidget {
-  const ProjectDetailsCard(this.project);
+  const ProjectDetailsCard(this.project, {Key? key}) : super(key: key);
   final Project project;
 
   @override
@@ -50,7 +50,7 @@ class ProjectDetailsCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            Chips(project: project),
+            _Chips(project: project),
             const SizedBox(height: 10),
             SelectableText(
               project.briefDescription,
@@ -73,8 +73,8 @@ class ProjectDetailsCard extends StatelessWidget {
   }
 }
 
-class Chips extends StatelessWidget {
-  const Chips({required this.project});
+class _Chips extends StatelessWidget {
+  const _Chips({required this.project, Key? key}) : super(key: key);
   final Project project;
 
   @override

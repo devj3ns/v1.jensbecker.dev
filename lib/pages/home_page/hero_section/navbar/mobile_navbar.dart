@@ -1,12 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../home_page.dart';
 import '../navbar/language_selection.dart';
 
 class MobileNavBar extends StatelessWidget {
-  const MobileNavBar(this.scrollToSection);
+  const MobileNavBar(this.scrollToSection, {Key? key}) : super(key: key);
   final Function(SectionEnum) scrollToSection;
 
   @override
@@ -20,12 +21,8 @@ class MobileNavBar extends StatelessWidget {
         ),
         const Expanded(child: SizedBox()),
         IconButton(
-          onPressed: () => Navigator.push<void>(
-            context,
-            MaterialPageRoute(
-              builder: (context) => _MobileNavBarPopup(scrollToSection),
-            ),
-          ),
+          onPressed: () =>
+              context.pushPage(_MobileNavBarPopup(scrollToSection)),
           icon: const FaIcon(
             FontAwesomeIcons.bars,
             color: Colors.white,

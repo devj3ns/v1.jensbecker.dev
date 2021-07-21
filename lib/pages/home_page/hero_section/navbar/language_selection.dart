@@ -6,7 +6,8 @@ class LanguageSelection extends StatelessWidget {
   const LanguageSelection({
     required this.textColor,
     required this.dropdownColor,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Color textColor;
   final Color dropdownColor;

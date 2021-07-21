@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 
 class AboutSection extends StatelessWidget {
+  const AboutSection({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Section(
@@ -16,7 +18,9 @@ class AboutSection extends StatelessWidget {
         runSpacing: 30,
         spacing: 25,
         children: [
-          context.isMobile ? Center(child: _Image()) : _Image(),
+          context.formFactor == FormFactor.handset
+              ? Center(child: _Image())
+              : _Image(),
           _Text(
             width: context.responsive<double>(
               onMobile: double.infinity,

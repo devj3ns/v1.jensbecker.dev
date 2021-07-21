@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fleasy/fleasy.dart';
 
-import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';
 import '../home_page.dart';
 import 'navbar/navbar.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection(this.scrollToSection);
+  const HeroSection(this.scrollToSection, {Key? key}) : super(key: key);
   final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
-    final pictureSize = context.isMobile ? 200.0 : 300.0;
+    final pictureSize =
+        context.formFactor == FormFactor.handset ? 200.0 : 300.0;
 
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: context.screenHeight,
       decoration: const BoxDecoration(
         // Fallback color, which is used as background color
         // when the image is not yet loaded:
@@ -50,7 +51,7 @@ class HeroSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              AnimatedSocialsRow(),
+              const AnimatedSocialsRow(),
             ],
           ),
           Padding(

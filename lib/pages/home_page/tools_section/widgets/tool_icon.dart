@@ -5,7 +5,7 @@ import '../../../../shared/shared_widgets.dart';
 import '../models/tool.dart';
 
 class ToolIcon extends StatelessWidget {
-  const ToolIcon(this.tool, {this.size = 100});
+  const ToolIcon(this.tool, {this.size = 100, Key? key}) : super(key: key);
   final Tool tool;
   final double size;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 import 'extensions.dart';
 
@@ -13,7 +13,8 @@ class Button extends StatelessWidget {
     this.alignIcon = AlignIcon.afterText,
     this.margin = const EdgeInsets.all(6.0),
     this.iconData,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final String text;
   final VoidCallback onPressed;
@@ -73,7 +74,9 @@ class RoundedClickBox extends StatelessWidget {
     this.withShadow = false,
     this.margin = const EdgeInsets.only(),
     this.padding = const EdgeInsets.only(),
-  });
+    Key? key,
+  }) : super(key: key);
+
   final Widget child;
   final VoidCallback onPressed;
   final double borderRadius;
@@ -120,7 +123,8 @@ class RoundedBox extends StatelessWidget {
     this.withShadow = false,
     this.margin = const EdgeInsets.only(),
     this.padding = const EdgeInsets.only(),
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Widget child;
   final double borderRadius;
@@ -160,7 +164,9 @@ class ShadowBox extends StatelessWidget {
   const ShadowBox({
     required this.child,
     this.borderRadius = 15,
-  });
+    Key? key,
+  }) : super(key: key);
+
   final Widget child;
   final double borderRadius;
 
@@ -228,7 +234,8 @@ class AnimateVerticalTranslate extends StatefulWidget {
     this.tweenBegin = -2.0,
     this.tweenEnd = 2.0,
     this.repeat = true,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Widget child;
   final Duration duration;
@@ -285,7 +292,8 @@ class _AnimateVerticalTranslateState extends State<AnimateVerticalTranslate>
 class AnimateScale extends StatefulWidget {
   const AnimateScale({
     required this.child,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final Widget child;
 
@@ -334,7 +342,7 @@ class _AnimateScaleState extends State<AnimateScale>
 
 /// A more performant alternative to Chip() when just the label property is used
 class TextChip extends StatelessWidget {
-  const TextChip({required this.text});
+  const TextChip({required this.text, Key? key}) : super(key: key);
   final String text;
 
   @override
@@ -361,7 +369,8 @@ class Section extends StatelessWidget {
     this.topMarginMultiplier = 1,
     this.bottomMarginMultiplier = 1,
     this.subtitle,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final Widget child;

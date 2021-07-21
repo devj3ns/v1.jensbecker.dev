@@ -6,6 +6,8 @@ import 'data/projects.dart';
 import 'widgets/project_details_card.dart';
 
 class ProjectsSection extends StatelessWidget {
+  const ProjectsSection({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Section(

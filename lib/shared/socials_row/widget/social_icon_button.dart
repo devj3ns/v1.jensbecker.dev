@@ -8,7 +8,8 @@ class SocialIconButton extends StatelessWidget {
   const SocialIconButton({
     required this.model,
     this.size = 32,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final SocialIcon model;
   final double size;

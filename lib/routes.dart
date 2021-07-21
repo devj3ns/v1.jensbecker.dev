@@ -1,6 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'pages/home_page/home_page.dart';
@@ -12,14 +12,14 @@ import 'pages/project_details_page.dart';
 
 final routerDelegate = BeamerDelegate(
   locationBuilder: SimpleLocationBuilder(
-    routes: <dynamic, dynamic Function(BuildContext, BeamState)>{
+    routes: {
       '/': (context, state) => BeamPage(
             key: ValueKey('home-${context.locale}'),
             type: BeamPageType.noTransition,
-            child: HomePage(),
+            child: const HomePage(),
           ),
-      '/impressum': (context, state) => ImprintPage(),
-      '/datenschutz': (context, state) => PrivacyPage(),
+      '/impressum': (context, state) => const ImprintPage(),
+      '/datenschutz': (context, state) => const PrivacyPage(),
       '/lizenzen': (context, state) => const LicensePage(),
       '/projects/:projectId': (context, state) {
         final project = projects
@@ -27,12 +27,12 @@ final routerDelegate = BeamerDelegate(
 
         return project != null
             ? ProjectDetailPage(project)
-            : RouteNotFoundPage();
+            : const RouteNotFoundPage();
       }
     },
   ),
   setBrowserTabTitle: false,
-  notFoundPage: BeamPage(
+  notFoundPage: const BeamPage(
     child: RouteNotFoundPage(),
   ),
 );

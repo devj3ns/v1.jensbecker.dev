@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../../../shared/extensions.dart';
 import '../../home_page.dart';
@@ -6,7 +7,7 @@ import 'desktop_navbar.dart';
 import 'mobile_navbar.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar(this.scrollToSection);
+  const NavBar(this.scrollToSection, {Key? key}) : super(key: key);
   final Function(SectionEnum) scrollToSection;
 
   @override
@@ -19,7 +20,7 @@ class NavBar extends StatelessWidget {
 
     return Padding(
       padding: margin,
-      child: context.isMobile
+      child: context.formFactor == FormFactor.handset
           ? MobileNavBar(scrollToSection)
           : DesktopNavBar(scrollToSection),
     );

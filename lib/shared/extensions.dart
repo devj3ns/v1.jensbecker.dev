@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 import 'shared_widgets.dart';
 
-double _mobileBreakpoint = 0;
-double _tabletBreakpoint = 750;
-double _desktopBreakpoint = 1220;
-
 extension ContextExtensions on BuildContext {
-  bool get isMobile =>
-      screenWidth >= _mobileBreakpoint && screenWidth < _tabletBreakpoint;
-
-  bool get isTablet =>
-      screenWidth >= _tabletBreakpoint && screenWidth < _desktopBreakpoint;
-
-  bool get isDesktop => screenWidth >= _desktopBreakpoint;
-
-  /// Uses breakpoints to return different objects (which are
-  /// defined as parameters) depending on the size of the screen.
+  //todo: move this to fleasy?!
+  /// Returns the correct object (which us defined as a parameter)
+  /// depending on the [formFactor].
   T responsive<T>({
     required T onMobile,
     required T onTablet,
     required T onDesktop,
   }) {
-    return isMobile
+    return formFactor == FormFactor.handset
         ? onMobile
-        : isTablet
+        : formFactor == FormFactor.tablet
             ? onTablet
             : onDesktop;
   }

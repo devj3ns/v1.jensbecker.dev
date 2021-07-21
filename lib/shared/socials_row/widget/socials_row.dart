@@ -8,6 +8,8 @@ import '../model/social_icon.dart';
 import 'social_icon_button.dart';
 
 class AnimatedSocialsRow extends StatefulWidget {
+  const AnimatedSocialsRow({Key? key}) : super(key: key);
+
   @override
   _AnimatedSocialsRowState createState() => _AnimatedSocialsRowState();
 }
@@ -43,8 +45,10 @@ class _AnimatedSocialsRowState extends State<AnimatedSocialsRow>
 }
 
 class SocialsRowWithoutEmail extends StatelessWidget {
+  const SocialsRowWithoutEmail({Key? key}) : super(key: key);
+
   // SocialIcons without the E-Mail icon.
-  final icons = socialIcons.toList()
+  static final icons = socialIcons.toList()
     ..removeWhere((SocialIcon socialIcon) =>
         socialIcon.icon == FontAwesomeIcons.envelope);
 

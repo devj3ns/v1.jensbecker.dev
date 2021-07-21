@@ -1,19 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../../../shared/extensions.dart';
 import '../../home_page.dart';
 import 'language_selection.dart';
 
 class DesktopNavBar extends StatelessWidget {
-  const DesktopNavBar(this.scrollToSection);
+  const DesktopNavBar(this.scrollToSection, {Key? key}) : super(key: key);
   final Function(SectionEnum) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
     const textStyle = TextStyle(
         color: Colors.white, fontSize: 20, fontWeight: FontWeight.w100);
-    final spacerWith = context.isTablet ? 30.0 : 40.0;
+    final spacerWith = context.formFactor == FormFactor.handset ? 30.0 : 40.0;
 
     return Row(
       mainAxisSize: MainAxisSize.max,

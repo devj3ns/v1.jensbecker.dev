@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_extensions/flutter_extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 import '../../../shared/extensions.dart';
 import '../../../shared/mailer.dart';
@@ -11,6 +11,8 @@ import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';
 
 class ContactSection extends StatelessWidget {
+  const ContactSection({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final horizontalMargin = context.screenWidth > 1500 ? 80.0 : 0.0;
@@ -22,7 +24,7 @@ class ContactSection extends StatelessWidget {
       child: RoundedBox(
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
         withShadow: true,
-        child: context.isMobile
+        child: context.formFactor == FormFactor.handset
             ? Column(
                 children: [
                   Padding(
@@ -127,7 +129,7 @@ class _Column1 extends StatelessWidget {
               onPressed: () => launch('https://wa.me/+4917623867324'),
             ).floatOnHover(),
             const SizedBox(height: 10),
-            SocialsRowWithoutEmail(),
+            const SocialsRowWithoutEmail(),
           ],
         ),
       ),
@@ -231,7 +233,7 @@ class _Column2 extends HookWidget {
                           decoration: InputDecoration(
                               labelText:
                                   tr('contact_section_form_email_placeholder')),
-                          validator: (value) => !value.isValidEmail
+                          validator: (value) => !value.isEmail
                               ? tr('contact_section_form_email_validator')
                               : null,
                         ),

@@ -6,6 +6,8 @@ import 'routes.dart';
 import 'theme.dart';
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -31,23 +33,6 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       routerDelegate: routerDelegate,
       routeInformationParser: BeamerParser(),
-      builder: (context, child) => ScrollConfiguration(
-        behavior: MyScrollBehavior(),
-        child: child!,
-      ),
     );
-  }
-}
-
-/// A custom [ScrollBehavior] which is used to remove the scroll glow effect,
-/// see https://stackoverflow.com/questions/51119795/how-to-remove-scroll-glow.
-class MyScrollBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-    BuildContext context,
-    Widget child,
-    AxisDirection axisDirection,
-  ) {
-    return child;
   }
 }
