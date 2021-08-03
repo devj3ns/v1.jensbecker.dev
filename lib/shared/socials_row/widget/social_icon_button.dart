@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../shared/extensions.dart';
+import '../../../../shared/shared_widgets.dart';
 import '../model/social_icon.dart';
 
 class SocialIconButton extends StatelessWidget {

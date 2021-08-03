@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fleasy/fleasy.dart';
 
-import '../shared/extensions.dart';
 import '../shared/shared_widgets.dart';
 
 class RouteNotFoundPage extends StatelessWidget {
@@ -11,8 +11,8 @@ class RouteNotFoundPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize =
-        context.responsive<double>(onMobile: 25, onTablet: 28, onDesktop: 30);
+    final fontSize = context.byFormFactor<double>(
+        onHandset: 25, onTablet: 28, onDesktop: 30);
 
     return Scaffold(
       body: Center(

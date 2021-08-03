@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fleasy/fleasy.dart';
 
-import '../../../../shared/extensions.dart';
+import '../../../../shared/shared_widgets.dart';
 import '../../home_page.dart';
 import 'language_selection.dart';
 

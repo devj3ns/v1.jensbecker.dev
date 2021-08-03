@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fleasy/fleasy.dart';
 
-import '../../../shared/extensions.dart';
 import '../../../shared/mailer.dart';
 import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';
@@ -64,8 +63,8 @@ class ContactSection extends StatelessWidget {
 class _Column1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final titleFontSize =
-        context.responsive<double>(onMobile: 20, onTablet: 22, onDesktop: 22);
+    final titleFontSize = context.byFormFactor<double>(
+        onHandset: 20, onTablet: 22, onDesktop: 22);
 
     return DecoratedBox(
       decoration: BoxDecoration(

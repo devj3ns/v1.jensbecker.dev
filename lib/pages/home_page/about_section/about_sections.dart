@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fleasy/fleasy.dart';
 
-import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 
 class AboutSection extends StatelessWidget {
@@ -22,8 +21,8 @@ class AboutSection extends StatelessWidget {
               ? Center(child: _Image())
               : _Image(),
           _Text(
-            width: context.responsive<double>(
-              onMobile: double.infinity,
+            width: context.byFormFactor<double>(
+              onHandset: double.infinity,
               onTablet: context.screenWidth / 2.5,
               onDesktop: context.screenWidth / 3,
             ),

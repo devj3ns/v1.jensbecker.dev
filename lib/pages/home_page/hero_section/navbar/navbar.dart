@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fleasy/fleasy.dart';
 
-import '../../../../shared/extensions.dart';
 import '../../home_page.dart';
 import 'desktop_navbar.dart';
 import 'mobile_navbar.dart';
@@ -12,8 +11,8 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final margin = context.responsive<EdgeInsets>(
-      onMobile: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+    final margin = context.byFormFactor<EdgeInsets>(
+      onHandset: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       onTablet: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
       onDesktop: const EdgeInsets.symmetric(vertical: 30, horizontal: 60),
     );

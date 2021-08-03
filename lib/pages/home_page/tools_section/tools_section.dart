@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fleasy/fleasy.dart';
 
-import '../../../shared/extensions.dart';
 import '../../../shared/shared_widgets.dart';
 import 'data/tools.dart';
 import 'widgets/tool_icon.dart';
@@ -18,8 +17,8 @@ class ToolsSection extends StatelessWidget {
           : tr('tools_section_title'),
       subtitle: tr('tools_section_subtitle'),
       child: ShadowBox(
-        child: context.responsive<Widget>(
-          onMobile: _MobileTools(),
+        child: context.byFormFactor<Widget>(
+          onHandset: _MobileTools(),
           onTablet: _TabletTools(),
           onDesktop: _DesktopTools(),
         ),

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fleasy/fleasy.dart';
 
-import 'extensions.dart';
-
 enum AlignIcon { beforeText, afterText }
 
 class Button extends StatelessWidget {
@@ -227,6 +225,10 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
   }
 }
 
+extension WidgetExtensions on Widget {
+  Widget floatOnHover() => TranslateOnHover(child: this);
+}
+
 class AnimateVerticalTranslate extends StatefulWidget {
   const AnimateVerticalTranslate({
     required this.child,
@@ -381,15 +383,15 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final horizontalMargin = context.responsive<double>(
-            onMobile: 15, onTablet: 50, onDesktop: context.screenWidth / 8) *
+    final horizontalMargin = context.byFormFactor<double>(
+            onHandset: 15, onTablet: 50, onDesktop: context.screenWidth / 8) *
         horizontalMarginMultiplier;
-    final marginTop =
-        context.responsive<double>(onMobile: 20, onTablet: 40, onDesktop: 60) *
-            topMarginMultiplier;
+    final marginTop = context.byFormFactor<double>(
+            onHandset: 20, onTablet: 40, onDesktop: 60) *
+        topMarginMultiplier;
     final marginBottom = marginTop * bottomMarginMultiplier;
-    final titleFontSize =
-        context.responsive<double>(onMobile: 25, onTablet: 28, onDesktop: 30);
+    final titleFontSize = context.byFormFactor<double>(
+        onHandset: 25, onTablet: 28, onDesktop: 30);
 
     return Padding(
       padding: EdgeInsets.only(

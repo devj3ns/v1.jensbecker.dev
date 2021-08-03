@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-
-import '../../../shared/extensions.dart';
+import 'package:fleasy/fleasy.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -17,8 +16,8 @@ class Footer extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Wrap(
           alignment: WrapAlignment.center,
-          spacing: context.responsive<double>(
-            onMobile: 5,
+          spacing: context.byFormFactor<double>(
+            onHandset: 5,
             onTablet: 30,
             onDesktop: 80,
           ),
