@@ -31,15 +31,26 @@
 </head>
 <body>
 
-<script src="/__/firebase/8.6.1/firebase-app.js"></script>
-<script src="/__/firebase/8.6.1/firebase-firestore.js"></script>
-<script src="/__/firebase/init.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDG_F8-1vXipA8rXqpkIy9Rphpyv6e-NM8",
+    authDomain: "jensbecker-dev.firebaseapp.com",
+    projectId: "jensbecker-dev",
+    storageBucket: "jensbecker-dev.appspot.com",
+    messagingSenderId: "414781891477",
+    appId: "1:414781891477:web:c6302a6dadf56de0af0c9c"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
 
 <div class="spinner">
   <div class="double-bounce1"></div>
   <div class="double-bounce2"></div>
 </div>
 
-<script src="main.dart.js?version=9" type="application/javascript"></script>
+<script src="main.dart.js?version=10" type="application/javascript"></script>
 </body>
 </html>
