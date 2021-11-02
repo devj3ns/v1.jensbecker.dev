@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,7 +28,7 @@ class ProjectsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 35),
-           SelectableText(
+          SelectableText(
             tr('projects_open_source_info'),
             style: const TextStyle(
               fontSize: 18,

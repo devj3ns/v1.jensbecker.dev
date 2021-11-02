@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:fleasy/fleasy.dart';
 
 import '../../../shared/mailer.dart';
 import '../../../shared/shared_widgets.dart';
@@ -69,7 +69,7 @@ class _Column1 extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(25.0),

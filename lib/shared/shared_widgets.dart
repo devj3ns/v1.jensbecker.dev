@@ -1,6 +1,6 @@
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fleasy/fleasy.dart';
 
 enum AlignIcon { beforeText, afterText }
 
@@ -30,7 +30,7 @@ class Button extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -261,7 +261,7 @@ class _AnimateVerticalTranslateState extends State<AnimateVerticalTranslate>
     controller = AnimationController(
       duration: widget.duration,
       vsync: this,
-    )..addListener(() => setState(() {}));
+    );
 
     final Animation<double> curve =
         CurvedAnimation(parent: controller, curve: Curves.easeInOut);
@@ -314,7 +314,7 @@ class _AnimateScaleState extends State<AnimateScale>
     controller = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
-    )..addListener(() => setState(() {}));
+    );
 
     final Animation<double> curve =
         CurvedAnimation(parent: controller, curve: Curves.easeInOutSine);
@@ -353,7 +353,7 @@ class TextChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: const BorderRadius.all(Radius.circular(25)),
       ),
       child: SelectableText(
         text,

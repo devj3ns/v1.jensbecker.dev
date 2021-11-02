@@ -1,9 +1,9 @@
 import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:fleasy/fleasy.dart';
 
 import '../shared/shared_widgets.dart';
 import 'home_page/projects_section/models/project.dart';
@@ -63,7 +63,7 @@ class ProjectDetailPage extends StatelessWidget {
                 aspectRatio: 16 / 9,
                 child: Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
                     child: Image.asset(
                       project.mockupUrl,
                     ),

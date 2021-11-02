@@ -1,7 +1,7 @@
 import 'package:beamer/beamer.dart';
-import 'package:flutter/material.dart';
-import 'package:fleasy/fleasy.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fleasy/fleasy.dart';
+import 'package:flutter/material.dart';
 
 import 'pages/home_page/home_page.dart';
 import 'pages/home_page/projects_section/data/projects.dart';
@@ -11,7 +11,7 @@ import 'pages/privacy_page.dart';
 import 'pages/project_details_page.dart';
 
 final routerDelegate = BeamerDelegate(
-  locationBuilder: SimpleLocationBuilder(
+  locationBuilder: RoutesLocationBuilder(
     routes: {
       '/': (context, state) => BeamPage(
             key: ValueKey('home-${context.locale}'),

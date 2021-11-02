@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:fleasy/fleasy.dart';
 
 class ImprintPage extends StatelessWidget {
   const ImprintPage({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fleasy/fleasy.dart';
 
 import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';

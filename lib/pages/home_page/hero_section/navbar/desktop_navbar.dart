@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:fleasy/fleasy.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../shared/shared_widgets.dart';
 import '../../home_page.dart';

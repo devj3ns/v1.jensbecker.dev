@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:fleasy/fleasy.dart';
+import 'package:flutter/material.dart';
 
 import '../../home_page.dart';
 import 'desktop_navbar.dart';
