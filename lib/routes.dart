@@ -13,15 +13,15 @@ import 'pages/project_details_page.dart';
 final routerDelegate = BeamerDelegate(
   locationBuilder: RoutesLocationBuilder(
     routes: {
-      '/': (context, state) => BeamPage(
+      '/': (context, _, __) => BeamPage(
             key: ValueKey('home-${context.locale}'),
             type: BeamPageType.noTransition,
             child: const HomePage(),
           ),
-      '/impressum': (context, state) => const ImprintPage(),
-      '/datenschutz': (context, state) => const PrivacyPage(),
-      '/lizenzen': (context, state) => const LicensePage(),
-      '/projects/:projectId': (context, state) {
+      '/impressum': (context, _, __) => const ImprintPage(),
+      '/datenschutz': (context, _, __) => const PrivacyPage(),
+      '/lizenzen': (context, state, _) => const LicensePage(),
+      '/projects/:projectId': (context, state, _) {
         final project = projects
             .find((project) => project.id == state.pathParameters['projectId']);
 
