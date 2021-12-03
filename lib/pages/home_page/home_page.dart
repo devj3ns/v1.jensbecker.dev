@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'about_section/about_sections.dart';
@@ -75,12 +76,22 @@ class _HomePageState extends State<HomePage> {
       const Footer(),
     ];
 
-    return Scaffold(
-      body: ListView.builder(
-        controller: scrollController,
-        itemCount: sections.length,
-        itemBuilder: (context, index) => sections.elementAt(index),
-      ),
+    return FutureBuilder(
+      future: GoogleFonts.pendingFontLoads(),
+      builder: (context, snapshot) {
+        // Shows the splash screen until the fonts are loaded:
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const SizedBox();
+        }
+
+        return Scaffold(
+          body: ListView.builder(
+            controller: scrollController,
+            itemCount: sections.length,
+            itemBuilder: (context, index) => sections.elementAt(index),
+          ),
+        );
+      },
     );
   }
 }
