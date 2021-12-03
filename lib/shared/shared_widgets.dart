@@ -1,192 +1,81 @@
+import 'package:beamer/beamer.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-enum AlignIcon { beforeText, afterText }
+import 'constants.dart';
 
-class Button extends StatelessWidget {
-  const Button({
-    required this.text,
-    required this.onPressed,
-    this.alignIcon = AlignIcon.afterText,
-    this.margin = const EdgeInsets.all(6.0),
-    this.iconData,
-    Key? key,
-  }) : super(key: key);
-
-  final String text;
-  final VoidCallback onPressed;
-  final AlignIcon alignIcon;
-  final EdgeInsets margin;
-  final IconData? iconData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: margin,
-      child: InkWell(
-        onTap: onPressed,
-        child: Container(
-          padding: const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (iconData != null && alignIcon == AlignIcon.beforeText) ...[
-                FaIcon(
-                  iconData,
-                  color: Colors.white,
-                  size: 17,
-                ),
-                const SizedBox(width: 10.0),
-              ],
-              Text(
-                text,
-                style: const TextStyle(color: Colors.white, fontSize: 17),
-              ),
-              if (iconData != null && alignIcon == AlignIcon.afterText) ...[
-                const SizedBox(width: 10.0),
-                FaIcon(
-                  iconData,
-                  color: Colors.white,
-                  size: 17,
-                )
-              ]
-            ],
-          ),
-        ).floatOnHover(),
-      ),
-    );
-  }
-}
-
-class RoundedClickBox extends StatelessWidget {
-  const RoundedClickBox({
-    required this.child,
-    required this.onPressed,
-    this.borderRadius = 15,
-    this.withShadow = false,
-    this.margin = const EdgeInsets.only(),
-    this.padding = const EdgeInsets.only(),
-    Key? key,
-  }) : super(key: key);
-
-  final Widget child;
-  final VoidCallback onPressed;
-  final double borderRadius;
-  final bool withShadow;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: margin,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(borderRadius),
-        onTap: onPressed,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(borderRadius),
-            boxShadow: withShadow
-                ? [
-                    BoxShadow(
-                      color: Colors.grey[200]!,
-                      spreadRadius: 15,
-                      blurRadius: 15,
-                      offset: const Offset(0, 5),
-                    ),
-                  ]
-                : [],
-          ),
-          child: Padding(
-            padding: padding,
-            child: child,
-          ),
-        ),
-      ).floatOnHover(),
-    );
-  }
-}
-
+/// A rounded container with several customizable attributes.
 class RoundedBox extends StatelessWidget {
   const RoundedBox({
     required this.child,
     this.borderRadius = 15,
-    this.withShadow = false,
+    this.shadow = false,
     this.margin = const EdgeInsets.only(),
     this.padding = const EdgeInsets.only(),
+    this.color = Colors.white,
+    this.link,
     Key? key,
   }) : super(key: key);
 
   final Widget child;
   final double borderRadius;
-  final bool withShadow;
+  final bool shadow;
   final EdgeInsets margin;
   final EdgeInsets padding;
+  final Color color;
+  final Uri? link;
 
   @override
   Widget build(BuildContext context) {
+    final Widget box = DecoratedBox(
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(borderRadius),
+        boxShadow: shadow
+            ? [
+                BoxShadow(
+                  color: Colors.grey.shade300,
+                  spreadRadius: 15,
+                  blurRadius: 15,
+                  offset: const Offset(0, 5),
+                ),
+              ]
+            : null,
+      ),
+      child: Padding(
+        padding: padding,
+        child: child,
+      ),
+    );
+
     return Padding(
       padding: margin,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(borderRadius),
-          boxShadow: withShadow
-              ? [
-                  BoxShadow(
-                    color: Colors.grey[200]!,
-                    spreadRadius: 15,
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
+      child: link != null
+          ? kUseLinkWidget
+              ? Link(
+                  uri: link,
+                  builder: (context, followLink) => InkWell(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    onTap: followLink,
+                    child: box,
                   ),
-                ]
-              : [],
-        ),
-        child: Padding(
-          padding: padding,
-          child: child,
-        ),
-      ),
-    );
+                )
+              : InkWell(
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  onTap: () => link!.hasAbsolutePath
+                      ? launch(link.toString())
+                      : context.beamToNamed(link.toString()),
+                  child: box,
+                )
+          : box,
+    ).floatOnHover(enable: link != null);
   }
 }
 
-class ShadowBox extends StatelessWidget {
-  const ShadowBox({
-    required this.child,
-    this.borderRadius = 15,
-    Key? key,
-  }) : super(key: key);
-
-  final Widget child;
-  final double borderRadius;
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey[300]!,
-            spreadRadius: 15,
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: child,
-    );
-  }
-}
-
+/// Makes its child translate up when the mouse hovers over it.
 class TranslateOnHover extends StatefulWidget {
   const TranslateOnHover({
     Key? key,
@@ -226,9 +115,12 @@ class _TranslateOnHoverState extends State<TranslateOnHover> {
 }
 
 extension WidgetExtensions on Widget {
-  Widget floatOnHover() => TranslateOnHover(child: this);
+  /// Makes the widget float when the mouse hovers over it.
+  Widget floatOnHover({bool enable = true}) =>
+      enable ? TranslateOnHover(child: this) : this;
 }
 
+/// Animates its child y position up and down.
 class AnimateVerticalTranslate extends StatefulWidget {
   const AnimateVerticalTranslate({
     required this.child,
@@ -291,6 +183,7 @@ class _AnimateVerticalTranslateState extends State<AnimateVerticalTranslate>
   }
 }
 
+/// Animates its child scale up and down.
 class AnimateScale extends StatefulWidget {
   const AnimateScale({
     required this.child,
@@ -342,7 +235,7 @@ class _AnimateScaleState extends State<AnimateScale>
   }
 }
 
-/// A more performant alternative to Chip() when just the label property is used
+/// A more performant alternative to [Chip] when we just need a the label property
 class TextChip extends StatelessWidget {
   const TextChip({required this.text, Key? key}) : super(key: key);
   final String text;
@@ -352,7 +245,7 @@ class TextChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: Colors.grey.shade300,
         borderRadius: const BorderRadius.all(Radius.circular(25)),
       ),
       child: SelectableText(
@@ -363,6 +256,7 @@ class TextChip extends StatelessWidget {
   }
 }
 
+/// Specifies the structure of a section.
 class Section extends StatelessWidget {
   const Section({
     required this.title,
@@ -425,4 +319,216 @@ class Section extends StatelessWidget {
       ),
     );
   }
+}
+
+// ############### Buttons: ###################
+
+/// A text button which allows icons to be placed next to the label.
+///
+/// For a more customizable button use [MyButton].
+class MyTextButton extends StatelessWidget {
+  const MyTextButton({
+    this.iconAfter,
+    required this.label,
+    this.iconBefore,
+    this.link,
+    Key? key,
+  }) : super(key: key);
+
+  final String label;
+  final IconData? iconBefore;
+  final IconData? iconAfter;
+  final Uri? link;
+
+  @override
+  Widget build(BuildContext context) {
+    return MyButton(
+      iconAfter: iconAfter,
+      label: label,
+      iconBefore: iconBefore,
+      link: link,
+      textStyle: TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontWeight: FontWeight.bold,
+      ),
+      color: Colors.transparent,
+    );
+  }
+}
+
+/// A elevated button which allows icons to be placed next to the label.
+///
+/// For a more customizable button use [MyButton].
+class MyElevatedButton extends StatelessWidget {
+  const MyElevatedButton({
+    this.iconAfter,
+    required this.label,
+    this.iconBefore,
+    this.link,
+    Key? key,
+  }) : super(key: key);
+
+  final String label;
+  final IconData? iconBefore;
+  final IconData? iconAfter;
+  final Uri? link;
+
+  @override
+  Widget build(BuildContext context) {
+    return MyButton(
+      iconAfter: iconAfter,
+      label: label,
+      iconBefore: iconBefore,
+      link: link,
+      textStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+      ),
+      color: Theme.of(context).primaryColor,
+    );
+  }
+}
+
+/// A customizable button.
+///
+/// For more predefined buttons use [TextButton] and [ElevatedButton].
+///
+/// If a link with an absolute path (starting with '/') is given it opens it
+/// in a new window.
+/// Else it navigates to the page with the given link.
+class MyButton extends StatelessWidget {
+  const MyButton({
+    this.iconAfter,
+    required this.label,
+    this.iconBefore,
+    this.onPressed,
+    this.link,
+    this.margin = const EdgeInsets.all(6.0),
+    required this.textStyle,
+    required this.color,
+    Key? key,
+  })  : assert(link != null || onPressed != null),
+        super(key: key);
+
+  final String label;
+  final EdgeInsets margin;
+  final IconData? iconBefore;
+  final IconData? iconAfter;
+  final TextStyle textStyle;
+  final Color color;
+
+  final VoidCallback? onPressed;
+  final Uri? link;
+
+  @override
+  Widget build(BuildContext context) {
+    return _handleLinkOrOnPressed(
+      link: link,
+      onPressed: onPressed,
+      context: context,
+      child: (VoidCallback? onTap) => Padding(
+        padding: margin,
+        child: Material(
+          color: color,
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (iconBefore != null) ...[
+                    FaIcon(
+                      iconBefore,
+                      color: Colors.white,
+                      size: 17,
+                    ),
+                    const SizedBox(width: 10.0),
+                  ],
+                  Text(
+                    label,
+                    style: textStyle,
+                  ),
+                  if (iconAfter != null) ...[
+                    const SizedBox(width: 10.0),
+                    FaIcon(
+                      iconAfter,
+                      color: Colors.white,
+                      size: 17,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ).floatOnHover(),
+      ),
+    );
+  }
+}
+
+/// A simple icon button.
+///
+/// For a more customizable button use [MyButton].
+class MyIconButton extends StatelessWidget {
+  const MyIconButton({
+    required this.icon,
+    this.color,
+    this.size,
+    this.link,
+    Key? key,
+  }) : super(key: key);
+
+  final IconData icon;
+  final Color? color;
+  final double? size;
+  final Uri? link;
+
+  @override
+  Widget build(BuildContext context) {
+    return _handleLinkOrOnPressed(
+      link: link,
+      onPressed: null,
+      context: context,
+      child: (VoidCallback? onTap) => IconButton(
+        onPressed: onTap,
+        icon: Icon(
+          icon,
+          size: size,
+          color: Colors.white,
+        ),
+      ).floatOnHover(),
+    );
+  }
+}
+
+//ignore:avoid-returning-widgets
+/// If link != null:
+/// - it wraps the given child with a link widget (if kUseLinkWidget == true)
+/// - it launches the link in a new tab (if the link is absolute)
+/// - it navigates to the page internally (if the link is relative)
+///
+/// If onPressed != null:
+/// - it calls it when the child is pressed
+Widget _handleLinkOrOnPressed({
+  Uri? link,
+  VoidCallback? onPressed,
+  required BuildContext context,
+  required Widget Function(void Function()?) child,
+}) {
+  return link != null
+      ? kUseLinkWidget
+          ? Link(
+              uri: link,
+              builder: (_, followLink) => child(followLink),
+            )
+          : child(
+              link.hasAbsolutePath
+                  ? () => launch(link.toString())
+                  : () => context.beamToNamed(link.toString()),
+            )
+      : child(onPressed);
 }

@@ -1,29 +1,33 @@
+import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../shared/shared_widgets.dart';
-import '../models/tool.dart';
+import '../models/tool_data.dart';
 
 class ToolIcon extends StatelessWidget {
-  const ToolIcon(this.tool, {this.size = 100, Key? key}) : super(key: key);
-  final Tool tool;
-  final double size;
-
-  void openLink() {
-    launch(tool.link);
-  }
+  const ToolIcon(this.toolData, {Key? key}) : super(key: key);
+  final ToolData toolData;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: RoundedClickBox(
+    final maxIconSize = context.byFormFactor<double>(
+      onHandset: 100,
+      onTablet: 100,
+      onDesktop: 90,
+    );
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: maxIconSize,
+        maxHeight: maxIconSize,
+      ),
+      child: RoundedBox(
         borderRadius: 10.0,
         margin: const EdgeInsets.all(6.0),
         padding: const EdgeInsets.all(15.0),
-        onPressed: openLink,
-        child: Image.asset(tool.iconUrl),
+        link: toolData.link,
+        //onPressed: openLink,
+        child: Image.asset(toolData.iconUrl),
       ),
     );
   }

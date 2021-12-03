@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../shared/shared_widgets.dart';
 import '../model/social_icon.dart';
 
 class SocialIconButton extends StatelessWidget {
-  const SocialIconButton({
-    required this.model,
-    this.size = 32,
-    Key? key,
-  }) : super(key: key);
-
-  final SocialIcon model;
-  final double size;
+  const SocialIconButton(this.socialIconData, {Key? key}) : super(key: key);
+  final SocialIconData socialIconData;
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () => launch(model.url),
-      icon: Icon(
-        model.icon,
-        size: size,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: MyIconButton(
+        link: socialIconData.link,
+        icon: socialIconData.icon,
+        size: 32,
         color: Colors.white,
       ),
-    ).floatOnHover();
+    );
   }
 }

@@ -1,38 +1,39 @@
-import '../models/tool.dart';
+import '../../../../shared/constants.dart';
+import '../models/tool_data.dart';
 
 String _getLogoPath(String imageName) => 'assets/images/tools_icons/$imageName';
 
 final tools = [
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('flutter.png'),
-    link: 'https://flutter.dev/',
+    link: Uri.parse(kFlutterLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('dart.png'),
-    link: 'https://dart.dev/',
+    link: Uri.parse(kDartLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('android_studio.png'),
-    link: 'https://developer.android.com/studio/',
+    link: Uri.parse(kAndroidStudioLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('firebase.png'),
-    link: 'https://firebase.google.com/',
+    link: Uri.parse(kFirebaseLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('django.png'),
-    link: 'https://www.djangoproject.com/',
+    link: Uri.parse(kDjangoLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('python.png'),
-    link: 'https://www.python.org/',
+    link: Uri.parse(kPythonLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('wordpress.png'),
-    link: 'https://wordpress.org/',
+    link: Uri.parse(kWordpressLink),
   ),
-  Tool(
+  ToolData(
     iconUrl: _getLogoPath('elementor.png'),
-    link: 'https://elementor.com/',
+    link: Uri.parse(kElementorLink),
   ),
 ];

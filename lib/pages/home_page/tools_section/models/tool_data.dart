@@ -1,9 +1,9 @@
-class Tool {
-  const Tool({
+class ToolData {
+  const ToolData({
     required this.iconUrl,
     required this.link,
   });
 
   final String iconUrl;
-  final String link;
+  final Uri link;
 }

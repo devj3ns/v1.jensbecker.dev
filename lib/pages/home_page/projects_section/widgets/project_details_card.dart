@@ -1,10 +1,9 @@
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../shared/shared_widgets.dart';
-import '../models/project.dart';
+import '../models/project_data.dart';
 
 class ProjectDetailsCard extends StatelessWidget {
   const ProjectDetailsCard(this.project, {Key? key}) : super(key: key);
@@ -57,13 +56,10 @@ class ProjectDetailsCard extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Center(
-              child: TextButton(
-                onPressed: () => context.beamToNamed('projects/${project.id}'),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(tr('projects_section_learn-more').toUpperCase()),
-                ),
-              ).floatOnHover(),
+              child: MyTextButton(
+                link: Uri.parse('projects/${project.id}'),
+                label: tr('projects_section_learn-more').toUpperCase(),
+              ),
             ),
           ],
         ),

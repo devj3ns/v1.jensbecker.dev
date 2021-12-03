@@ -41,8 +41,9 @@ class _Image extends StatelessWidget {
     return SizedBox(
       width: imageSize,
       height: imageSize,
-      child: const ShadowBox(
+      child: const RoundedBox(
         borderRadius: 100,
+        shadow: true,
         child: CircleAvatar(
           backgroundImage: AssetImage(
             'assets/images/jensbecker_small.jpg',

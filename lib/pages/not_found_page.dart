@@ -1,4 +1,3 @@
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class RouteNotFoundPage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Container(
+        child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 750),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,11 +35,10 @@ class RouteNotFoundPage extends StatelessWidget {
                 style: TextStyle(fontSize: fontSize),
               ),
               const SizedBox(height: 15),
-              Button(
-                text: tr('home-page'),
-                iconData: FontAwesomeIcons.chevronLeft,
-                alignIcon: AlignIcon.beforeText,
-                onPressed: () => context.beamToNamed('/'),
+              MyElevatedButton(
+                iconBefore: FontAwesomeIcons.chevronLeft,
+                label: tr('home-page'),
+                link: Uri.parse('/'),
               ),
             ],
           ),

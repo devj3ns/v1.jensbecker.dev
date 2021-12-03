@@ -1,22 +1,23 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../constants.dart';
 import '../model/social_icon.dart';
 
-const socialIcons = <SocialIcon>[
-  SocialIcon(
+final socialIcons = <SocialIconData>[
+  SocialIconData(
     icon: FontAwesomeIcons.github,
-    url: 'https://github.com/devj3ns',
+    link: Uri.parse(kGitHubLink),
   ),
-  SocialIcon(
+  SocialIconData(
     icon: FontAwesomeIcons.twitter,
-    url: 'https://twitter.com/devj3ns',
+    link: Uri.parse(kTwitterLink),
   ),
-  SocialIcon(
+  SocialIconData(
     icon: FontAwesomeIcons.instagram,
-    url: 'https://instagram.com/dev.j3ns',
+    link: Uri.parse(kInstagramLink),
   ),
-  SocialIcon(
+  SocialIconData(
     icon: FontAwesomeIcons.envelope,
-    url: 'mailto:info@jensbecker.dev',
+    link: Uri.parse(kEmailLink),
   ),
 ];

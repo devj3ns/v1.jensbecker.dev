@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../shared/constants.dart';
 import '../../../shared/mailer.dart';
 import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';
@@ -22,7 +23,7 @@ class ContactSection extends StatelessWidget {
       bottomMarginMultiplier: 2,
       child: RoundedBox(
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
-        withShadow: true,
+        shadow: true,
         child: context.formFactor == FormFactor.handset
             ? Column(
                 children: [
@@ -66,71 +67,67 @@ class _Column1 extends StatelessWidget {
     final titleFontSize = context.byFormFactor<double>(
         onHandset: 20, onTablet: 22, onDesktop: 22);
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SelectableText(
-              tr('contact_section_first-column_title'),
+    return RoundedBox(
+      color: Theme.of(context).primaryColor,
+      borderRadius: 10.0,
+      padding: const EdgeInsets.all(25.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SelectableText(
+            tr('contact_section_first-column_title'),
+            style: TextStyle(
+              fontSize: titleFontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 10),
+          SelectableText(
+            tr('contact_section_first-column_subtitle'),
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.white70,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 10),
+          TextButton.icon(
+            icon: const FaIcon(
+              FontAwesomeIcons.envelope,
+              color: Colors.white,
+              size: 19,
+            ),
+            label: const Text(
+              kEmail,
               style: TextStyle(
-                fontSize: titleFontSize,
-                fontWeight: FontWeight.bold,
                 color: Colors.white,
+                fontWeight: FontWeight.normal,
+                fontSize: 17,
               ),
             ),
-            const SizedBox(height: 10),
-            SelectableText(
-              tr('contact_section_first-column_subtitle'),
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white70,
-              ),
-              textAlign: TextAlign.center,
+            onPressed: () => launch(kEmailLink),
+          ).floatOnHover(),
+          const SizedBox(height: 10),
+          TextButton.icon(
+            icon: const FaIcon(
+              FontAwesomeIcons.whatsapp,
+              color: Colors.white,
+              size: 19,
             ),
-            const SizedBox(height: 10),
-            TextButton.icon(
-              icon: const FaIcon(
-                FontAwesomeIcons.envelope,
+            label: const Text(
+              kPhoneNumber,
+              style: TextStyle(
                 color: Colors.white,
-                size: 19,
+                fontWeight: FontWeight.normal,
+                fontSize: 17,
               ),
-              label: const Text(
-                'info@jensbecker.dev',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 17,
-                ),
-              ),
-              onPressed: () => launch('mailto:info@jensbecker.dev'),
-            ).floatOnHover(),
-            const SizedBox(height: 10),
-            TextButton.icon(
-              icon: const FaIcon(
-                FontAwesomeIcons.whatsapp,
-                color: Colors.white,
-                size: 19,
-              ),
-              label: const Text(
-                '0176 23867324',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 17,
-                ),
-              ),
-              onPressed: () => launch('https://wa.me/+4917623867324'),
-            ).floatOnHover(),
-            const SizedBox(height: 10),
-            const SocialsRowWithoutEmail(),
-          ],
-        ),
+            ),
+            onPressed: () => launch(kWhatsAppLink),
+          ).floatOnHover(),
+          const SizedBox(height: 10),
+          const SocialsRowWithoutEmail(),
+        ],
       ),
     );
   }
@@ -273,10 +270,15 @@ class _Column2 extends HookWidget {
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Button(
-                        text: tr('contact_section_form_send-button'),
-                        iconData: FontAwesomeIcons.paperPlane,
+                    : MyButton(
+                        label: tr('contact_section_form_send-button'),
+                        iconAfter: FontAwesomeIcons.paperPlane,
                         onPressed: onFormSubmitted,
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                        color: Theme.of(context).primaryColor,
                       ),
               ],
             ),

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../../../shared/constants.dart';
 import '../../../shared/shared_widgets.dart';
 import 'data/projects.dart';
 import 'widgets/project_details_card.dart';
@@ -18,7 +18,9 @@ class ProjectsSection extends StatelessWidget {
       topMarginMultiplier: 2,
       child: Column(
         children: [
-          ShadowBox(
+          RoundedBox(
+            color: Colors.transparent,
+            shadow: true,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -37,10 +39,10 @@ class ProjectsSection extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 5),
-          Button(
-            text: 'GitHub',
-            iconData: FontAwesomeIcons.github,
-            onPressed: () => launch('https://github.com/devj3ns'),
+          MyElevatedButton(
+            label: 'GitHub',
+            iconAfter: FontAwesomeIcons.github,
+            link: Uri.parse(kGitHubLink),
           ),
         ],
       ),

@@ -49,7 +49,7 @@ class SocialsRowWithoutEmail extends StatelessWidget {
 
   // SocialIcons without the E-Mail icon.
   static final icons = socialIcons.toList()
-    ..removeWhere((SocialIcon socialIcon) =>
+    ..removeWhere((SocialIconData socialIcon) =>
         socialIcon.icon == FontAwesomeIcons.envelope);
 
   @override
@@ -58,14 +58,7 @@ class SocialsRowWithoutEmail extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: icons
-          .map(
-            (model) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: SocialIconButton(
-                model: model,
-              ),
-            ),
-          )
+          .map((socialIconData) => SocialIconButton(socialIconData))
           .toList(),
     );
   }
@@ -87,12 +80,14 @@ class _SocialsRowState extends AnimatableState<_SocialsRow> {
   @override
   void initState() {
     super.initState();
-    _socialIconsAnimations.addAll(divideAnimationAlongItems(
-      socialIcons,
-      parent: baseAnimation,
-      overlapStart: 1.0,
-      // overlapEnd: 1.0,
-    ));
+    _socialIconsAnimations.addAll(
+      divideAnimationAlongItems(
+        socialIcons,
+        parent: baseAnimation,
+        overlapStart: 1.0,
+        // overlapEnd: 1.0,
+      ),
+    );
   }
 
   @override
@@ -115,12 +110,7 @@ class _SocialsRowState extends AnimatableState<_SocialsRow> {
                 ),
               );
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: SocialIconButton(
-                model: socialIcons.elementAt(i),
-              ),
-            ),
+            child: SocialIconButton(socialIcons.elementAt(i)),
           )
       ],
     );

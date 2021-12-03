@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../shared/shared_widgets.dart';
-import 'home_page/projects_section/models/project.dart';
+import 'home_page/projects_section/models/project_data.dart';
 
 class ProjectDetailPage extends StatelessWidget {
   const ProjectDetailPage(this.project, {Key? key}) : super(key: key);

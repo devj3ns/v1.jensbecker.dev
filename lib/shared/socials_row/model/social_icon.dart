@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 
-class SocialIcon {
-  const SocialIcon({
+class SocialIconData {
+  const SocialIconData({
     required this.icon,
-    required this.url,
+    required this.link,
   });
 
   final IconData icon;
-  final String url;
+  final Uri link;
 }

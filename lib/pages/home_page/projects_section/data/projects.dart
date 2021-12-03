@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-import '../models/project.dart';
+import '../models/project_data.dart';
 
 String _getMockupPath(String imageName) =>
     'assets/images/projects/mockups/$imageName';
