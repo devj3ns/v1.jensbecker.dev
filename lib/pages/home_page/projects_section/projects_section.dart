@@ -24,9 +24,7 @@ class ProjectsSection extends StatelessWidget {
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
-              children: projects
-                  .map((project) => ProjectDetailsCard(project))
-                  .toList(),
+              children: projects.map(ProjectDetailsCard.new).toList(),
             ),
           ),
           const SizedBox(height: 35),

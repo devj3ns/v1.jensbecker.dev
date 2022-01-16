@@ -17,7 +17,7 @@ class ToolsSection extends StatelessWidget {
       onDesktop: false,
     );
 
-    final toolIconWidgets = tools.map((tool) => ToolIcon(tool)).toList();
+    final toolIconWidgets = tools.map(ToolIcon.new).toList();
 
     return Section(
       title: context.formFactor == FormFactor.handset

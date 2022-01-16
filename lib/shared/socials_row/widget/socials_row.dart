@@ -57,9 +57,7 @@ class SocialsRowWithoutEmail extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: icons
-          .map((socialIconData) => SocialIconButton(socialIconData))
-          .toList(),
+      children: icons.map(SocialIconButton.new).toList(),
     );
   }
 }
