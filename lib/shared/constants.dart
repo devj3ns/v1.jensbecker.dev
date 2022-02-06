@@ -1,15 +1,3 @@
-// Currently when using many link widgets this error is thrown:
-//
-// Flutter was unable to create enough overlay surfaces.
-// This is usually caused by too many platform views being displayed at once.
-// You may experience incorrect rendering.
-//
-// See: https://github.com/flutter/flutter/issues/88449
-//      https://github.com/flutter/flutter/issues/91151
-//
-// So for now this unfortunately needs to be false in production:
-const kUseLinkWidget = false;
-
 const kEmail = 'info@jensbecker.dev';
 const kPhoneNumber = '+4917623867324';
 

@@ -1,11 +1,7 @@
-import 'package:beamer/beamer.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'constants.dart';
 
 /// A rounded container with several customizable attributes.
 class RoundedBox extends StatelessWidget {
@@ -54,22 +50,14 @@ class RoundedBox extends StatelessWidget {
     return Padding(
       padding: margin,
       child: link != null
-          ? kUseLinkWidget
-              ? Link(
-                  uri: link,
-                  builder: (context, followLink) => InkWell(
-                    borderRadius: BorderRadius.circular(borderRadius),
-                    onTap: followLink,
-                    child: box,
-                  ),
-                )
-              : InkWell(
-                  borderRadius: BorderRadius.circular(borderRadius),
-                  onTap: () => link!.hasAbsolutePath
-                      ? launch(link.toString())
-                      : context.beamToNamed(link.toString()),
-                  child: box,
-                )
+          ? Link(
+              uri: link,
+              builder: (context, followLink) => InkWell(
+                borderRadius: BorderRadius.circular(borderRadius),
+                onTap: followLink,
+                child: box,
+              ),
+            )
           : box,
     ).floatOnHover(enable: link != null);
   }
@@ -425,7 +413,6 @@ class MyButton extends StatelessWidget {
     return _handleLinkOrOnPressed(
       link: link,
       onPressed: onPressed,
-      context: context,
       child: (VoidCallback? onTap) => Padding(
         padding: margin,
         child: Material(
@@ -492,7 +479,6 @@ class MyIconButton extends StatelessWidget {
     return _handleLinkOrOnPressed(
       link: link,
       onPressed: null,
-      context: context,
       child: (VoidCallback? onTap) => IconButton(
         onPressed: onTap,
         icon: Icon(
@@ -506,29 +492,18 @@ class MyIconButton extends StatelessWidget {
 }
 
 //ignore:avoid-returning-widgets
-/// If link != null:
-/// - it wraps the given child with a link widget (if kUseLinkWidget == true)
-/// - it launches the link in a new tab (if the link is absolute)
-/// - it navigates to the page internally (if the link is relative)
+/// If link != null it wraps the given child with a link widget
 ///
-/// If onPressed != null:
-/// - it calls it when the child is pressed
+/// If onPressed != null it calls it when the child is pressed
 Widget _handleLinkOrOnPressed({
   Uri? link,
   VoidCallback? onPressed,
-  required BuildContext context,
   required Widget Function(void Function()?) child,
 }) {
   return link != null
-      ? kUseLinkWidget
-          ? Link(
-              uri: link,
-              builder: (_, followLink) => child(followLink),
-            )
-          : child(
-              link.hasAbsolutePath
-                  ? () => launch(link.toString())
-                  : () => context.beamToNamed(link.toString()),
-            )
+      ? Link(
+          uri: link,
+          builder: (_, followLink) => child(followLink),
+        )
       : child(onPressed);
 }

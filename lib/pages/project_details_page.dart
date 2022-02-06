@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
 
 import '../shared/shared_widgets.dart';
 import 'home_page/projects_section/models/project_data.dart';
@@ -21,7 +21,6 @@ class ProjectDetailPage extends StatelessWidget {
         context.formFactor == FormFactor.handset ? 25.0 : 75.0;
     final horizontalImagePadding =
         context.formFactor == FormFactor.handset ? 0.0 : horizontalPadding / 2;
-    final locale = context.locale == const Locale('de') ? 'de' : 'en';
 
     return Scaffold(
       body: Center(
@@ -106,31 +105,49 @@ class ProjectDetailPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (project.playStoreUrl.isNotBlank)
-                    SizedBox(
-                      height:
-                          context.formFactor == FormFactor.handset ? 40 : 50,
-                      child: InkWell(
-                        onTap: () => launch(project.playStoreUrl!),
-                        child: Image.asset(
-                            'assets/images/badges/$locale/play_store_badge.png'),
-                      ),
+                    _StoreIcon(
+                      store: _Store.playStore,
+                      url: project.playStoreUrl!,
                     ),
                   if (project.appStoreUrl.isNotBlank) ...[
                     const SizedBox(width: 15),
-                    SizedBox(
-                      height:
-                          context.formFactor == FormFactor.handset ? 40 : 50,
-                      child: InkWell(
-                        onTap: () => launch(project.appStoreUrl!),
-                        child: Image.asset(
-                            'assets/images/badges/$locale/app_store_badge.png'),
-                      ),
+                    _StoreIcon(
+                      store: _Store.appStore,
+                      url: project.appStoreUrl!,
                     ),
                   ]
                 ],
               )
             ]
           ],
+        ),
+      ),
+    );
+  }
+}
+
+enum _Store { appStore, playStore }
+
+class _StoreIcon extends StatelessWidget {
+  const _StoreIcon({
+    Key? key,
+    required this.url,
+    required this.store,
+  }) : super(key: key);
+
+  final String url;
+  final _Store store;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: context.formFactor == FormFactor.handset ? 40 : 50,
+      child: Link(
+        uri: Uri.parse(url),
+        builder: (context, followLink) => InkWell(
+          onTap: followLink,
+          child: Image.asset(
+              'assets/images/badges/${context.locale.languageCode}/${store == _Store.appStore ? 'app_store' : 'play_store'}_badge.png'),
         ),
       ),
     );
