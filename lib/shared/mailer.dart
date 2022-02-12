@@ -29,6 +29,6 @@ class Mailer {
     debugPrint('Done!');
 
     // With a small delay it feels more natural
-    await Future<void>.delayed(const Duration(milliseconds: 500));
+    await Future<void>.delayed(const Duration(milliseconds: 250));
   }
 }

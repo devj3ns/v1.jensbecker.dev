@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LanguageSelection extends StatelessWidget {
   const LanguageSelection({
@@ -18,8 +17,9 @@ class LanguageSelection extends StatelessWidget {
       value: context.locale,
       icon: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: FaIcon(
-          FontAwesomeIcons.language,
+        child: Icon(
+          Icons.translate,
+          size: 17,
           color: textColor,
         ),
       ),

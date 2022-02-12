@@ -9,7 +9,7 @@ import 'hero_section/hero_section.dart';
 import 'projects_section/projects_section.dart';
 import 'tools_section/tools_section.dart';
 
-enum SectionEnum { projects, about, tools, contact }
+enum HomePageSection { projects, about, tools, contact }
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,15 +23,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    scrollController = AutoScrollController(
-      viewportBoundaryGetter: () =>
-          Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
-      axis: Axis.vertical,
-    );
+    scrollController = AutoScrollController();
     super.initState();
   }
 
-  void scrollToSection(SectionEnum section) async {
+  void scrollToSection(HomePageSection section) async {
     await scrollController.scrollToIndex(
       section.index,
       preferPosition: AutoScrollPosition.begin,
@@ -49,26 +45,26 @@ class _HomePageState extends State<HomePage> {
     final sections = [
       HeroSection(scrollToSection),
       AutoScrollTag(
-        key: ValueKey(SectionEnum.projects.index),
-        index: SectionEnum.projects.index,
+        key: ValueKey(HomePageSection.projects.index),
+        index: HomePageSection.projects.index,
         controller: scrollController,
         child: const ProjectsSection(),
       ),
       AutoScrollTag(
-        key: ValueKey(SectionEnum.about.index),
-        index: SectionEnum.about.index,
+        key: ValueKey(HomePageSection.about.index),
+        index: HomePageSection.about.index,
         controller: scrollController,
         child: const AboutSection(),
       ),
       AutoScrollTag(
-        key: ValueKey(SectionEnum.tools.index),
-        index: SectionEnum.tools.index,
+        key: ValueKey(HomePageSection.tools.index),
+        index: HomePageSection.tools.index,
         controller: scrollController,
         child: const ToolsSection(),
       ),
       AutoScrollTag(
-        key: ValueKey(SectionEnum.contact.index),
-        index: SectionEnum.contact.index,
+        key: ValueKey(HomePageSection.contact.index),
+        index: HomePageSection.contact.index,
         controller: scrollController,
         child: const ContactSection(),
       ),

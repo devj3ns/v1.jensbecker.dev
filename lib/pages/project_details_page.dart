@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/link.dart';
 
-import '../shared/shared_widgets.dart';
-import 'home_page/projects_section/models/project_data.dart';
+import '../shared/extensions.dart';
+import '../shared/widgets/widgets.dart';
+import 'home_page/projects_section/models/project.dart';
 
 class ProjectDetailPage extends StatelessWidget {
   const ProjectDetailPage(this.project, {Key? key}) : super(key: key);
@@ -14,38 +15,24 @@ class ProjectDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final horizontalPadding = context.formFactor == FormFactor.handset
-        ? 15.0
-        : context.screenWidth / 6;
-    final verticalPadding =
-        context.formFactor == FormFactor.handset ? 25.0 : 75.0;
-    final horizontalImagePadding =
-        context.formFactor == FormFactor.handset ? 0.0 : horizontalPadding / 2;
-
     return Scaffold(
       body: Center(
         child: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: horizontalPadding,
-            vertical: verticalPadding,
-          ),
+          padding: context.contentMargin,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  tooltip: tr('back-tooltip'),
-                  onPressed: () {
-                    context.canBeamBack
-                        ? context.beamBack()
-                        : context.beamToNamed('/');
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.chevronLeft,
-                    size: 20,
-                  ),
+                MyIconButton(
+                  icon: FontAwesomeIcons.chevronLeft,
+                  floatOnHover: false,
+                  iconColor: Colors.black87,
+                  iconSize: 22,
+                  onPressed: () => context.canBeamBack
+                      ? context.beamBack()
+                      : context.beamToNamed('/'),
                 ),
-                const SizedBox(width: 5),
+                const Gap.w4(),
                 Flexible(
                   child: SelectableText(
                     project.name,
@@ -54,45 +41,44 @@ class ProjectDetailPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            const Gap.h16(),
             // todo: Translate images (mockups).
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalImagePadding),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Center(
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: Image.asset(
-                      project.mockupUrl,
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 900),
+                // Use AspectRatio so that the images area is also blocked while loading
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      child: Image.asset(
+                        project.mockupUrl,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 15),
+            const Gap.h16(),
             Center(
               child: Wrap(
                 alignment: WrapAlignment.center,
                 runSpacing: 4,
                 spacing: 4,
-                children: project.tags
-                    .split(',')
-                    .map((tag) => TextChip(text: tag))
-                    .toList(),
+                children: project.tags.split(',').map(TextChip.new).toList(),
               ),
             ),
-            const SizedBox(height: 10),
+            const Gap.h12(),
             Center(
               child: Wrap(
                 alignment: WrapAlignment.center,
                 runSpacing: 4,
                 spacing: 4,
-                children:
-                    project.tools.map((tag) => TextChip(text: tag)).toList(),
+                children: project.tools.map(TextChip.new).toList(),
               ),
             ),
-            const SizedBox(height: 30),
+            const Gap.h32(),
             SelectableText(
               project.description,
               style: const TextStyle(fontSize: 16),
@@ -100,7 +86,7 @@ class ProjectDetailPage extends StatelessWidget {
             ),
             if (project.playStoreUrl.isNotBlank ||
                 project.appStoreUrl.isNotBlank) ...[
-              const SizedBox(height: 30),
+              const Gap.h32(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -110,7 +96,7 @@ class ProjectDetailPage extends StatelessWidget {
                       url: project.playStoreUrl!,
                     ),
                   if (project.appStoreUrl.isNotBlank) ...[
-                    const SizedBox(width: 15),
+                    const Gap.w16(),
                     _StoreIcon(
                       store: _Store.appStore,
                       url: project.appStoreUrl!,
@@ -141,7 +127,7 @@ class _StoreIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.formFactor == FormFactor.handset ? 40 : 50,
+      height: context.formFactor().isMobile ? 40 : 50,
       child: Link(
         uri: Uri.parse(url),
         builder: (context, followLink) => InkWell(

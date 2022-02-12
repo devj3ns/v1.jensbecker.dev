@@ -3,59 +3,58 @@ import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../shared/constants.dart';
 import '../../../shared/mailer.dart';
-import '../../../shared/shared_widgets.dart';
 import '../../../shared/socials_row/socials_row.dart';
+import '../../../shared/widgets/widgets.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final horizontalMargin = context.screenWidth > 1500 ? 80.0 : 0.0;
-
     return Section(
       title: tr('contact_section_title'),
       subtitle: tr('contact_section_subtitle'),
-      bottomMarginMultiplier: 2,
-      child: RoundedBox(
-        margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
-        shadow: true,
-        child: context.formFactor == FormFactor.handset
-            ? Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _Column1(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: _Column2(),
-                  ),
-                ],
-              )
-            : IntrinsicHeight(
-                child: Row(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1250),
+        child: Box(
+          shadow: true,
+          backgroundColor: Colors.white,
+          child: context.formFactor().isMobile
+              ? Column(
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: _Column1(),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: _Column1(),
                     ),
-                    Expanded(
-                      flex: context.screenWidth < 1000 ? 1 : 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: _Column2(),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: _Column2(),
                     ),
                   ],
+                )
+              : IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: _Column1(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: context.screenWidth < 1100 ? 1 : 2,
+                        child: Padding(
+                          padding: const EdgeInsets.all(25.0),
+                          child: _Column2(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+        ),
       ),
     );
   }
@@ -64,11 +63,11 @@ class ContactSection extends StatelessWidget {
 class _Column1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final titleFontSize = context.byFormFactor<double>(
-        onHandset: 20, onTablet: 22, onDesktop: 22);
+    final titleFontSize =
+        context.byFormFactor<double>(onMobile: 20, onTablet: 22, onDesktop: 22);
 
-    return RoundedBox(
-      color: Theme.of(context).primaryColor,
+    return Box(
+      backgroundColor: Theme.of(context).primaryColor,
       borderRadius: 10.0,
       padding: const EdgeInsets.all(25.0),
       child: Column(
@@ -82,7 +81,7 @@ class _Column1 extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          const SizedBox(height: 10),
+          const Gap.h8(),
           SelectableText(
             tr('contact_section_first-column_subtitle'),
             style: const TextStyle(
@@ -91,41 +90,19 @@ class _Column1 extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 10),
-          TextButton.icon(
-            icon: const FaIcon(
-              FontAwesomeIcons.envelope,
-              color: Colors.white,
-              size: 19,
-            ),
-            label: const Text(
-              kEmail,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.normal,
-                fontSize: 17,
-              ),
-            ),
-            onPressed: () => launch(kEmailLink),
-          ).floatOnHover(),
-          const SizedBox(height: 10),
-          TextButton.icon(
-            icon: const FaIcon(
-              FontAwesomeIcons.whatsapp,
-              color: Colors.white,
-              size: 19,
-            ),
-            label: const Text(
-              kPhoneNumber,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.normal,
-                fontSize: 17,
-              ),
-            ),
-            onPressed: () => launch(kWhatsAppLink),
-          ).floatOnHover(),
-          const SizedBox(height: 10),
+          const Gap.h8(),
+          MyTextButton(
+            iconBefore: FontAwesomeIcons.envelope,
+            text: kEmail,
+            link: Uri.parse(kEmailLink),
+          ),
+          const Gap.h8(),
+          MyTextButton(
+            iconBefore: FontAwesomeIcons.whatsapp,
+            text: kPhoneNumber,
+            link: Uri.parse(kWhatsAppLink),
+          ),
+          const Gap.h8(),
           const SocialsRowWithoutEmail(),
         ],
       ),
@@ -173,7 +150,7 @@ class _Column2 extends HookWidget {
                 style: const TextStyle(fontSize: 17),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const Gap.h8(),
               const FaIcon(
                 FontAwesomeIcons.check,
                 size: 30,
@@ -265,7 +242,7 @@ class _Column2 extends HookWidget {
                         : null,
                   ),
                 ),
-                const SizedBox(height: 15),
+                const Gap.h16(),
                 isSubmitting.value
                     ? const Center(
                         child: CircularProgressIndicator(),

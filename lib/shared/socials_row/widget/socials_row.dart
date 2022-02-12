@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../widgets/widgets.dart';
 import '../data/social_icons.dart';
 import '../helpers/animatable.dart';
 import '../helpers/divide_animation.dart';
 import '../model/social_icon.dart';
-import 'social_icon_button.dart';
 
 class AnimatedSocialsRow extends StatefulWidget {
   const AnimatedSocialsRow({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class SocialsRowWithoutEmail extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: icons.map(SocialIconButton.new).toList(),
+      children: icons.map(_SocialIconButton.new).toList(),
     );
   }
 }
@@ -91,26 +91,42 @@ class _SocialsRowState extends AnimatableState<_SocialsRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        for (int i = 0; i < socialIcons.length; i++)
-          AnimatedBuilder(
-            animation: _socialIconsAnimations.elementAt(i),
-            builder: (context, child) {
-              final animation = _socialIconsAnimations.elementAt(i);
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: socialIcons
+            .map(
+              (socialIcon) => AnimatedBuilder(
+                animation: _socialIconsAnimations
+                    .elementAt(socialIcons.indexOf(socialIcon)),
+                builder: (context, child) {
+                  final animation = _socialIconsAnimations
+                      .elementAt(socialIcons.indexOf(socialIcon));
 
-              return Transform.translate(
-                offset: Offset(0.0, 150 - (animation.value * 150)),
-                child: Opacity(
-                  opacity: animation.value,
-                  child: child,
-                ),
-              );
-            },
-            child: SocialIconButton(socialIcons.elementAt(i)),
-          )
-      ],
+                  return Transform.translate(
+                    offset: Offset(0.0, 150 - (animation.value * 150)),
+                    child: Opacity(
+                      opacity: animation.value,
+                      child: child,
+                    ),
+                  );
+                },
+                child: _SocialIconButton(socialIcon),
+              ),
+            )
+            .toList());
+  }
+}
+
+class _SocialIconButton extends StatelessWidget {
+  const _SocialIconButton(this.socialIconData, {Key? key}) : super(key: key);
+  final SocialIconData socialIconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return MyIconButton(
+      margin: const EdgeInsets.all(16),
+      icon: socialIconData.icon,
+      link: socialIconData.link,
     );
   }
 }

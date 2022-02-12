@@ -1,33 +1,28 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../shared/widgets/widgets.dart';
 import '../../home_page.dart';
 import '../navbar/language_selection.dart';
 
 class MobileNavBar extends StatelessWidget {
   const MobileNavBar(this.scrollToSection, {Key? key}) : super(key: key);
-  final Function(SectionEnum) scrollToSection;
+  final Function(HomePageSection) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text(
           'Jens Becker',
           style: TextStyle(color: Colors.white, fontSize: 35),
         ),
-        const Expanded(child: SizedBox()),
-        IconButton(
+        MyIconButton(
+          icon: Icons.menu_rounded,
           onPressed: () =>
               context.pushPage(_MobileNavBarPopup(scrollToSection)),
-          icon: const FaIcon(
-            FontAwesomeIcons.bars,
-            color: Colors.white,
-            size: 30,
-          ),
         ),
       ],
     );
@@ -36,7 +31,7 @@ class MobileNavBar extends StatelessWidget {
 
 class _MobileNavBarPopup extends StatelessWidget {
   const _MobileNavBarPopup(this.scrollToSection);
-  final Function(SectionEnum) scrollToSection;
+  final Function(HomePageSection) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
@@ -44,47 +39,46 @@ class _MobileNavBarPopup extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   'Jens Becker',
                   style: TextStyle(color: Colors.black87, fontSize: 35),
                 ),
-                const Expanded(child: SizedBox()),
-                IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const FaIcon(
-                    FontAwesomeIcons.times,
-                    color: Colors.black87,
-                    size: 33,
-                  ),
+                MyIconButton(
+                  icon: Icons.close_rounded,
+                  iconColor: Colors.black87,
+                  onPressed: () => context.popPage(),
                 )
               ],
             ),
-            const Expanded(child: SizedBox()),
-            _MobileNavBarSectionButton(
-              name: tr('navbar_projects'),
-              section: SectionEnum.projects,
-              scrollToSection: scrollToSection,
+            Column(
+              children: [
+                _SectionButton(
+                  name: tr('navbar_projects'),
+                  section: HomePageSection.projects,
+                  scrollToSection: scrollToSection,
+                ),
+                _SectionButton(
+                  name: tr('navbar_about-me'),
+                  section: HomePageSection.about,
+                  scrollToSection: scrollToSection,
+                ),
+                _SectionButton(
+                  name: tr('navbar_tools'),
+                  section: HomePageSection.tools,
+                  scrollToSection: scrollToSection,
+                ),
+                _SectionButton(
+                  name: tr('navbar_contact'),
+                  section: HomePageSection.contact,
+                  scrollToSection: scrollToSection,
+                ),
+              ],
             ),
-            _MobileNavBarSectionButton(
-              name: tr('navbar_about-me'),
-              section: SectionEnum.about,
-              scrollToSection: scrollToSection,
-            ),
-            _MobileNavBarSectionButton(
-              name: tr('navbar_tools'),
-              section: SectionEnum.tools,
-              scrollToSection: scrollToSection,
-            ),
-            _MobileNavBarSectionButton(
-              name: tr('navbar_contact'),
-              section: SectionEnum.contact,
-              scrollToSection: scrollToSection,
-            ),
-            const Expanded(child: SizedBox()),
-            const SizedBox(height: 15),
             const LanguageSelection(
               textColor: Colors.black,
               dropdownColor: Colors.white,
@@ -96,23 +90,23 @@ class _MobileNavBarPopup extends StatelessWidget {
   }
 }
 
-class _MobileNavBarSectionButton extends StatelessWidget {
-  const _MobileNavBarSectionButton({
+class _SectionButton extends StatelessWidget {
+  const _SectionButton({
     required this.name,
     required this.section,
     required this.scrollToSection,
   });
 
   final String name;
-  final SectionEnum section;
-  final Function(SectionEnum) scrollToSection;
+  final HomePageSection section;
+  final Function(HomePageSection) scrollToSection;
 
   @override
   Widget build(BuildContext context) {
     void popAndScroll() async {
-      Navigator.of(context).pop();
+      context.popPage();
 
-      // It feels a bit more natural with this delay.
+      // With this delay it feels more natural:
       await Future<void>.delayed(const Duration(milliseconds: 200));
 
       scrollToSection(section);

@@ -3,61 +3,74 @@ import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../shared/shared_widgets.dart';
+import '../../../shared/widgets/widgets.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Section(
-      title: tr('about-me_section_title'),
-      child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 30,
-        spacing: 25,
-        children: [
-          context.formFactor == FormFactor.handset
-              ? Center(child: _Image())
-              : _Image(),
-          _Text(
-            width: context.byFormFactor<double>(
-              onHandset: double.infinity,
-              onTablet: context.screenWidth / 2.5,
-              onDesktop: context.screenWidth / 3,
-            ),
-          ),
-        ],
+    final additionalMargin = context.byFormFactor<EdgeInsets>(
+      onMobile: EdgeInsets.zero,
+      onTablet: EdgeInsets.zero,
+      onDesktop: EdgeInsets.symmetric(
+        horizontal: context.screenWidth > 1300 ? context.screenWidth / 8 : 0,
       ),
     );
-  }
-}
 
-class _Image extends StatelessWidget {
-  final imageSize = 175.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: imageSize,
-      height: imageSize,
-      child: const RoundedBox(
-        borderRadius: 100,
-        shadow: true,
-        child: CircleAvatar(
-          backgroundImage: AssetImage(
-            'assets/images/jensbecker_small.jpg',
-          ),
-          backgroundColor: Colors.transparent,
+    return Section(
+      title: tr('about-me_section_title'),
+      additionalMargin: additionalMargin,
+      child: context.byFormFactor<Widget>(
+        onMobile: Column(
+          children: const [
+            Center(child: _Image()),
+            Gap.h16(),
+            _Text(),
+          ],
+        ),
+        onTablet: Row(
+          children: const [
+            _Image(),
+            Gap.w16(),
+            Flexible(child: _Text()),
+          ],
+        ),
+        onDesktop: Row(
+          children: const [
+            _Image(),
+            Gap.w32(),
+            Flexible(child: _Text()),
+          ],
         ),
       ),
     );
   }
 }
 
+class _Image extends StatelessWidget {
+  const _Image({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const radius = 100.0;
+
+    return const Box(
+      borderRadius: radius,
+      shadow: true,
+      child: CircleAvatar(
+        backgroundImage: AssetImage(
+          'assets/images/jensbecker_small.jpg',
+        ),
+        backgroundColor: Colors.transparent,
+        radius: radius,
+      ),
+    );
+  }
+}
+
 class _Text extends StatelessWidget {
-  const _Text({required this.width});
-  final double width;
+  const _Text({Key? key}) : super(key: key);
 
   String get jensAge {
     final birthday = DateTime(2001, 11, 16);
@@ -72,42 +85,28 @@ class _Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      child: Column(
-        children: [
-          // Just using the 👋 emoji in the text decreases performance drastically.
-          // See: https://github.com/flutter/flutter/issues/76248
-          Row(
-            children: const [
-              SelectableText('Hey', style: TextStyle(fontSize: 18)),
-              _WinkingHandEmoji(),
-            ],
-          ),
-          SelectableText(
-            tr('about-me_section_text', namedArgs: {'age': jensAge}),
-            style: const TextStyle(fontSize: 18),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// NOTE: The SVG does not work with the html renderer.
-class _WinkingHandEmoji extends StatelessWidget {
-  const _WinkingHandEmoji({this.size = 22});
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: SvgPicture.asset(
-        'assets/images/emoji_u1f44b.svg',
-        semanticsLabel: 'Winking hand emoji',
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Just using the 👋 emoji in the text decreases performance drastically.
+        // See: https://github.com/flutter/flutter/issues/76248
+        Row(
+          children: [
+            const SelectableText('Hey', style: TextStyle(fontSize: 18)),
+            SvgPicture.asset(
+              'assets/images/emoji_u1f44b.svg',
+              semanticsLabel: 'Winking hand emoji',
+              width: 22,
+              height: 22,
+            ),
+          ],
+        ),
+        SelectableText(
+          tr('about-me_section_text', namedArgs: {'age': jensAge}),
+          style: const TextStyle(fontSize: 18),
+          textAlign: TextAlign.left,
+        ),
+      ],
     );
   }
 }

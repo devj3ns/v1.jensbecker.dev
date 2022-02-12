@@ -1,11 +1,11 @@
 const kEmail = 'info@jensbecker.dev';
-const kPhoneNumber = '+4917623867324';
+const kPhoneNumber = '+49 176 23867324';
 
 // ### Social Links ###
 const kTwitterLink = 'https://twitter.com/devj3ns';
 const kGitHubLink = 'https://github.com/devj3ns';
 const kInstagramLink = 'https://instagram.com/dev.j3ns';
-const kWhatsAppLink = 'https://wa.me/$kPhoneNumber';
+const kWhatsAppLink = 'https://wa.me/+4917623867324';
 const kEmailLink = 'mailto:$kEmail';
 
 // ### Tool Links ###

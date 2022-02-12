@@ -1,38 +1,38 @@
 import '../../../../shared/constants.dart';
-import '../models/tool_data.dart';
+import '../models/tool.dart';
 
 String _getLogoPath(String imageName) => 'assets/images/tools_icons/$imageName';
 
 final tools = [
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('flutter.png'),
     link: Uri.parse(kFlutterLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('dart.png'),
     link: Uri.parse(kDartLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('android_studio.png'),
     link: Uri.parse(kAndroidStudioLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('firebase.png'),
     link: Uri.parse(kFirebaseLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('django.png'),
     link: Uri.parse(kDjangoLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('python.png'),
     link: Uri.parse(kPythonLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('wordpress.png'),
     link: Uri.parse(kWordpressLink),
   ),
-  ToolData(
+  Tool(
     iconUrl: _getLogoPath('elementor.png'),
     link: Uri.parse(kElementorLink),
   ),

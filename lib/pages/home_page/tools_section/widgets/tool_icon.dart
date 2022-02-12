@@ -1,33 +1,22 @@
-import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../shared/shared_widgets.dart';
-import '../models/tool_data.dart';
+import '../../../../shared/widgets/widgets.dart';
+import '../models/tool.dart';
 
 class ToolIcon extends StatelessWidget {
-  const ToolIcon(this.toolData, {Key? key}) : super(key: key);
-  final ToolData toolData;
+  const ToolIcon(this.tool, {Key? key}) : super(key: key);
+  final Tool tool;
 
   @override
   Widget build(BuildContext context) {
-    final maxIconSize = context.byFormFactor<double>(
-      onHandset: 100,
-      onTablet: 100,
-      onDesktop: 90,
-    );
-
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: maxIconSize,
-        maxHeight: maxIconSize,
-      ),
-      child: RoundedBox(
+    return Expanded(
+      child: Box(
         borderRadius: 10.0,
+        backgroundColor: Colors.white,
         margin: const EdgeInsets.all(6.0),
         padding: const EdgeInsets.all(15.0),
-        link: toolData.link,
-        //onPressed: openLink,
-        child: Image.asset(toolData.iconUrl),
+        link: tool.link,
+        child: Image.asset(tool.iconUrl),
       ),
     );
   }

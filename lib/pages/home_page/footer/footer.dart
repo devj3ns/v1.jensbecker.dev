@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fleasy/fleasy.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/shared_widgets.dart';
+import '../../../shared/widgets/widgets.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class Footer extends StatelessWidget {
       child: Wrap(
         alignment: WrapAlignment.center,
         spacing: context.byFormFactor<double>(
-          onHandset: 5,
+          onMobile: 5,
           onTablet: 30,
           onDesktop: 80,
         ),

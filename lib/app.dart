@@ -2,8 +2,8 @@ import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'routes.dart';
-import 'theme.dart';
+import 'shared/routes.dart';
+import 'shared/theme.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

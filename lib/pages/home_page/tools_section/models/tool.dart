@@ -1,5 +1,5 @@
-class ToolData {
-  const ToolData({
+class Tool {
+  const Tool({
     required this.iconUrl,
     required this.link,
   });
