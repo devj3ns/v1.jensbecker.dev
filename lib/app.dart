@@ -33,6 +33,10 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       routerDelegate: routerDelegate,
       routeInformationParser: BeamerParser(),
+      // Use stretch overscroll indicator on android
+      scrollBehavior: const ScrollBehavior(
+        androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
+      ),
     );
   }
 }
