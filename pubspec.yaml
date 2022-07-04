@@ -21,7 +21,7 @@ dependencies:
       ref: proposal-awaitFontLoads
   beamer: ^1.4.0+1
   scroll_to_index: ^2.1.1
-  firebase_core: ^1.14.0
+  firebase_core: ^1.19.1
   cloud_firestore: ^3.1.11
   flutter_hooks: ^0.18.2+1
   flutter_html: ^3.0.0-alpha.2
